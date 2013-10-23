@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="changeme" default="all" basedir=".">
+    <target name="deploy">
+        <copy todir="C:\Program Files\Apache Software Foundation\Tomcat 6.0\webapps\ROOT\WEB-INF" overwrite="true">
+            <fileset dir="C:\Program Files\Apache Software Foundation\Tomcat 6.0\webapps\ROOT\GIT\UnterrichtMe\UnterrichtMeProjekt\build\web\WEB-INF\"/>
+        </copy>
+    </target>
+</project>

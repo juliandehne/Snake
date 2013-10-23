@@ -1,3 +1,4 @@
+<%@page import="database.TryDB"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.Thema"%>
@@ -18,8 +19,10 @@
             themen.add(new Thema("Schiller"));
             Termin termin = new Termin(themen, new Date());
             pageContext.setAttribute("termin", termin);
-            Thema thema = new Thema("jsp2");
+            Thema thema = new Thema("jsp2 und Datenbanken");
             pageContext.setAttribute("thema", thema);
+            TryDB db = new TryDB();
+            out.print("wir sind " + db.ich);
         %>
         <h1>${termin.date}</h1>
         <h1>${thema.name}</h1>
