@@ -4,7 +4,7 @@
 <%@page import="java.util.Date"%>
 <%@page import="model.Termin"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,10 +20,11 @@
             pageContext.setAttribute("termin", termin);
         %>
         <h1>${termin.date}</h1>
-        <ul>
+        <h2>hello julian</h2>
+<!--        <ul>
             <c:forEach items="${termin.themen}" var="item" >
                 <li><c:out value="${item.name}" /></li>
             </c:forEach>
-        </ul>
+        </ul>-->
     </body>
 </html>
