@@ -18,9 +18,12 @@
             themen.add(new Thema("Schiller"));
             Termin termin = new Termin(themen, new Date());
             pageContext.setAttribute("termin", termin);
+            Thema thema = new Thema("jsp2");
+            pageContext.setAttribute("thema", thema);
         %>
         <h1>${termin.date}</h1>
-        <h2>hello julian</h2>
+        <h1>${thema.name}</h1>
+        <h2>hello julian there should be a date and something like a theme </h2>
 <!--        <ul>
             <c:forEach items="${termin.themen}" var="item" >
                 <li><c:out value="${item.name}" /></li>
