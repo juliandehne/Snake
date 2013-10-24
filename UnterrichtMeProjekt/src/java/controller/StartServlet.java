@@ -19,7 +19,7 @@ public class StartServlet extends HttpServlet {
         Kompetenzplaner k = new Kompetenzplaner();
         
         request.setAttribute("hw", k.termin.getDate());
-        request.getRequestDispatcher("WEB-INF/jsp/index.jsp").forward(request, response);
+        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
     @Override
