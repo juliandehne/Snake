@@ -4,6 +4,7 @@
     Author     : Julian
 --%>
 
+<%@page import="geometry.Rectangle"%>
 <%@page import="java.util.Date"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="twod" uri="http://ditchnet.org/jsp-2d-taglib" %>
@@ -14,11 +15,13 @@
     </head>
     <body>        
         <div id="testdiv">  
-            
+
+            <% Rectangle rectangle = new Rectangle(4, 4, 20, 33);%>
+
             <!--Zeigt, dass sich die Seite imme neu lädt.-->
             <% Date date = new Date();%>
             <h1>Hello World! + <% out.println(date.toString());%></h1>
-                        
+
             <!--Enthält ein Canvas, in dem in 2D gemalt werden kann-->
             <twod:canvas id="polygon" width="200" height="200" alt="A polygon">                
                 var color1 = new java.awt.Color(0xC80021); 
@@ -41,7 +44,12 @@
                 g.fill(pentagon);
                 g.setStroke(stroke);
                 g.draw(pentagon);                                                 
-            </twod:canvas>
+            </twod:canvas>                                           
+        </div>
+
+        <div id="testdiv2">            
+            <canvas width="200" height="200" id="myCanvas"> 
+            </canvas>      
         </div>
     </body>
 </html>

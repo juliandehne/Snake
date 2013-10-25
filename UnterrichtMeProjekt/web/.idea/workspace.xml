@@ -25,7 +25,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="jquery.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="jquery.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/jquery.js">
           <provider selected="true" editor-type-id="text-editor">
             <state line="2" column="3" selection-start="126" selection-end="126" vertical-scroll-proportion="0.0">
@@ -34,19 +34,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pagereload.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/pagereload.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="46" selection-start="439" selection-end="439" vertical-scroll-proportion="0.37551022">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="7" selection-start="591" selection-end="591" vertical-scroll-proportion="0.0">
+            <state line="21" column="7" selection-start="860" selection-end="860" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -127,7 +118,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1272" y="-908" width="1456" height="916" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -215,13 +206,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/pagereload.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="35" selection-start="186" selection-end="186" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="7" selection-start="591" selection-end="591" vertical-scroll-proportion="0.0">
@@ -234,23 +218,16 @@
         <state line="1200" column="7" selection-start="18569" selection-end="18569" vertical-scroll-proportion="1.6557823" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="7" selection-start="860" selection-end="860" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/jquery.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="3" selection-start="126" selection-end="126" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="7" selection-start="591" selection-end="591" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/pagereload.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="46" selection-start="439" selection-end="439" vertical-scroll-proportion="0.37551022">
           <folding />
         </state>
       </provider>

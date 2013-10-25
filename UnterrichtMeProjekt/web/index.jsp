@@ -12,13 +12,17 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>        
         <script src="./js/jquery.js" type="text/javascript"></script>
-        <script src="./js/pagereload.js" type="text/javascript"></script>      
+        <script src="./js/javascript.js" type="text/javascript"></script>      
     </head>
 
     <body>        
         <!-- Hier wird das Bild eingefügt: Das Testdiv-Tag nicht anfassen! -->
         <!--In der Datei dynamic2d.jsp kann das Bild programmiert werden-->
         <div id="testdiv" tabindex="0" onkeydown="alert('hallo');" >             
+        </div>
+        
+        <!-- Hier wird das Bild eingefügt: Das Testdiv-Tag nicht anfassen! -->        
+        <div id="testdiv2" tabindex="0" onkeydown="alert('hallo');" >             
         </div>
     </body>
 </html>
