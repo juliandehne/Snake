@@ -18,11 +18,7 @@
     <body>        
         <!-- Hier wird das Bild eingefügt: Das Testdiv-Tag nicht anfassen! -->
         <!--In der Datei dynamic2d.jsp kann das Bild programmiert werden-->
-        <div id="testdiv" tabindex="0" onkeydown="alert('hallo');" >             
-        </div>
-        
-        <!-- Hier wird das Bild eingefügt: Das Testdiv-Tag nicht anfassen! -->        
-        <div id="testdiv2" tabindex="0" onkeydown="alert('hallo');" >             
-        </div>
+        <div id="reloadingDiv" tabindex="0" width="400" height="400">             
+        </div>                
     </body>
 </html>

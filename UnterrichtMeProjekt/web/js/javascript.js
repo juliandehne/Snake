@@ -1,26 +1,13 @@
 $(document).ready(function() {
-    var interval = setInterval(reloadGameCanvas, 5000);
+    var interval = setInterval(reloadGameCanvas, 1000);
     // jQuery methods go here...
     //$("testdiv").keydown(eventData, handleKeyEvent(eventObject));    
 });
 
 function reloadGameCanvas() {
-    $("#testdiv").load("../web/dynamic2d.jsp #testdiv");
-    $("#testdiv2").load("../web/dynamic2d.jsp #testdiv2", paintHTML5);
-    
-   
+    $("#reloadingDiv").load("../web/dynamic2d.jsp #reloadingDiv");          
 }
 
-function paintHTML5() {
-     //paint second canvas
-    var c = document.getElementById("myCanvas");
-    var ctx = c.getContext("2d");
-    ctx.fillStyle = "#FF0000";
-    ctx.fillRect(0, 0, 150, 75); 
-    ctx.moveTo(0,0);
-    ctx.lineTo(100,200);
-    ctx.stroke();
-}
 
 function handleKeyEvent(eventObject) {
     // wenn nach unten gedrückt wurde
