@@ -12,12 +12,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>        
         <script src="./js/jquery.js" type="text/javascript"></script>
-        <script src="./js/javascript.js" type="text/javascript"></script>      
+        <script src="./js/javascript.js?id=${pageContext.session.id}" type="text/javascript"></script>
     </head>
 
     <body>        
         <!-- Hier wird das Bild eingefügt: Das Testdiv-Tag nicht anfassen! -->
-        <!--In der Datei dynamic2d.jsp kann das Bild programmiert werden-->
+        <!-- In der Datei dynamic2d.jsp wird das Bild erstellt -->
         <div id="reloadingDiv" tabindex="0" width="400" height="400">             
         </div>                
     </body>

@@ -39,7 +39,7 @@ public class CreatePictureTest {
     @Test
     public void testPaintPicture() {
         System.out.println("paintPicture");
-        File outputStream = new File("./web/pics/test.png");
+        File outputStream = new File("./web/pics/testung.png");
         CreatePicture instance = new CreatePicture();
         instance.paintPicture(outputStream);        
     }

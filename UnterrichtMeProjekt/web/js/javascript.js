@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var interval = setInterval(reloadGameCanvas, 1000);
+    var interval = setInterval(reloadGameCanvas, 4000);
     // jQuery methods go here...
     //$("testdiv").keydown(eventData, handleKeyEvent(eventObject));    
 });
