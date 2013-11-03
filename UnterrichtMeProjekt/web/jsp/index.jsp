@@ -34,16 +34,16 @@
                 <br>
                 <%
                     String referrer = request.getServletPath();
-                    out.println(referrer);
+                    out.println("[ip]:8080"+referrer);
                 %>
-                </br>
+                </br>                            
                 <br>Folgende Attribute wurden uebergeben:</br>
                 <br>   
                 <%
                     for (Enumeration<String> enumeration = request.getAttributeNames(); enumeration.hasMoreElements();) {
                         String attributeName = enumeration.nextElement();
                         Object attribute = request.getAttribute(attributeName);
-                        out.println(attributeName + " -> " + attribute.getClass().getName() + ":" + attribute.toString() +"</br>");
+                        out.println(attributeName + " -> " + attribute.getClass().getName() + ":" + attribute.toString() + "</br>" +"</br>");
                     }
                 %>
                 </br>
