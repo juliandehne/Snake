@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.commons.io.FileUtils;
 
+
 /**
  *
  * @author Julian
@@ -27,6 +28,8 @@ public class CreatePicture {
         PngWriter png = new PngWriter(outputStream, imi);
         // add some optional metadata (chunks)      
         ImageLineInt iline = new ImageLineInt(imi);
+        
+        
 
         Random r = new Random();
         Color c = new Color(r.nextInt(255), r.nextInt(255), r.nextInt(255));
