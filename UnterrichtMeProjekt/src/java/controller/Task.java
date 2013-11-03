@@ -4,7 +4,6 @@
  */
 package controller;
 
-import java.awt.Window;
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,8 +27,7 @@ public class Task extends Thread implements HttpSessionBindingListener {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void run() {        
-        
+    public void run() {
         while (true) {
             CreatePicture instance = new CreatePicture();
             instance.paintPicture(deployStream);
