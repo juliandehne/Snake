@@ -9,7 +9,37 @@
 <!-- in the project's Project Properties dialog box.-->
 <project name="UnterrichtMeProjekt" default="default" basedir=".">
     <description>Builds, tests, and runs the project UnterrichtMeProjekt.</description>
-    <import file="nbproject/build-impl.xml"/>
+    <import file="nbproject/build-impl.xml"/>    
+    
+    <!--Custom Targets-->
+    <target name="-post-compile" depends="deploy2">       
+    </target>
+
+     <!--Mit relativen Pfadangaben-->    
+    <target name ="init2">
+        <!--Erstellt das Verzeichnis WEB-INF-->
+        <mkdir dir="../../../WEB-INF" />
+    </target>  
+    
+    <target name ="clean2" depends="init2" >
+        <!--loescht das Verzeichnis dir-->
+        <delete includeEmptyDirs="true">
+            <fileset dir="../../../WEB-INF"/>            
+        </delete>
+        <mkdir dir="../../../WEB-INF" />
+    </target>               
+    
+    <target name="deploy2" depends="clean2" >
+        <copy todir="../../../WEB-INF" overwrite="true">
+            <!--kopiert todir nach dir-->
+            <fileset dir="build/web/WEB-INF/">
+                <exclude name="**/javax.servlet.jar"/>
+<!--                <exclude name="**/commons-io-2.4.jar"></exclude>-->
+            </fileset>
+        </copy>
+    </target>
+    
+    
     <!--
 
     There exist several targets which are by default empty and which can be 

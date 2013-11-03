@@ -1,12 +1,15 @@
-$(document).ready(function() {
-    var interval = setInterval(reloadGameCanvas, 4000);
-    // jQuery methods go here...
-    //$("testdiv").keydown(eventData, handleKeyEvent(eventObject));    
+// will execute once all scripts and images are finished loading
+$(window).ready(function() {
+    setInterval(reloadGameCanvas, 2000);      
 });
+// jQuery methods go here...
+//$("testdiv").keydown(eventData, handleKeyEvent(eventObject));    
 
 function reloadGameCanvas() {
-    $("#reloadingDiv").load("../web/dynamic2d.jsp #reloadingDiv");          
+     var d = new Date();
+     $("#reloadingPng").attr("src", "http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/web/pics/test2.png?"+d.getTime());   
 }
+
 
 
 function handleKeyEvent(eventObject) {

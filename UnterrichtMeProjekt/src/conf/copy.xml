@@ -1,13 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="changeme" default="all" basedir=".">
-    <target name="deploy">
+            
+        
+    <!--Mit direkten Pfaden-->
+    <target name ="init">
+        <!--Erstellt das Verzeichnis WEB-INF-->
+        <mkdir dir="T:\WEB-INF" />
+    </target>   
+    
+    <target name ="clean" depends="init" >
+    <!--loescht das Verzeichnis dir-->
+        <delete includeEmptyDirs="true">
+            <fileset dir="T:\WEB-INF" />
+        </delete>
+        <mkdir dir="T:\WEB-INF" />
+    </target>
+    
+    <target name="deploy" depends="clean">
+        <!--kopiert todir nach dir-->
         <copy todir="T:\WEB-INF" overwrite="true">
             <fileset dir="T:\git\UnterrichtMe\UnterrichtMeProjekt\build\web\WEB-INF"/>
         </copy>       
-    </target>
-    <target name="deploy2">
+    </target>    
+    
+    <!--Mit relativen Pfadangaben-->    
+    <target name ="init2">
+        <!--Erstellt das Verzeichnis WEB-INF-->
+        <mkdir dir="../../../../../WEB-INF" />
+    </target>  
+    
+    <target name ="clean2" depends="init2" >
+        <!--loescht das Verzeichnis dir-->
+        <delete includeEmptyDirs="true">
+            <fileset dir="../../../../../WEB-INF"/>
+        </delete>
+        <mkdir dir="../../../../../WEB-INF" />
+    </target>               
+    
+    <target name="deploy2" depends="clean2" >
         <copy todir="../../../../../WEB-INF" overwrite="true">
-            <fileset dir="../../build/web/WEB-INF/"/>
+            <!--kopiert todir nach dir-->
+            <fileset dir="../../build/web/WEB-INF/">
+                <exclude name="**/javax.servlet.jar"/>
+            </fileset>
         </copy>
     </target>
 </project>
