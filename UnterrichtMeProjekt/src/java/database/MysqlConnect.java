@@ -78,4 +78,9 @@ public class MysqlConnect {
     public Connection getConnection() {
         return conn;
     }
+
+    public void setConnection(Connection conn) {
+        this.conn = conn;
+    }
+    
 }
