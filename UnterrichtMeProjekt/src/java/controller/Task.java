@@ -39,6 +39,11 @@ public class Task extends Thread implements HttpSessionBindingListener {
                 Logger.getLogger(Task.class.getName()).log(Level.SEVERE, null, ex);
             }
             try {
+                instance.copyPicture(tmp, deployStream);
+            } catch (IOException ex) {
+                Logger.getLogger(Task.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
                 this.sleep(800);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Task.class.getName()).log(Level.SEVERE, null, ex);
