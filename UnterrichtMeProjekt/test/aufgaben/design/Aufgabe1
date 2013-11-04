@@ -1,0 +1,17 @@
+Aufgabe 1: 
+
+In index.jsp findet ihr folgende Zeilen Code. Diese stellen buttons dar, auf die geclickt wird, 
+um die Schlange zubewegen. 
+<td>                        
+    <a href="${thisSiteAddress}?direction=oben">oben</a> <br>
+    <a href="${thisSiteAddress}?direction=left">links</a> 
+    <a href="${thisSiteAddress}?direction=rechts">rechts</a> <br>                         
+    <a href="${thisSiteAddress}?direction=oben">unten</a>
+</td>
+
+Schaut euch http://de.selfhtml.org/css/eigenschaften/pseudoformate.htm an und überlegt euch,
+wie ihr die Links gestalten wollt. 
+
+a) Entwerft ein Design auf Papier!
+b) Versucht das Design von 1a in HTML umzusetzen!
+c) Gestaltet index.jsp frei nach eueren Wünschen um (sofern es hinterher noch funktioniert)!

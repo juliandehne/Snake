@@ -54,7 +54,7 @@ public class Aufgabe1 {
     @After
     public void tearDown() throws SQLException {
 
-        instance.getConnection().createStatement().execute("drop test");
+        instance.getConnection().createStatement().execute("drop database test");
 
     }
 
@@ -62,9 +62,9 @@ public class Aufgabe1 {
      * Test of connect method, of class MysqlHelper.
      */
     @Test
-    public void beispiel() throws SQLException {
-        instance.getConnection().createStatement().execute("drop table lehrer");
+    public void beispiel() throws SQLException {        
         instance.getConnection().createStatement().execute("create table lehrer (id INT, name varchar(1000))ENGINE=InnoDB DEFAULT CHARSET=utf8 ;");
+        instance.getConnection().createStatement().execute("drop table lehrer");
     }
 
     /**
@@ -72,9 +72,13 @@ public class Aufgabe1 {
      * wollt. Zum Beispiel Schlange, Spielfeld, Position der Schlangen, Richtung
      * der Schlangenbewegung...
      *
+     * Mit Rechtsclick -> Test File könnt ihr die Tests ausführen lassen
+     * Vergleiche Beispiel oben
+     * 
      * @throws SQLException
      */
     @Test
     public void aufgabe1() throws SQLException {
+        // hier euer code
     }
 }

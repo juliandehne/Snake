@@ -27,20 +27,26 @@ public class CreatePicture {
         // open image for writing to a output stream
         PngWriter png = new PngWriter(outputStream, imi);
         // add some optional metadata (chunks)      
-        ImageLineInt iline = new ImageLineInt(imi);
+        ImageLineInt iline = new ImageLineInt(imi);        
         
+        // hier könnt ihr das Bild verändern
+        // TIPP: Befüllt einen Zweidimensionalen Array
+        // und arbeitet diesen dann ab.
+        // TIPP2: Ihr wollt am Ende mit Koordinaten Pixel setzen können!
+        ///////////////////////////////////////////
         
-
         Random r = new Random();
         Color c = new Color(r.nextInt(255), r.nextInt(255), r.nextInt(255));
-
-
-        for (int col = 0; col < imi.cols; col++) { // this line will be written to all rows
+        
+        // schreibt eine Spalte
+        for (int col = 0; col < imi.cols; col++) {
             ImageLineHelper.setPixelRGB8(iline, col, c.getRed(), c.getGreen(), c.getBlue());
         }
+        // die Spalte wird in alle Zeilen geschrieben.
         for (int row = 0; row < png.imgInfo.rows; row++) {
             png.writeRow(iline);
-        }
+        }        
+        ///////////////////////////////////////////
         png.end();
 
     }
