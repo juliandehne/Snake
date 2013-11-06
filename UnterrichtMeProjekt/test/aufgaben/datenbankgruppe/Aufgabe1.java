@@ -81,4 +81,10 @@ public class Aufgabe1 {
     public void aufgabe1() throws SQLException {
         // hier euer code
     }
+    
+ 
+    
+    
+    
+    
 }
