@@ -52,6 +52,8 @@ public class CreatePicture {
         png.end();
 
     }
+    
+    
 
     public synchronized void copyPicture(File inputStream, File outputStream) throws IOException {
         FileUtils.copyFile(inputStream, outputStream);
