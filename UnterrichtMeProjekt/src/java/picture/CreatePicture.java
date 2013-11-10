@@ -4,13 +4,16 @@ import ar.com.hjg.pngj.ImageInfo;
 import ar.com.hjg.pngj.ImageLineHelper;
 import ar.com.hjg.pngj.ImageLineInt;
 import ar.com.hjg.pngj.PngWriter;
-import gamelogic.PlayingGround;
-import gamelogic.PositionType;
+import ar.com.hjg.pngj.chunks.PngChunkTextVar;
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apache.commons.io.FileUtils;
+
 
 /**
  *
@@ -49,66 +52,6 @@ public class CreatePicture {
         png.end();
 
     }
-    
-        public static synchronized void paintPicture(File outputStream, PlayingGround playingGround) {
-            
-        PositionType[][] playingGround2DArray = playingGround.getPlayingGround();
-        int size = playingGround2DArray.length;
-        
-        
-        ImageInfo imi = new ImageInfo(size, size, 8, false); // 8 bits per channel, no alpha
-        // open image for writing to a output stream
-        PngWriter png = new PngWriter(outputStream, imi);
-        
-        
-            
-        
-        // hier könnt ihr das Bild verändern
-        // TIPP: Befüllt einen Zweidimensionalen Array
-        // und arbeitet diesen dann ab.
-        // TIPP2: Ihr wollt am Ende mit Koordinaten Pixel setzen können!
-        ///////////////////////////////////////////
-        
-        ImageLineInt iline = new ImageLineInt(imi);  // eine Zeile 
-        
-        Color borderColor = new Color(0, 0, 0);
-        Color snakeHeadColor = new Color(0,255,0);
-        Color defaultColor = new Color(255,255,255);
-        
-        
-        for (int x = 0; x < size; x++) {
-            for (int y = 0; y < size; y++) {
-                switch (playingGround2DArray[x][y]) {
-                    case SNAKEHEAD:
-                        ImageLineHelper.setPixelRGB8(iline, y, 
-                                snakeHeadColor.getRed(), 
-                                snakeHeadColor.getGreen(), 
-                                snakeHeadColor.getBlue());
-                        break;
-                    case BORDER:
-                         ImageLineHelper.setPixelRGB8(iline, y, 
-                                borderColor.getRed(), 
-                                borderColor.getGreen(), 
-                                borderColor.getBlue());
-                        break;
-                    default:
-                         ImageLineHelper.setPixelRGB8(iline, y, 
-                                defaultColor.getRed(), 
-                                defaultColor.getGreen(), 
-                                defaultColor.getBlue());
-                        break;                                      
-                }
-            }                          
-            png.writeRow(iline);
-        }
-        ///////////////////////////////////////////
-        png.end();
-
-    }
-    
-    
-    
-    
     
     
 

@@ -4,8 +4,13 @@
  */
 package aufgaben.logik;
 
-import gamelogic.*;
+import java.io.File;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
+import static org.junit.Assert.*;
 import picture.CreatePicture;
 
 
@@ -32,14 +37,5 @@ public class Aufgabe2 {
     @Test
     public void drawSnake() {
         
-        //mein code ist im gamelogic package
-        Snake snake = new Snake(new Position(15,15), 10, Facing.RIGHT);
-        
-        PlayingGround playingGround = new PlayingGround(400, 400, snake);
-        //CreatePicture.paintPicture(, playingGround);
-        
-        snake.setPos(new Position(20,20));
-        playingGround.update();
-        //CreatePicture.paintPicture(, playingGround);            
     }
 }
