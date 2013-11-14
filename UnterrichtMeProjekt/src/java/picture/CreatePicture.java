@@ -26,14 +26,16 @@ public class CreatePicture {
         ImageInfo imi = new ImageInfo(400, 400, 8, false); // 8 bits per channel, no alpha
         // open image for writing to a output stream
         PngWriter png = new PngWriter(outputStream, imi);
-        // add some optional metadata (chunks)      
-        ImageLineInt iline = new ImageLineInt(imi);        
+   
+            
         
         // hier könnt ihr das Bild verändern
         // TIPP: Befüllt einen Zweidimensionalen Array
         // und arbeitet diesen dann ab.
         // TIPP2: Ihr wollt am Ende mit Koordinaten Pixel setzen können!
         ///////////////////////////////////////////
+        
+        ImageLineInt iline = new ImageLineInt(imi);  // eine Zeile 
         
         Random r = new Random();
         Color c = new Color(r.nextInt(255), r.nextInt(255), r.nextInt(255));
@@ -50,6 +52,8 @@ public class CreatePicture {
         png.end();
 
     }
+    
+    
 
     public synchronized void copyPicture(File inputStream, File outputStream) throws IOException {
         FileUtils.copyFile(inputStream, outputStream);
