@@ -29,7 +29,7 @@ public class Task extends Thread implements HttpSessionBindingListener {
     }
 
     public void run() {
-        Snake snake = new Snake(new Position(200,200),5, Facing.LEFT);
+        Snake snake = new Snake(new Position(25,25),5, Facing.LEFT);
         PlayingGround playingGround = new PlayingGround(50,50,snake);
         while (true) {
             CreatePicture instance = new CreatePicture();
