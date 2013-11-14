@@ -14,14 +14,14 @@ import java.io.IOException;
 import java.util.Random;
 import org.apache.commons.io.FileUtils;
 
-
 /**
  *
  * @author Julian
  */
 public class CreatePicture {
 
-    
+    static int PICTURE_SIZE = 400;
+
     public synchronized void paintPicture(File outputStream) {
         ImageInfo imi = new ImageInfo(400, 400, 8, false); // 8 bits per channel, no alpha
         // open image for writing to a output stream
@@ -60,7 +60,7 @@ public class CreatePicture {
         int size = playingGround2DArray.length;
         
         
-        ImageInfo imi = new ImageInfo(size, size, 8, false); // 8 bits per channel, no alpha
+        ImageInfo imi = new ImageInfo(PICTURE_SIZE, PICTURE_SIZE, 8, false); // 8 bits per channel, no alpha
         // open image for writing to a output stream
         PngWriter png = new PngWriter(outputStream, imi);
         
@@ -75,9 +75,9 @@ public class CreatePicture {
         
         ImageLineInt iline = new ImageLineInt(imi);  // eine Zeile 
         
-        Color borderColor = new Color(0, 0, 0);
+        Color borderColor = new Color(0, 0, 255);
         Color snakeHeadColor = new Color(0,255,0);
-        Color defaultColor = new Color(255,255,255);
+        Color defaultColor = new Color(0,0,0);
         
         
         for (int x = 0; x < size; x++) {
@@ -114,5 +114,10 @@ public class CreatePicture {
 
     public synchronized void copyPicture(File inputStream, File outputStream) throws IOException {
         FileUtils.copyFile(inputStream, outputStream);
+    }
+    
+    
+    public synchronized PositionType[] mapArray(PositionType[] input, int  outputSize) {
+        return input;
     }
 }

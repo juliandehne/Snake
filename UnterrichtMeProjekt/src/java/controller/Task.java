@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.http.HttpSessionBindingListener;
 import picture.CreatePicture;
+import gamelogic.*;
 
 /**
  *
@@ -28,9 +29,13 @@ public class Task extends Thread implements HttpSessionBindingListener {
     }
 
     public void run() {
+        Snake snake = new Snake(new Position(200,200),5, Facing.LEFT);
+        PlayingGround playingGround = new PlayingGround(50,50,snake);
         while (true) {
             CreatePicture instance = new CreatePicture();
-            instance.paintPicture(deployStream);
+            instance.paintPicture(deployStream,playingGround); //Size von dem Feld ist unabhängig von der größe des Pictures
+            //instance.paintPicture(deployStream);
+
             try {
                 this.sleep(800);
             } catch (InterruptedException ex) {

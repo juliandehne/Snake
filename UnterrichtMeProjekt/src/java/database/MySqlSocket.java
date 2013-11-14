@@ -17,7 +17,7 @@ public class MySqlSocket {
 
     public MySqlSocket() {
         this.connector = new MysqlConnect();
-        this.connector.connect("jdbc:mysql://localhost/mydb?user=schueler&password=schueler");
+        //this.connector.connect("jdbc:mysql://localhost/mydb?user=schueler&password=schueler");
     }
     
     public int[] getSnakePos(String playerID) throws SQLException{

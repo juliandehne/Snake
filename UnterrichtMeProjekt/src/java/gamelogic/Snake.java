@@ -5,6 +5,9 @@
  */
 
 package gamelogic; 
+
+import java.util.ArrayList;
+
 /**
  *
  * @author lenni
@@ -13,6 +16,7 @@ public class Snake {
     private Position pos;
     private int length;
     private Facing facing;
+    private ArrayList<Position> snakePositions;
     
     public Snake(Position pos, int length, Facing facing) {
         this.pos = pos;
