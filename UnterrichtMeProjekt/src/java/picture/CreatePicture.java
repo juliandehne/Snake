@@ -53,6 +53,7 @@ public class CreatePicture {
     public static synchronized void paintPicture(File outputStream, PlayingGround playingGround) {
 
         PositionType[][] playingGround2DArray = Helpers.mapArray(playingGround.getPlayingGround(), PICTURE_SIZE);
+        //PositionType[][] playingGround2DArray = playingGround.getPlayingGround();
 
         ImageInfo imi = new ImageInfo(PICTURE_SIZE, PICTURE_SIZE, 8, false); // 8 bits per channel, no alpha
 
@@ -63,6 +64,7 @@ public class CreatePicture {
 
         Color borderColor = new Color(0, 0, 255);
         Color snakeHeadColor = new Color(0, 255, 0);
+        Color snakeTailColor = new Color(0, 125, 0);
         Color defaultColor = new Color(0, 0, 0);
 
         for (int x = 0; x < playingGround2DArray.length; x++) {
@@ -79,6 +81,12 @@ public class CreatePicture {
                                 borderColor.getRed(),
                                 borderColor.getGreen(),
                                 borderColor.getBlue());
+                        break;
+                    case SNAKETAIL:
+                        ImageLineHelper.setPixelRGB8(iline, y,
+                                snakeTailColor.getRed(),
+                                snakeTailColor.getGreen(),
+                                snakeTailColor.getBlue());
                         break;
                     default:
                         ImageLineHelper.setPixelRGB8(iline, y,

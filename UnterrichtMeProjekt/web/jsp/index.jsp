@@ -3,6 +3,7 @@
     Created on : 24.10.2013, 20:25:00
     Author     : Julian Dehne
 --%>
+<%@page import="gamelogic.Facing"%>
 <!-- JSP Imports  -->
 <%@page import="controller.Task"%>
 <%@page import="java.util.HashMap"%>
@@ -76,7 +77,7 @@
                         <a href="${thisSiteAddress}?direction=oben">oben</a> <br>
                         <a href="${thisSiteAddress}?direction=left">links</a> 
                         <a href="${thisSiteAddress}?direction=rechts">rechts</a> <br>                         
-                        <a href="${thisSiteAddress}?direction=oben">unten</a>
+                        <a href="${thisSiteAddress}?direction=unten">unten</a>
                     </td>
                 </tr>
                 <tr>
@@ -118,6 +119,19 @@
 // direction nimmt die Werte "links", "rechts", "oben" oder "unten an"                                   
 String direction = (String)request.getAttribute("direction");
 //Hier könnt ihr die Spiellogik anhängen, je nach dem in welche Richtung die Schlange bewegt werden soll
+
+
+if (direction != null) {
+    if (direction.equals( "oben")) {
+        Task.facing = Facing.UP;
+    } else if (direction.equals( "links")) {
+        Task.facing = Facing.LEFT;
+    } else if (direction.equals( "rechts")) {
+        Task.facing = Facing.RIGHT;
+    } else {
+        Task.facing = Facing.DOWN;
+    }
+}
 %>
 
 
