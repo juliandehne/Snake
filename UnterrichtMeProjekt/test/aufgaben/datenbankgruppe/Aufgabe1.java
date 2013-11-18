@@ -34,8 +34,8 @@ public class Aufgabe1 {
         System.out.println("connect");
         instance = new MysqlConnect();
         // hier die richtige Datenbankverbindung auswählen
-        conn = DriverManager.getConnection("jdbc:mysql://localhost/mydb?user=root&password=voyager");
-        //conn = DriverManager.getConnection("jdbc:mysql://10.25.25.155/mydb?user=schueler&password=schueler");
+        //conn = DriverManager.getConnection("jdbc:mysql://localhost/mydb?user=root&password=voyager");
+        conn = DriverManager.getConnection("jdbc:mysql://10.25.25.155/mydb?user=schueler&password=schueler");
         instance.setConnection(conn);                
         instance.connect();
     }
@@ -64,7 +64,7 @@ public class Aufgabe1 {
     @Test
     public void beispiel() throws SQLException {        
         instance.getConnection().createStatement().execute("create table lehrer (id INT, name varchar(1000))ENGINE=InnoDB DEFAULT CHARSET=utf8 ;");
-        instance.getConnection().createStatement().execute("drop table lehrer");
+        instance.getConnection().createStatement().execute("drop table lehrer");               
     }
 
     /**
@@ -79,6 +79,16 @@ public class Aufgabe1 {
      */
     @Test
     public void aufgabe1() throws SQLException {
-        // hier euer code
+       instance.getConnection().createStatement().execute("use mydb");
+       instance.getConnection().createStatement().execute("create table test2(id Int)");
+       instance.getConnection().createStatement().execute("drop table test2");
+       instance.getConnection().createStatement().execute("create table positionschlange(id INT, x INT, y INT");
+       instance.getConnection().createStatement().execute("drop table positionschlange");
+       //instance.getConnection().createStatement().execute("create table richtungschlangenbewegung(id INT, richtung synonyme");
+       //instance.getConnection().createStatement().execute("create table (id INT, x INT, y INT");
+       //instance.getConnection().createStatement().execute("create table positionschlange(id INT, x INT, y INT");
+       //instance.getConnection().createStatement().execute("create table positionschlange(id INT, x INT, y INT");
+       //instance.getConnection().createStatement().execute("create table positionschlange(id INT, x INT, y INT");
+       
     }
 }
