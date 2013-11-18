@@ -30,7 +30,7 @@ public class PlayingGround {
         for (int x = 0; x < this.playingGround.length; x++) {
             for (int y = 0; y < this.playingGround[x].length; y++) {
                 if (x == snake.getPos().getX() && y == snake.getPos().getY() && 
-                playingGround[x][y] == PositionType.BORDER) {
+                    playingGround[x][y] == PositionType.BORDER) {
                     //GAME ZU ENDE, false wird zurückgegeben
                     return false;
                 }

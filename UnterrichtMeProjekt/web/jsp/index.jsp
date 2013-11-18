@@ -21,15 +21,15 @@
     // Hier müsst ihr den Pfad des ROOT Verzeichnis auf euerem Server angeben
     // bei euch zu 99% /var/lib/tomcat6/webapps/ROOT/
     
-    String tomcatRootPath = "/Library/Tomcat/Home/webapps/ROOT/"; //HOME
-    //String tomcatRootPath = "/var/lib/tomcat6/webapps/ROOT/"; //SCHOOL
+    //String tomcatRootPath = "/Library/Tomcat/Home/webapps/ROOT/"; //HOME
+    String tomcatRootPath = "/var/lib/tomcat6/webapps/ROOT/"; //SCHOOL
     
     File deployStream = new File(tomcatRootPath + picturePath);
     request.setAttribute("Pfad für die Erstellung von Bildern", deployStream.getPath());
     // Hier müsst ihr eure IP eintragen
     
-    String ip = "http://localhost:8080"; //HOME
-    //String ip = "http://10.25.25.142:8080"; //SCHOOL
+    //String ip = "http://localhost:8080"; //HOME
+    String ip = "http://10.25.25.142:8080"; //SCHOOL
     
     String pictureRootAddress = picturePath;
     String pictureAddress = ip + pictureRootAddress;
