@@ -18,7 +18,7 @@ import gamelogic.*;
  */
 public class Task extends Thread implements HttpSessionBindingListener {
    
-    //Vielleicht ein bisschen gehackt
+    //Vielleicht ein bisschen gehackt --> ja leicht, aber das ist ok
     public static Facing facing = Facing.UP;
 
     private final File deployStream;
