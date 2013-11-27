@@ -6,6 +6,8 @@
 package aufgaben.logik;
 
 import java.io.File;
+import logik.Snake;
+import logik.Spielfeld;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -26,10 +28,12 @@ public class Aufgabe1 {
     
     @Test
     public void Beispiel() {
+        Spielfeld feld = new Spielfeld(); 
+        Snake snake = new Snake(feld);
         System.out.println("paintPicture");
         File outputStream = new File("./web/pics/aufgabe1.png");
         CreatePicture instance = new CreatePicture();
-        instance.paintPicture(outputStream);
+        instance.paintPicture(outputStream, snake);
     }
     /**
      * Schaut euch die CreatePicture Klasse in dem package/Ordner picture an.

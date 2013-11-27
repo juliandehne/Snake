@@ -1,6 +1,8 @@
 package picture;
 
 import java.io.File;
+import logik.Snake;
+import logik.Spielfeld;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -41,6 +43,8 @@ public class CreatePictureTest {
         System.out.println("paintPicture");
         File outputStream = new File("/var/lib/tomcat6/webapps/ROOT/git/UnterrichtMe/UnterrichtMeProjekt/web/pics/spiel.png");
         CreatePicture instance = new CreatePicture();
-        instance.paintPicture(outputStream);        
+        Spielfeld feld = new Spielfeld();
+        Snake schlange = new Snake(feld);
+        instance.paintPicture(outputStream, schlange);        
     }
 }
