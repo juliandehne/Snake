@@ -4,16 +4,15 @@ import ar.com.hjg.pngj.ImageInfo;
 import ar.com.hjg.pngj.ImageLineHelper;
 import ar.com.hjg.pngj.ImageLineInt;
 import ar.com.hjg.pngj.PngWriter;
-import ar.com.hjg.pngj.chunks.PngChunkTextVar;
+import gamelogic.PlayingGround;
+import gamelogic.PositionType;
+import static gamelogic.PositionType.BORDER;
+import static gamelogic.PositionType.SNAKEHEAD;
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
-import java.util.Date;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.apache.commons.io.FileUtils;
-
 
 /**
  *
@@ -21,25 +20,23 @@ import org.apache.commons.io.FileUtils;
  */
 public class CreatePicture {
 
-    
+    static int PICTURE_SIZE = 400;
+
     public synchronized void paintPicture(File outputStream) {
         ImageInfo imi = new ImageInfo(400, 400, 8, false); // 8 bits per channel, no alpha
         // open image for writing to a output stream
         PngWriter png = new PngWriter(outputStream, imi);
-   
-            
-        
+
         // hier könnt ihr das Bild verändern
         // TIPP: Befüllt einen Zweidimensionalen Array
         // und arbeitet diesen dann ab.
         // TIPP2: Ihr wollt am Ende mit Koordinaten Pixel setzen können!
         ///////////////////////////////////////////
-        
         ImageLineInt iline = new ImageLineInt(imi);  // eine Zeile 
-        
+
         Random r = new Random();
         Color c = new Color(r.nextInt(255), r.nextInt(255), r.nextInt(255));
-        
+
         // schreibt eine Spalte
         for (int col = 0; col < imi.cols; col++) {
             ImageLineHelper.setPixelRGB8(iline, col, c.getRed(), c.getGreen(), c.getBlue());
@@ -47,13 +44,64 @@ public class CreatePicture {
         // die Spalte wird in alle Zeilen geschrieben.
         for (int row = 0; row < png.imgInfo.rows; row++) {
             png.writeRow(iline);
-        }        
+        }
         ///////////////////////////////////////////
         png.end();
 
     }
-    
-    
+
+    public static synchronized void paintPicture(File outputStream, PlayingGround playingGround) {
+
+        PositionType[][] playingGround2DArray = Helpers.mapArray(playingGround.getPlayingGround(), PICTURE_SIZE);
+        //PositionType[][] playingGround2DArray = playingGround.getPlayingGround();
+
+        ImageInfo imi = new ImageInfo(PICTURE_SIZE, PICTURE_SIZE, 8, false); // 8 bits per channel, no alpha
+
+        // open image for writing to a output stream
+        PngWriter png = new PngWriter(outputStream, imi);
+
+        ImageLineInt iline = new ImageLineInt(imi);
+
+        Color borderColor = new Color(0, 0, 255);
+        Color snakeHeadColor = new Color(0, 255, 0);
+        Color snakeTailColor = new Color(0, 125, 0);
+        Color defaultColor = new Color(0, 0, 0);
+
+        for (int x = 0; x < playingGround2DArray.length; x++) {
+            for (int y = 0; y < playingGround2DArray.length; y++) {
+                switch (playingGround2DArray[x][y]) {
+                    case SNAKEHEAD:
+                        ImageLineHelper.setPixelRGB8(iline, y,
+                                snakeHeadColor.getRed(),
+                                snakeHeadColor.getGreen(),
+                                snakeHeadColor.getBlue());
+                        break;
+                    case BORDER:
+                        ImageLineHelper.setPixelRGB8(iline, y,
+                                borderColor.getRed(),
+                                borderColor.getGreen(),
+                                borderColor.getBlue());
+                        break;
+                    case SNAKETAIL:
+                        ImageLineHelper.setPixelRGB8(iline, y,
+                                snakeTailColor.getRed(),
+                                snakeTailColor.getGreen(),
+                                snakeTailColor.getBlue());
+                        break;
+                    default:
+                        ImageLineHelper.setPixelRGB8(iline, y,
+                                defaultColor.getRed(),
+                                defaultColor.getGreen(),
+                                defaultColor.getBlue());
+                        break;
+                }
+            }
+            png.writeRow(iline);
+        }
+
+        png.end();
+
+    }
 
     public synchronized void copyPicture(File inputStream, File outputStream) throws IOException {
         FileUtils.copyFile(inputStream, outputStream);
