@@ -39,8 +39,15 @@ public class CreatePicture {
 
         // schreibt eine Spalte
         for (int col = 0; col < imi.cols; col++) {
+            if (col == 200){
+           ImageLineHelper.setPixelRGB8(iline, col, 100, 100, 100);
+                
+                    }
+                    else {
             ImageLineHelper.setPixelRGB8(iline, col, c.getRed(), c.getGreen(), c.getBlue());
-        }
+            }
+        
+        }    
         // die Spalte wird in alle Zeilen geschrieben.
         for (int row = 0; row < png.imgInfo.rows; row++) {
             png.writeRow(iline);
