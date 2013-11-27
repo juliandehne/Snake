@@ -9,8 +9,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.http.HttpSessionBindingListener;
-import logik.Snake;
-import logik.Spielfeld;
 import picture.CreatePicture;
 
 /**
@@ -31,8 +29,6 @@ public class Task extends Thread implements HttpSessionBindingListener {
 
     public void run() {
         while (true) {
-            Spielfeld feld = new Spielfeld(); 
-            Snake snake = new Snake(feld);
             CreatePicture instance = new CreatePicture();
             instance.paintPicture(deployStream);
             try {
