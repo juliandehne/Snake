@@ -17,7 +17,7 @@ public class MysqlConnect {
 
     public void connect() {
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/mydb?user=root&password=voyager");
+            conn = DriverManager.getConnection("jdbc:mysql://10.25.25.155/mydb?user=schueler&password=schueler");
         } catch (SQLException ex) {
             System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());

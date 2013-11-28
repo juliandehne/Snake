@@ -4,6 +4,7 @@
  */
 package database;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.junit.After;
@@ -58,5 +59,60 @@ public class MysqlConnectTest {
         int i = 5;
         final ResultSet rs = m.execute("select * from lehrer where id = ?;", i);                        
         m.close();
+    }
+
+    /**
+     * Test of close method, of class MysqlConnect.
+     */
+    @Test
+    public void testClose() {
+        System.out.println("close");
+        MysqlConnect instance = new MysqlConnect();
+        instance.close();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of execute method, of class MysqlConnect.
+     */
+    @Test
+    public void testExecute() throws Exception {
+        System.out.println("execute");
+        String statement = "";
+        Object[] args = null;
+        MysqlConnect instance = new MysqlConnect();
+        ResultSet expResult = null;
+        ResultSet result = instance.execute(statement, args);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getConnection method, of class MysqlConnect.
+     */
+    @Test
+    public void testGetConnection() {
+        System.out.println("getConnection");
+        MysqlConnect instance = new MysqlConnect();
+        Connection expResult = null;
+        Connection result = instance.getConnection();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of setConnection method, of class MysqlConnect.
+     */
+    @Test
+    public void testSetConnection() {
+        System.out.println("setConnection");
+        Connection conn = null;
+        MysqlConnect instance = new MysqlConnect();
+        instance.setConnection(conn);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
 }
