@@ -92,4 +92,10 @@ public class Aufgabe1 {
         instance.getConnection().createStatement().execute("create table spielfeld (id INT, xkoordinate BOOLEAN, ykoordinate BOOLEAN)ENGINE=InnoDB DEFAULT CHARSET=utf8 ;");
         instance.getConnection().createStatement().execute("drop table spielfeld");
     }
+    
+ 
+    
+    
+    
+    
 }
