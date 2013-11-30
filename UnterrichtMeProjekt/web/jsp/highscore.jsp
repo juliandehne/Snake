@@ -24,32 +24,32 @@
 <%
 
     ArrayList<Integer> hs = new ArrayList<Integer>();   //-Erstellen einer ArrayList "hs" (=highscore) 
-    hs.add(1996);                                       //mit Dummy-Daten, die später theoretisch aus der
-    hs.add(2013);                                       //Datenbank abgefragt und eingelesen werden
-    hs.add(666);                                        //-ArrayList hat den Vorteil die dem "Array" 
-    hs.add(112358);                                     //keine feste Größe geben zu müssen, sondern
-    hs.add(246810);                                     //ihn stets erweitern zu können 
-    hs.add(1357911);
-    hs.add(235711);
-    hs.add(1);
-    hs.add(9999999);
+    hs.add(999999);                                     //mit Dummy-Daten, die später theoretisch aus der
+    hs.add(234555);                                     //Datenbank abgefragt und eingelesen werden
+    hs.add(55555);                                      //-ArrayList hat den Vorteil die dem "Array" 
+    hs.add(44324);                                      //keine feste Größe geben zu müssen, sondern
+    hs.add(5443);                                       //ihn stets erweitern zu können 
+    hs.add(666);
+    hs.add(333);
+    hs.add(144);
     hs.add(23);
-    
-    Iterator<Integer> iterator = hs.iterator();
+    hs.add(1);
+    Iterator<Integer> hiterator = hs.iterator();
     
     int size = hs.size();                               //-Festhalten der ArrayList Größe in der Variable "size"
     
-    ArrayList<Integer> id = new ArrayList<Integer>();
-    id.add(23);                                         //-identisch zur obigen ArrayList Erstellung
-    id.add(24);                                         //wird hier die ebenfalls in der DB gespeicherte
-    id.add(25);                                         //ID vorläufig angelegt 
-    id.add(26);                                         //-"<Integer>" kann in beiden Fällen manuell
-    id.add(27);                                         //festgelegt werden da andere Datentypen zu dieser 
-    id.add(28);                                         //Variable nicht erlaubt sind
-    id.add(29);
-    id.add(30);
-    id.add(31);
-    id.add(32);
+    ArrayList<String> name = new ArrayList<String>();
+    name.add("Marky");                                         //-identisch zur obigen ArrayList Erstellung
+    name.add("Ricky");                                         //wird hier der ebenfalls in der DB gespeicherte
+    name.add("Denny");                                         //Name vorläufig angelegt 
+    name.add("Terry");                                         //-"<String>" kann manuell
+    name.add("Mike");                                          //festgelegt werden wie oben 
+    name.add("Dave");                                         
+    name.add("Timmy");
+    name.add("Tommy");
+    name.add("Joe");
+    name.add("Robby");
+    Iterator<String> niterator = name.iterator(); 
     
 %>
 
@@ -75,8 +75,8 @@
             out.println("<tr style='border:1px solid #878787'>");
             out.println("<th>Platz</th><th>Score</th><th>Name</th>");
             out.println("</tr>"); 
-                    for (int i = 1; iterator.hasNext() ; i++){
-                        out.println("<tr align='center'><td>" + i + "</td><td>" + iterator.next() + "</td><td></td></tr>");
+                    for (int i = 1; hiterator.hasNext() ; i++){
+                        out.println("<tr align='center'><td>" + i + "</td><td>" + hiterator.next() + "</td><td>" + niterator.next() + "</td></tr>");
                     }
             out.println("</table></html>");
 %>                                                                      
