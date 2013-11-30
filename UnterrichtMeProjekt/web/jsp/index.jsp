@@ -57,7 +57,8 @@
             <div class="headerint">
                         <img src="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/logo1.png" />
             </div>
-            <a align="right" href="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/highscore.jsp"><img src="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/highscore.png"></a>
+            <a onmouseover="Wechselbild1.src='http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/highscore_omo.png';" onmouseout="Wechselbild1.src='http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/highscore.png';" align="right" href="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/highscore.jsp">
+                <img src="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/highscore.png" name="Wechselbild1"></a>
         </div> 
         <div class="wrapper">
             <table style="overflow:hidden;width:900px;height:400px;margin-left:auto;margin-right:auto;">
