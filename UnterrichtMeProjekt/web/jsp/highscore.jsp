@@ -2,6 +2,12 @@
     Document   : highscore
     Created on : 28.11.2013, 22:20:13
     Author     : IceMan
+
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    !   Diese Seite stellt lediglich einen Entwurf für eine extra Highscore-Seite dar.     !
+    !   Diese JSP-Seite wurden u.a. aus programmiertechnischen Gründen erstellt und stellt !
+    !   somit NICHT zwingend einen direkten Teil des Projekts dar!                         !
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 --%>
 <%@page import="java.util.Iterator"%>
 <%@page import="controller.Task"%>
@@ -17,21 +23,33 @@
 
 <%
 
-    ArrayList<Integer> hs = new ArrayList<Integer>();
-    hs.add(1996);
-    hs.add(2013);
-    hs.add(666);
-    hs.add(112358);
-    hs.add(246810);
+    ArrayList<Integer> hs = new ArrayList<Integer>();   //-Erstellen einer ArrayList "hs" (=highscore) 
+    hs.add(1996);                                       //mit Dummy-Daten, die später theoretisch aus der
+    hs.add(2013);                                       //Datenbank abgefragt und eingelesen werden
+    hs.add(666);                                        //-ArrayList hat den Vorteil die dem "Array" 
+    hs.add(112358);                                     //keine feste Größe geben zu müssen, sondern
+    hs.add(246810);                                     //ihn stets erweitern zu können 
     hs.add(1357911);
     hs.add(235711);
     hs.add(1);
     hs.add(9999999);
     hs.add(23);
-    Iterator it = hs.iterator();
-    int size = hs.size();
     
-    int id = 0;
+    Iterator<Integer> iterator = hs.iterator();
+    
+    int size = hs.size();                               //-Festhalten der ArrayList Größe in der Variable "size"
+    
+    ArrayList<Integer> id = new ArrayList<Integer>();
+    id.add(23);                                         //-identisch zur obigen ArrayList Erstellung
+    id.add(24);                                         //wird hier die ebenfalls in der DB gespeicherte
+    id.add(25);                                         //ID vorläufig angelegt 
+    id.add(26);                                         //-"<Integer>" kann in beiden Fällen manuell
+    id.add(27);                                         //festgelegt werden da andere Datentypen zu dieser 
+    id.add(28);                                         //Variable nicht erlaubt sind
+    id.add(29);
+    id.add(30);
+    id.add(31);
+    id.add(32);
     
 %>
 
@@ -51,46 +69,51 @@
               <img src="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/zurueck.png" name="Wechselbild1"></a>
         </div> 
         <div class="wrapper">
-                        <%
-                            while (it.hasNext()){                             
-                                it.next();                              
-                            } 
-                        %>
-            <table style="overflow: hidden; width: 900px; height: 470px; margin-left: auto; margin-right: auto; border: 1px solid #878787; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px; background-color: #AAE535">
+                        <table style="overflow: hidden; width: 900px; height: 470px; margin-left: auto; margin-right: auto; border: 1px solid #878787; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px; background-color: #AAE535">
                 <tr style="border:1px solid #878787">
                     <th>Platz</th><th>Score</th><th>Name</th>
                 </tr>
-                <tr align="center" style="border: 1px solid #878787">
-                    <td>1</td><td><% out.println(hs.get(0)); %></td><td>Marky</td>
+                <tr align="center" style="border: 1px solid #878787">                       
+                    <td>1</td><td><% out.println(iterator.next()); %></td><td>Marky</td>   
+                </tr>                                                                      
+                <tr align="center">                                                        
+                    <td>2</td><td><% out.println(iterator.next()); %></td><td>Ricky</td>          
+                </tr>                                                                       
+                <tr align="center">                                                         
+                    <td>3</td><td><% out.println(iterator.next()); %></td><td>Denny</td>    
                 </tr>
                 <tr align="center">
-                    <td>2</td><td><% out.println(hs.get(1)); %></td><td>Ricky</td> 
+                    <td>4</td><td><% out.println(iterator.next()); %></td><td>Terry</td> 
                 </tr>
                 <tr align="center">
-                    <td>3</td><td><% out.println(hs.get(2)); %></td><td>Denny</td> 
+                    <td>5</td><td><% out.println(iterator.next()); %></td><td>Mike</td> 
                 </tr>
                 <tr align="center">
-                    <td>4</td><td><% out.println(hs.get(3)); %></td><td>Terry</td> 
+                    <td>6</td><td><% out.println(iterator.next()); %></td><td>Dave</td> 
                 </tr>
                 <tr align="center">
-                    <td>5</td><td><% out.println(hs.get(4)); %></td><td>Mike</td> 
+                    <td>7</td><td><% out.println(iterator.next()); %></td><td>Timmy</td> 
                 </tr>
                 <tr align="center">
-                    <td>6</td><td><% out.println(hs.get(5)); %></td><td>Dave</td> 
-                </tr>
-                <tr align="center">
-                    <td>7</td><td><% out.println(hs.get(6)); %></td><td>Timmy</td> 
-                </tr>
-                <tr align="center">
-                    <td>8</td><td><% out.println(hs.get(7)); %></td><td>Tommy</td> 
+                    <td>8</td><td><% out.println(iterator.next()); %></td><td>Tommy</td> 
                 </tr>
                 <tr align="center"> 
-                    <td>9</td><td><% out.println(hs.get(8)); %></td><td>Joe</td> 
+                    <td>9</td><td><% out.println(iterator.next()); %></td><td>Joe</td> 
                 </tr>
                 <tr align="center">
-                    <td>10</td><td><% out.println(hs.get(9)); %></td><td>Robby</td> 
+                    <td>10</td><td><% out.println(iterator.next()); %></td><td>Robby</td> 
                 </tr>
             </table>
+
+<%-- 
+            <%
+                out.println("<html><b>Scores</b></html>");
+                for ( int i = 0 ; iterator.hasNext(); i++ ){            //Alternatives Ausgeben der Elemente durch iterieren mit for-Schleife 
+                    out.println("<html><br></html>");
+                    out.println(i + "." + iterator.next());
+                }                            
+            %>        
+--%>
             <table style="margin-left:auto;margin-right:auto;">
             </table>
         </div>
