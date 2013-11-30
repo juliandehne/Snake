@@ -1,4 +1,4 @@
-<%-- 
+<%--  
     Document   : highscore
     Created on : 28.11.2013, 22:20:13
     Author     : IceMan
@@ -25,10 +25,13 @@
     hs.add(246810);
     hs.add(1357911);
     hs.add(235711);
+    hs.add(1);
+    hs.add(9999999);
+    hs.add(23);
     Iterator it = hs.iterator();
     int size = hs.size();
     
-    int id = 0; 
+    int id = 0;
     
 %>
 
@@ -49,34 +52,43 @@
         </div> 
         <div class="wrapper">
                         <%
-                            while (it.hasNext()){                            
+                            while (it.hasNext()){                             
                                 it.next();                              
-                            }
+                            } 
                         %>
-            <table style="overflow: hidden; width: 900px; height: 400px; margin-left: auto; margin-right: auto; border: 1px solid #878787; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px; background-color: #EECECE">
+            <table style="overflow: hidden; width: 900px; height: 470px; margin-left: auto; margin-right: auto; border: 1px solid #878787; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px; background-color: #AAE535">
                 <tr style="border:1px solid #878787">
                     <th>Platz</th><th>Score</th><th>Name</th>
                 </tr>
-                <tr align="center">
-                    <td>1</td><td><% out.println(hs.get(0)); %></td><td></td>
+                <tr align="center" style="border: 1px solid #878787">
+                    <td>1</td><td><% out.println(hs.get(0)); %></td><td>Marky</td>
                 </tr>
                 <tr align="center">
-                    <td>2</td><td><% out.println(hs.get(1)); %></td><td></td>
+                    <td>2</td><td><% out.println(hs.get(1)); %></td><td>Ricky</td> 
                 </tr>
                 <tr align="center">
-                    <td>3</td><td><% out.println(hs.get(2)); %></td><td></td>
+                    <td>3</td><td><% out.println(hs.get(2)); %></td><td>Denny</td> 
                 </tr>
                 <tr align="center">
-                    <td>4</td><td><% out.println(hs.get(3)); %></td><td></td>
+                    <td>4</td><td><% out.println(hs.get(3)); %></td><td>Terry</td> 
                 </tr>
                 <tr align="center">
-                    <td>5</td><td><% out.println(hs.get(4)); %></td><td></td>
+                    <td>5</td><td><% out.println(hs.get(4)); %></td><td>Mike</td> 
                 </tr>
                 <tr align="center">
-                    <td>6</td><td><% out.println(hs.get(5)); %></td><td></td>
+                    <td>6</td><td><% out.println(hs.get(5)); %></td><td>Dave</td> 
                 </tr>
                 <tr align="center">
-                    <td>7</td><td><% out.println(hs.get(6)); %></td><td></td>
+                    <td>7</td><td><% out.println(hs.get(6)); %></td><td>Timmy</td> 
+                </tr>
+                <tr align="center">
+                    <td>8</td><td><% out.println(hs.get(7)); %></td><td>Tommy</td> 
+                </tr>
+                <tr align="center"> 
+                    <td>9</td><td><% out.println(hs.get(8)); %></td><td>Joe</td> 
+                </tr>
+                <tr align="center">
+                    <td>10</td><td><% out.println(hs.get(9)); %></td><td>Robby</td> 
                 </tr>
             </table>
             <table style="margin-left:auto;margin-right:auto;">
