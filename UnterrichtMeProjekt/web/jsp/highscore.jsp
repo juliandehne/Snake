@@ -29,8 +29,9 @@
 
     <body style="scrolling:none;">
         <div class="header">
-            <div class="headerint"><img align="top" src="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/logo1.png" /></div>
-        </div>
+            <div class="headerint"><img src="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/logo1.png" /></div>
+          <a align="right" href="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/"><img src="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/zurueck.png"></a>
+        </div> 
         <div class="wrapper">
             <table style="overflow:hidden;width:900px;height:400px;margin-left:auto;margin-right:auto;">
                 <tr>
