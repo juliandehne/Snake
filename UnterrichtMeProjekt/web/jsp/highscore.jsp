@@ -69,51 +69,17 @@
               <img src="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/zurueck.png" name="Wechselbild1"></a>
         </div> 
         <div class="wrapper">
-                        <table style="overflow: hidden; width: 900px; height: 470px; margin-left: auto; margin-right: auto; border: 1px solid #878787; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px; background-color: #AAE535">
-                <tr style="border:1px solid #878787">
-                    <th>Platz</th><th>Score</th><th>Name</th>
-                </tr>
-                <tr align="center" style="border: 1px solid #878787">                       
-                    <td>1</td><td><% out.println(iterator.next()); %></td><td>Marky</td>   
-                </tr>                                                                      
-                <tr align="center">                                                        
-                    <td>2</td><td><% out.println(iterator.next()); %></td><td>Ricky</td>          
-                </tr>                                                                       
-                <tr align="center">                                                         
-                    <td>3</td><td><% out.println(iterator.next()); %></td><td>Denny</td>    
-                </tr>
-                <tr align="center">
-                    <td>4</td><td><% out.println(iterator.next()); %></td><td>Terry</td> 
-                </tr>
-                <tr align="center">
-                    <td>5</td><td><% out.println(iterator.next()); %></td><td>Mike</td> 
-                </tr>
-                <tr align="center">
-                    <td>6</td><td><% out.println(iterator.next()); %></td><td>Dave</td> 
-                </tr>
-                <tr align="center">
-                    <td>7</td><td><% out.println(iterator.next()); %></td><td>Timmy</td> 
-                </tr>
-                <tr align="center">
-                    <td>8</td><td><% out.println(iterator.next()); %></td><td>Tommy</td> 
-                </tr>
-                <tr align="center"> 
-                    <td>9</td><td><% out.println(iterator.next()); %></td><td>Joe</td> 
-                </tr>
-                <tr align="center">
-                    <td>10</td><td><% out.println(iterator.next()); %></td><td>Robby</td> 
-                </tr>
-            </table>
-
-<%-- 
-            <%
-                out.println("<html><b>Scores</b></html>");
-                for ( int i = 0 ; iterator.hasNext(); i++ ){            //Alternatives Ausgeben der Elemente durch iterieren mit for-Schleife 
-                    out.println("<html><br></html>");
-                    out.println(i + "." + iterator.next());
-                }                            
-            %>        
---%>
+<%                     
+            out.println("<html>");
+            out.println("<table style='overflow: hidden; width: 900px; height: 470px; margin-left: auto; margin-right: auto; border: 1px solid #878787; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px; background-color: #AAE535'>");
+            out.println("<tr style='border:1px solid #878787'>");
+            out.println("<th>Platz</th><th>Score</th><th>Name</th>");
+            out.println("</tr>"); 
+                    for (int i = 1; iterator.hasNext() ; i++){
+                        out.println("<tr align='center'><td>" + i + "</td><td>" + iterator.next() + "</td><td></td></tr>");
+                    }
+            out.println("</table></html>");
+%>                                                                      
             <table style="margin-left:auto;margin-right:auto;">
             </table>
         </div>
