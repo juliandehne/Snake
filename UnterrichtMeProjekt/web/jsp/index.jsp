@@ -49,6 +49,7 @@
         <script src="js/jquery.js" type="text/javascript"></script>
         <script src="js/javascript.js?id=${pageContext.session.id}" type="text/javascript"></script>
         <link rel="stylesheet" href="http://www.aavirtual.net/ada/CodeIgniter/style.css" type="text/css">
+        <link rel="SHORTCUT ICON" href="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/favicon.png" type="image/x-icon">
     </head>
 
  <body style="scrolling:none;">

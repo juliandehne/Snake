@@ -24,6 +24,7 @@
         <meta http-equiv="Content-Type" content="width=device-width; charset=UTF-8" name="viewport">        
         <title>Snake Projekt</title>
         <link rel="stylesheet" href="http://www.aavirtual.net/ada/CodeIgniter/style.css" type="text/css">
+        <link rel="SHORTCUT ICON" href="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/favicon.png" type="image/x-icon">
     </head>
 
     <body style="scrolling:none;">
