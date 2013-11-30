@@ -43,7 +43,7 @@
     name.add("Ricky");                                         //wird hier der ebenfalls in der DB gespeicherte
     name.add("Denny");                                         //Name vorläufig angelegt 
     name.add("Terry");                                         //-"<String>" kann manuell
-    name.add("Mike");                                          //festgelegt werden wie oben 
+    name.add("Mike");                                          //festgelegt werden, wie oben 
     name.add("Dave");                                         
     name.add("Timmy");
     name.add("Tommy");
