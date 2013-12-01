@@ -87,9 +87,9 @@
     </body>
   
   <footer>
-        <div class="footer">Ada Erzurumlu | Niklas Koch | Keanu Forthmann<br />[ Berlin, Deutschland ]</div> 
+        <div class="footer"><img src="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/web/jsp/logo1.png" style="height: 100px"></div> 
         <!--Dieses Div gibt einige Daten und kann bei Ende des Projektes gelöscht werden-->
-                 <!--        <div id="helperdiv" style="width:900px;margin-left:auto;margin-right:auto;visibility:hidden;">
+                 <%--        <div id="helperdiv" style="width:900px;margin-left:auto;margin-right:auto;visibility:hidden;">
                             <h2>Hilfestellung</h2>
                             <p>
                                 <br>Die aufgerufene JSP Seite hat folgenden Pfad (von Root):</br>
@@ -110,8 +110,8 @@
                                 %>
                                 </br>                
                             </p>
-                        </div>  --> 
-    </footer>
+                        </div>  --%> 
+    </footer>     
 </html>
 
 <%

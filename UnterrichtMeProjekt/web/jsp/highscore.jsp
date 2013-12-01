@@ -62,7 +62,7 @@
         <link rel="SHORTCUT ICON" href="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/favicon.png" type="image/x-icon">           <!-- Bild im Tab -->
     </head>
 
-    <body style="scrolling:none;">
+    <body>
         <div class="header">
             <div class="headerint"><img src="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/logo_title.png" /></div>
             <a align="right" href="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/" onmouseover="Wechselbild1.src='http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/zurueck_omo.png';" onmouseout="Wechselbild1.src='http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/zurueck.png';">
@@ -80,8 +80,11 @@
                     }
             out.println("</table></html>");
 %>                                                                      
-            <table style="margin-left:auto;margin-right:auto;">
+            <table style="margin-left:auto;margin-right:auto">
             </table>
         </div>
     </body>
+    <footer>
+        <div class="footer"><img src="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/web/jsp/logo1.png" style="height: 100px" align="bottom"></div> 
+    </footer>     
 </html>
