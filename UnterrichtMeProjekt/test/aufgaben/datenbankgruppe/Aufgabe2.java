@@ -55,5 +55,10 @@ public class Aufgabe2 {
      */
     @Test
     public void aufgabe2() throws SQLException {
+        instance.getConnection().createStatement().execute("create table TestTabelle (id INT, name varchar(1000))ENGINE=InnoDB DEFAULT CHARSET=utf8 ;");
+        instance.getConnection().createStatement().execute("INSERT INTO TestTabelle (id) VALUES (5);");
+        instance.getConnection().createStatement().execute("UPDATE TestTabelle SET id = 6 WHERE id = 5;");
+        instance.getConnection().createStatement().execute("DELETE FROM tabelle TestTabelle WHERE id = 6;");
+        instance.getConnection().createStatement().execute("drop table TestTabelle;");
     }
 }
