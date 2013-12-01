@@ -1,6 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Lieber Fabian,
+ * 
+ * die Klassen enthalten Kompilierfehler (die roten Markierungen)
+ * Die Struktur, warum ein Highscore ein item enthält, ist mir unklar.
+ * Der Sinn der Klasse "Normal" erschließt sich mir nicht.
+ * 
+ * Goldene Regel: Nur Dinge pushen, die keine Kompilierfehler enthalten.
  */
 package logik;
 
