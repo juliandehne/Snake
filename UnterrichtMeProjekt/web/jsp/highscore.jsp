@@ -59,24 +59,24 @@
         <meta http-equiv="Content-Type" content="width=device-width; charset=UTF-8" name="viewport">        
         <title>Snake Projekt</title>
         <link rel="stylesheet" href="http://www.aavirtual.net/ada/CodeIgniter/style.css" type="text/css">
-        <link rel="SHORTCUT ICON" href="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/favicon.png" type="image/x-icon">
+        <link rel="SHORTCUT ICON" href="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/favicon.png" type="image/x-icon">           <!-- Bild im Tab -->
     </head>
 
     <body style="scrolling:none;">
         <div class="header">
-            <div class="headerint"><img src="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/logo1.png" /></div>
+            <div class="headerint"><img src="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/logo_title.png" /></div>
             <a align="right" href="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/" onmouseover="Wechselbild1.src='http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/zurueck_omo.png';" onmouseout="Wechselbild1.src='http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/zurueck.png';">
               <img src="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/zurueck.png" name="Wechselbild1"></a>
         </div> 
         <div class="wrapper">
 <%                     
             out.println("<html>");
-            out.println("<table style='overflow: hidden; width: 900px; height: 470px; margin-left: auto; margin-right: auto; border: 1px solid #878787; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px; background-color: #AAE535'>");
-            out.println("<tr style='border:1px solid #878787'>");
-            out.println("<th>Platz</th><th>Score</th><th>Name</th>");
+            out.println("<table style='overflow: hidden; width: 900px; height: 400px; margin-left: auto; margin-right: auto; border: 1px solid #878787; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; border-top-left-radius: 6px; border-top-right-radius: 6px; background-color: #E0B7A4; box-shadow: 2px 4px 4px'>");
+            out.println("<tr style='border-botton-width: 1px'>");
+            out.println("<th><span style='font-family:BankGothic Md BT;font-size:1.7em; text-shadow:black 2px 4px 8px;color: #440000'>Platz</span></th><th><span style='font-family:BankGothic Md BT;font-size:1.7em; text-shadow:black 2px 4px 8px;color: #440000'>Score</span></th><th><span style='font-family:BankGothic Md BT;font-size:1.7em; text-shadow:black 2px 4px 8px;color: #440000'>Name</span></th>");
             out.println("</tr>"); 
                     for (int i = 1; hiterator.hasNext() ; i++){
-                        out.println("<tr align='center'><td>" + i + "</td><td>" + hiterator.next() + "</td><td>" + niterator.next() + "</td></tr>");
+                        out.println("<tr align='center'><td><span style='font-family:BankGothic Md BT;font-size:1.3em; color: #440000'>" + i + "</span></td><td><span style='font-family:BankGothic Md BT;font-size:1.3em; color: #440000'>" + hiterator.next() + "</span></td><td><span style='font-family:BankGothic Md BT;font-size:1.3em; color: #440000'>" + niterator.next() + "</span></td></tr>");
                     }
             out.println("</table></html>");
 %>                                                                      

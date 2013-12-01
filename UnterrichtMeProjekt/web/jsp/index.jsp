@@ -49,16 +49,18 @@
         <script src="js/jquery.js" type="text/javascript"></script>
         <script src="js/javascript.js?id=${pageContext.session.id}" type="text/javascript"></script>
         <link rel="stylesheet" href="http://www.aavirtual.net/ada/CodeIgniter/style.css" type="text/css">
-        <link rel="SHORTCUT ICON" href="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/favicon.png" type="image/x-icon">
+        <link rel="SHORTCUT ICON" href="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/favicon.png" type="image/x-icon">   <!-- Bild im Tab -->
     </head>
 
  <body style="scrolling:none;">
         <div class="header">
             <div class="headerint">
-                        <img src="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/logo1.png" />
+                        <img src="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/logo_title.png" />
             </div>
-            <a onmouseover="Wechselbild1.src='http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/highscore_omo.png';" onmouseout="Wechselbild1.src='http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/highscore.png';" align="right" href="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/highscore.jsp">
-                <img src="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/highscore.png" name="Wechselbild1"></a>
+            <a onmouseover="Wechselbild1.src='http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/highscore_omo.png';"       
+               onmouseout="Wechselbild1.src='http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/highscore.png';" 
+               align="right" href="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/highscore.jsp">
+                <img src="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/highscore.png" name="Wechselbild1"></a>          
         </div> 
         <div class="wrapper">
             <table style="overflow:hidden;width:900px;height:400px;margin-left:auto;margin-right:auto;">
