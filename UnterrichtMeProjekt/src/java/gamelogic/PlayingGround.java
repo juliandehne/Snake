@@ -27,6 +27,7 @@ public class PlayingGround {
      */
     public boolean update() {
 
+        
         for (int x = 0; x < this.playingGround.length; x++) {
             for (int y = 0; y < this.playingGround[x].length; y++) {
                 if (x == snake.getPos().getX() && y == snake.getPos().getY() && 
@@ -34,6 +35,14 @@ public class PlayingGround {
                     //GAME ZU ENDE, false wird zurückgegeben
                     return false;
                 }
+                //Erweiterung durch René Weichert
+                else{
+                    if (x == snake.getPos().getX() && y == snake.getPos().getY() && 
+                        playingGround[x][y] == PositionType.SNAKETAIL) {
+                        
+                    }
+                }
+                    
                 playingGround[x][y] = populateArrayAt(x, y, 
                         this.playingGround.length -1,
                         this.playingGround[x].length);
