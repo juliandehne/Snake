@@ -16,49 +16,49 @@ body {
 }
 
 a.up {
-    background: url(http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/pics/ARROW-UP.png);
+    background: url(../pics/ARROW-UP.png);
     width:40px;
     height:29px;
     display: block;
 }
 a.up:hover {
-    background: url(http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/pics/ARROW-UP-HOVER.png);
+    background: url(../pics/ARROW-UP-HOVER.png);
     width:40px;
     height:29px;
     display: block;
 }
 a.down {
-    background: url(http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/pics/ARROW-DOWN.png);
+    background: url(../pics/ARROW-DOWN.png);
     width:40px;
     height:29px;
     display: block;
 }
 a.down:hover {
-    background: url(http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/pics/ARROW-DOWN-HOVER.png);
+    background: url(../pics/ARROW-DOWN-HOVER.png);
     width:40px;
     height:29px;
     display: block;
 }
 a.left {
-    background: url(http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/pics/ARROW-LEFT.png);
+    background: url(../pics/ARROW-LEFT.png);
     width:40px;
     height:29px;
     display: block;
 }
 a.left:hover {
-    background: url(http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/pics/ARROW-LEFT-HOVER.png);
+    background: url(../pics/ARROW-LEFT-HOVER.png);
     width:40px;
     height:29px;
     display: block;
 }
 a.right {
-    background: url(http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/pics/ARROW-RIGHT-RIGHT.png);
+    background: url(../pics/ARROW-RIGHT-RIGHT.png);
     width:40px;
     height:29px;
     display: block;
 }
 a.right:hover {
-    background: url(http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/pics/ARROW-RIGHT-HOVER.png);
+    background: url(../pics/ARROW-RIGHT-HOVER.png);
     width:40px;
     height:29px;
     display: block;
