@@ -5,8 +5,10 @@
 package database;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -40,79 +42,42 @@ public class MysqlConnectTest {
     }
 
     /**
-     * Test of connect method, of class MysqlConnect.
+     * Beispielstatements
      */
     @Test
-    public void testConnect() throws SQLException {
+    public void testWrapper() throws SQLException {
         System.out.println("connect");
-        MysqlConnect instance = new MysqlConnect();
-        instance.connect();        
-        instance.getConnection().createStatement().execute("drop table lehrer");
-        instance.getConnection().createStatement().execute("create table lehrer (id INT, name varchar(1000))ENGINE=InnoDB DEFAULT CHARSET=utf8 ;");
+        MysqlConnect instance = new MysqlConnect();                
+        // Verbindung erstellen
+//        instance.connect(); --> bitte einkommentieren
+        instance.connectLokal();
+        // Tabelle löschen
+        instance.otherStatements("drop table lehrer");
+        // Tabelle erstellen
+        instance.otherStatements("create table lehrer (id INT, name varchar(1000))ENGINE=InnoDB DEFAULT CHARSET=utf8 ;");
+        // Werte in Tabelle einfügen
+        instance.issueInsertOrDeleteStatement("insert into lehrer (id,name) values (?,?)", 1,"hello");
+        // Werte in Tabelle einfügen (nochmal)
+        instance.issueInsertOrDeleteStatement("insert into lehrer (id,name) values (?,?)", 2,"hello2");
+        // Werte in Tabelle einfügen (nochmal)
+        instance.issueInsertOrDeleteStatement("insert into lehrer (id,name) values (?,?)", 3,"hello3");
+        // update ausführen
+        instance.issueUpdateStatement("update lehrer set name = ? where id = ?", "updatedhello", 1);
+        // delete ausführen
+        instance.issueInsertOrDeleteStatement("delete from lehrer where id = ?", 2);
+        // select ausführen
+        ResultSet result = instance.issueSelectStatement("select id, name from lehrer");                
+        // resultset auslesen
+        ArrayList<IdNamePair> ergebnisAlsArray = new ArrayList<IdNamePair>();        
+        while (result.next()) {                        
+            ergebnisAlsArray.add(new IdNamePair(result.getInt("id"), result.getString("name")));
+        }                
         instance.close();
+        // Ergebnis ausgeben
+        for(IdNamePair idNamePair : ergebnisAlsArray) {
+            System.out.println("Die ID lautet: " + idNamePair.getId());
+            System.out.println("Der Name lautet: " + idNamePair.getName());
+        }
     }
 
-    @Test
-    public void testWrap() throws SQLException {
-        MysqlConnect m = new MysqlConnect();
-        m.connect();
-        int i = 5;
-        final ResultSet rs = m.execute("select * from lehrer where id = ?;", i);                                
-        m.close();
-    }
-
-    /**
-     * Test of close method, of class MysqlConnect.
-     */
-    @Test
-    public void testClose() {
-        System.out.println("close");
-        MysqlConnect instance = new MysqlConnect();
-        instance.close();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of execute method, of class MysqlConnect.
-     */
-    @Test
-    public void testExecute() throws Exception {
-        System.out.println("execute");
-        String statement = "";
-        Object[] args = null;
-        MysqlConnect instance = new MysqlConnect();
-        ResultSet expResult = null;
-        ResultSet result = instance.execute(statement, args);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getConnection method, of class MysqlConnect.
-     */
-    @Test
-    public void testGetConnection() {
-        System.out.println("getConnection");
-        MysqlConnect instance = new MysqlConnect();
-        Connection expResult = null;
-        Connection result = instance.getConnection();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setConnection method, of class MysqlConnect.
-     */
-    @Test
-    public void testSetConnection() {
-        System.out.println("setConnection");
-        Connection conn = null;
-        MysqlConnect instance = new MysqlConnect();
-        instance.setConnection(conn);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 }
