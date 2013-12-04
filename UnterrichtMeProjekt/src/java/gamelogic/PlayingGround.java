@@ -39,7 +39,12 @@ public class PlayingGround {
                 else{
                     if (x == snake.getPos().getX() && y == snake.getPos().getY() && 
                         playingGround[x][y] == PositionType.SNAKETAIL) {
-                        
+                        return false;
+                    }
+                    else{
+                        if(){
+                            
+                        }
                     }
                 }
                     
