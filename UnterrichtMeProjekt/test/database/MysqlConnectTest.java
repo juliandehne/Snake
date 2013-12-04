@@ -50,7 +50,7 @@ public class MysqlConnectTest {
         MysqlConnect instance = new MysqlConnect();                
         // Verbindung erstellen
 //        instance.connect(); --> bitte einkommentieren
-        instance.connectLokal();
+        instance.connectLokal(); // bite auskommentieren
         // Tabelle löschen
         instance.otherStatements("drop table lehrer");
         // Tabelle erstellen
