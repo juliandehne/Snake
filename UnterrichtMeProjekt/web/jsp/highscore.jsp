@@ -81,7 +81,7 @@
         <meta http-equiv="Content-Type" content="width=device-width; charset=UTF-8" name="viewport">        
         <title>Snake Projekt</title>
         <link rel="stylesheet" href="http://www.aavirtual.net/ada/CodeIgniter/style.css" type="text/css">
-        <link rel="SHORTCUT ICON" href="${thisSiteAddress}favicon.png" type="image/x-icon">           <!-- Bild im Tab -->
+        <link rel="SHORTCUT ICON" href="${thisSiteAddress}jsp/favicon.png" type="image/x-icon">           <!-- Bild im Tab -->
     </head>
 
     <body>

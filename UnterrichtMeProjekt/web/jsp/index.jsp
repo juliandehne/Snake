@@ -48,7 +48,7 @@
         <script src="js/jquery.js" type="text/javascript"></script>
         <script src="js/javascript.js?id=${pageContext.session.id}" type="text/javascript"></script>
         <link rel="stylesheet" href="http://www.aavirtual.net/ada/CodeIgniter/style.css" type="text/css">
-        <link rel="SHORTCUT ICON" href="${thisSiteAddress}favicon.png" type="image/x-icon">   <!-- Bild im Tab -->
+        <link rel="SHORTCUT ICON" href="${thisSiteAddress}jsp/favicon.png" type="image/x-icon">   <!-- Bild im Tab -->
     </head>
 
     <body style="scrolling:none;">
