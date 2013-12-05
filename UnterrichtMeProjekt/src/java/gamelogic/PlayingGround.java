@@ -5,6 +5,8 @@
  */
 package gamelogic;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author lenni
@@ -13,6 +15,7 @@ public class PlayingGround {
 
     private final Snake snake;
     private final PositionType[][] playingGround;
+    private ArrayList items = new ArrayList();
 
     public PlayingGround(int sizeX, int sizeY, Snake snake) {
         this.playingGround = new PositionType[sizeX][sizeY];
@@ -42,20 +45,42 @@ public class PlayingGround {
                         return false;
                     }
                     else{
-                        if(){
+                        if(x == snake.getPos().getX() && y == snake.getPos().getY() && 
+                            playingGround[x][y] == PositionType.ITEMNORMAL){
                             
                         }
+                        else{
+                            if (x == snake.getPos().getX() && y == snake.getPos().getY() && 
+                                playingGround[x][y] == PositionType.ITEMSHORT) {
+                                
+                            }
+                            else{
+                                if (x == snake.getPos().getX() && y == snake.getPos().getY() && 
+                                    playingGround[x][y] == PositionType.ITEMFAST) {
+                                    
+                                }
+                                else{
+                                    return true;
+                                }
+                            }
+                        }
+                            
+                                
                     }
+                    
                 }
                     
                 playingGround[x][y] = populateArrayAt(x, y, 
                         this.playingGround.length -1,
-                        this.playingGround[x].length);
+                        this.playingGround[x].length-1);
                 //weitere logik behandlung (items usw...)...
             }
-        }
+        } 
+        return false;
+    }
+    
+    public boolean bordercheck(){
         return true;
-        
     }
 
     /**

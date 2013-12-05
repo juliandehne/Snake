@@ -15,7 +15,9 @@ import java.awt.Color;
  * Was ist auf einem bestimmten feld auf dem Spielfeld? -> 
  */
 public enum PositionType {
-    ITEM (new Color(0,0,0)),
+    ITEMNORMAL (new Color(0,0,0)),
+    ITEMFAST (new Color(255, 255, 0)),
+    ITEMSHORT (new Color(255, 0, 0)),
     BORDER (new Color(0, 0, 255)),
     EMPTY (new Color(0, 0, 0)),
     SNAKETAIL (new Color(0, 125, 0)),
