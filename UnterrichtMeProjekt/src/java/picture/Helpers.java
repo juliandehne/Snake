@@ -18,8 +18,8 @@ public class Helpers {
         PositionType output[][] = new PositionType[outputSize][outputSize];
         for (int x = 0; x < output.length; x++) {
             for (int y = 0; y < output.length; y++) {
-                int xVal = map(x,0,output.length,0,input.length);
-                int yVal = map(y,0,output.length,0,input.length);
+                int xVal = map(x,0,output.length,0,input.length-1);
+                int yVal = map(y,0,output.length,0,input.length-1);
                 output[x][y] = input[xVal][yVal];
             }
         }

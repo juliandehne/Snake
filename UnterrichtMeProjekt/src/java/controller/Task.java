@@ -40,7 +40,7 @@ public class Task extends Thread implements HttpSessionBindingListener {
         PlayingGround playingGround = new PlayingGround(100,100,snake);
         while (true) {
             CreatePicture instance = new CreatePicture();
-            instance.paintPicture(deployStream,playingGround); //Size von dem Feld ist unabhängig von der größe des Pictures
+            instance.paintPicture(deployStream,playingGround.getPlayingGround()); //Size von dem Feld ist unabhängig von der größe des Pictures
             //instance.paintPicture(deployStream);
             
             //Hacking
