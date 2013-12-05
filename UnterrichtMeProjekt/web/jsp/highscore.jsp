@@ -59,14 +59,14 @@
         <meta http-equiv="Content-Type" content="width=device-width; charset=UTF-8" name="viewport">        
         <title>Snake Projekt</title>
         <link rel="stylesheet" href="http://www.aavirtual.net/ada/CodeIgniter/style.css" type="text/css">
-        <link rel="SHORTCUT ICON" href="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/favicon.png" type="image/x-icon">           <!-- Bild im Tab -->
+        <link rel="SHORTCUT ICON" href="http://10.25.25.130:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/favicon.png" type="image/x-icon">           <!-- Bild im Tab -->
     </head>
 
     <body>
         <div class="header">
-            <div class="headerint"><img src="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/logo_title.png" /></div>
-            <a align="right" href="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/" onmouseover="Wechselbild1.src='http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/zurueck_omo.png';" onmouseout="Wechselbild1.src='http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/zurueck.png';">
-              <img src="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/zurueck.png" name="Wechselbild1"></a>
+            <div class="headerint"><img src="http://10.25.25.130:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/logo_title.png" /></div>
+            <a align="right" href="http://10.25.25.130:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/" onmouseover="Wechselbild1.src='http://10.25.25.130:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/zurueck_omo.png';" onmouseout="Wechselbild1.src='http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/zurueck.png';">
+              <img src="http://10.25.25.130:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/zurueck.png" name="Wechselbild1"></a>
         </div> 
         <div class="wrapper">
 <%                     
@@ -85,6 +85,6 @@
         </div>
     </body>
     <footer>
-        <div class="footer"><img src="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/web/jsp/logo1.png" style="height: 100px" align="bottom"></div> 
+        <div class="footer"><img src="http://10.25.25.130:8080/git/UnterrichtMe/UnterrichtMeProjekt/web/jsp/logo1.png" style="height: 100px" align="bottom"></div> 
     </footer>     
 </html>
