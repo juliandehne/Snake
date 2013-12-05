@@ -51,6 +51,27 @@
     name.add("Robby");
     Iterator<String> niterator = name.iterator(); 
     
+    //Konfiguration für PictureLoad  
+    String picturePath = "/git/UnterrichtMe/UnterrichtMeProjekt/web/pics/spiel.png";
+    // Hier müsst ihr den Pfad des ROOT Verzeichnis auf euerem Server angeben
+    // bei euch zu 99% /var/lib/tomcat6/webapps/ROOT/
+    String tomcatRootPath = "/var/lib/tomcat6/webapps/ROOT/";
+    File deployStream = new File(tomcatRootPath + picturePath);
+    request.setAttribute("Pfad für die Erstellung von Bildern", deployStream.getPath());
+    // Hier müsst ihr eure IP eintragen
+    String ip = "http://10.25.25.130:8080";
+    String pictureRootAddress = picturePath;
+    String pictureAddress = ip + pictureRootAddress;
+    request.setAttribute("Pfad für die Addressierung von Bildern per URl", pictureAddress);
+    request.setAttribute("pictureAddress", pictureAddress); //fürs einsetzen in HTML 
+
+    // Die Addresse dieser Seite
+    String thisSiteRootAddress = "/git/UnterrichtMe/UnterrichtMeProjekt/build/web/";
+    String thisSiteAddress = ip + thisSiteRootAddress;
+    request.setAttribute("thisSiteAddress", thisSiteRootAddress);
+
+    //Bilder laden im Hintergrund aktivieren
+    request.getSession().setAttribute("task", new Task(deployStream));
 %>
 
 <!--Hier beginnt die HTML-Seite-->
@@ -59,14 +80,14 @@
         <meta http-equiv="Content-Type" content="width=device-width; charset=UTF-8" name="viewport">        
         <title>Snake Projekt</title>
         <link rel="stylesheet" href="http://www.aavirtual.net/ada/CodeIgniter/style.css" type="text/css">
-        <link rel="SHORTCUT ICON" href="http://10.25.25.130:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/favicon.png" type="image/x-icon">           <!-- Bild im Tab -->
+        <link rel="SHORTCUT ICON" href="${thisSiteAddress}favicon.png" type="image/x-icon">           <!-- Bild im Tab -->
     </head>
 
     <body>
         <div class="header">
-            <div class="headerint"><img src="http://10.25.25.130:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/logo_title.png" /></div>
-            <a align="right" href="http://10.25.25.130:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/" onmouseover="Wechselbild1.src='http://10.25.25.130:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/zurueck_omo.png';" onmouseout="Wechselbild1.src='http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/zurueck.png';">
-              <img src="http://10.25.25.130:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/zurueck.png" name="Wechselbild1"></a>
+            <div class="headerint"><img src="${thisSiteAddress}jsp/logo_title.png" /></div>
+            <a align="right" href="${thisSiteAddress}" onmouseover="Wechselbild1.src='${thisSiteAddress}jsp/zurueck_omo.png';" onmouseout="Wechselbild1.src='${thisSiteAddress}jsp/zurueck.png';">
+              <img src="${thisSiteAddress}jsp/zurueck.png" name="Wechselbild1"></a>
         </div> 
         <div class="wrapper">
 <%                     
@@ -85,6 +106,6 @@
         </div>
     </body>
     <footer>
-        <div class="footer"><img src="http://10.25.25.130:8080/git/UnterrichtMe/UnterrichtMeProjekt/web/jsp/logo1.png" style="height: 100px" align="bottom"></div> 
+        <div class="footer"><img src="${thisSiteAddress}jsp/logo1.png" style="height: 100px" align="bottom"></div> 
     </footer>     
 </html>
