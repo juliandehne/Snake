@@ -72,6 +72,7 @@
 
     //Bilder laden im Hintergrund aktivieren
     request.getSession().setAttribute("task", new Task(deployStream));
+
 %>
 
 <!--Hier beginnt die HTML-Seite-->
