@@ -8,6 +8,7 @@ and open the template in the editor.
     Author     : Ada
 */
 
+
 body {
     font-family: arial;
     margin: 0px 0px 0px 0px;
@@ -16,49 +17,49 @@ body {
 }
 
 a.up {
-    background: url(../pics/ARROW-UP.png);
+    background: url(http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/web/pics/ARROW-UP.png);
     width:40px;
     height:29px;
     display: block;
 }
 a.up:hover {
-    background: url(../pics/ARROW-UP-HOVER.png);
+    background: url(http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/web/pics/ARROW-UP-HOVER.png);
     width:40px;
     height:29px;
     display: block;
 }
 a.down {
-    background: url(../pics/ARROW-DOWN.png);
+    background: url(http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/web/pics/ARROW-DOWN.png);
     width:40px;
     height:29px;
     display: block;
 }
 a.down:hover {
-    background: url(../pics/ARROW-DOWN-HOVER.png);
+    background: url(http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/web/pics/ARROW-DOWN-HOVER.png);
     width:40px;
     height:29px;
     display: block;
 }
 a.left {
-    background: url(../pics/ARROW-LEFT.png);
+    background: url(http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/web/pics/ARROW-LEFT.png);
     width:40px;
     height:29px;
     display: block;
 }
 a.left:hover {
-    background: url(../pics/ARROW-LEFT-HOVER.png);
+    background: url(http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/web/pics/ARROW-LEFT-HOVER.png);
     width:40px;
     height:29px;
     display: block;
 }
 a.right {
-    background: url(../pics/ARROW-RIGHT-RIGHT.png);
+    background: url(http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/web/pics/ARROW-RIGHT.png);
     width:40px;
     height:29px;
     display: block;
 }
 a.right:hover {
-    background: url(../pics/ARROW-RIGHT-HOVER.png);
+    background: url(http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/web/pics/ARROW-RIGHT-HOVER.png);
     width:40px;
     height:29px;
     display: block;

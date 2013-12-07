@@ -84,7 +84,7 @@
         <link rel="SHORTCUT ICON" href="${thisSiteAddress}jsp/favicon.png" type="image/x-icon">           <!-- Bild im Tab -->
     </head>
 
-    <body>
+    <body>  
         <div class="header">
             <div class="headerint">
                 <img name="Wechselbild1" onmouseover="Wechselbild1.src = '${thisSiteAddress}jsp/logo_title2.png';" onmouseout="Wechselbild1.src = '${thisSiteAddress}jsp/logo_title.png';" src="${thisSiteAddress}jsp/logo_title.png" />
