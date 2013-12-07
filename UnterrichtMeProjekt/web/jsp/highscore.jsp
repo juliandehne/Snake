@@ -86,7 +86,7 @@
 
     <body style="background-image: url('${thisSiteAddress}jsp/bgimage.png')">  
         <div class="header">
-            <div class="headerint">
+            <div class="headerint" align="center">
                 <img name="Wechselbild1" onmouseover="Wechselbild1.src = '${thisSiteAddress}jsp/logo_titlebunt.png';" onmouseout="Wechselbild1.src = '${thisSiteAddress}jsp/logo_title.png';" src="${thisSiteAddress}jsp/logo_title.png" />
             </div>
             <a align="right" href="${thisSiteAddress}" onmouseover="Wechselbild2.src='${thisSiteAddress}jsp/zurueck_omobunt.png';" onmouseout="Wechselbild2.src='${thisSiteAddress}jsp/zurueck.png';">
@@ -95,12 +95,12 @@
         <div class="wrapper">
 <%                     
             out.println("<html>");
-            out.println("<table style='overflow: hidden; width: 900px; height: 400px; margin-left: auto; margin-right: auto; border: 1px solid #878787; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; border-top-left-radius: 6px; border-top-right-radius: 6px; background-color: #E16F60; box-shadow: 2px 4px 4px'>");
+            out.println("<table style='overflow: hidden; width: 900px; height: 400px; margin-left: auto; margin-right: auto; border: 1px solid #878787; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; border-top-left-radius: 6px; border-top-right-radius: 6px; background-color: #822323; box-shadow: 2px 4px 4px'>");
             out.println("<tr style='border-botton-width: 1px'>");
-            out.println("<th><span style='font-family:BankGothic Md BT;font-size:1.7em; text-shadow:black 2px 4px 8px;color: #440000'>Platz</span></th><th><span style='font-family:BankGothic Md BT;font-size:1.7em; text-shadow:black 2px 4px 8px;color: #440000'>Score</span></th><th><span style='font-family:BankGothic Md BT;font-size:1.7em; text-shadow:black 2px 4px 8px;color: #440000'>Name</span></th>");
+            out.println("<th><span style='font-family:BankGothic Md BT;font-size:1.7em; text-shadow:black 2px 4px 8px;color: #090131'>Platz</span></th><th><span style='font-family:BankGothic Md BT;font-size:1.7em; text-shadow:black 2px 4px 8px;color: #090131'>Score</span></th><th><span style='font-family:BankGothic Md BT;font-size:1.7em; text-shadow:black 2px 4px 8px;color: #090131'>Name</span></th>");
             out.println("</tr>"); 
                     for (int i = 1; hiterator.hasNext() ; i++){
-                        out.println("<tr align='center'><td><span style='font-family:BankGothic Md BT;font-size:1.3em; color: #440000'>" + i + "</span></td><td><span style='font-family:BankGothic Md BT;font-size:1.3em; color: #440000'>" + hiterator.next() + "</span></td><td><span style='font-family:BankGothic Md BT;font-size:1.3em; color: #440000'>" + niterator.next() + "</span></td></tr>");
+                        out.println("<tr align='center'><td><span style='font-family:BankGothic Md BT;font-size:1.3em; color: #090131'>" + i + "</span></td><td><span style='font-family:BankGothic Md BT;font-size:1.3em; color: #090131'>" + hiterator.next() + "</span></td><td><span style='font-family:BankGothic Md BT;font-size:1.3em; color: #090131'>" + niterator.next() + "</span></td></tr>");
                     }
             out.println("</table></html>");
 %>                                                                      

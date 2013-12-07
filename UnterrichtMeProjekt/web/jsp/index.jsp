@@ -53,9 +53,9 @@
 
     <body style="background-image: url('${thisSiteAddress}jsp/bgimage.png')"> 
         <div class="header">
-            <div class="headerint">
+            <div class="headerint" align="center">
                 <img name="Wechselbild1" onmouseover="Wechselbild1.src = '${thisSiteAddress}jsp/logo_titlebunt.png';" onmouseout="Wechselbild1.src = '${thisSiteAddress}jsp/logo_title.png';" src="${thisSiteAddress}jsp/logo_title.png" />
-            </div>
+                </div>
             <a onmouseover="Wechselbild2.src = '${thisSiteAddress}jsp/highscore_omobunt.png';"       
                onmouseout="Wechselbild2.src = '${thisSiteAddress}jsp/highscore.png';" 
                href="${thisSiteAddress}jsp/highscore.jsp">
