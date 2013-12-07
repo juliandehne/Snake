@@ -84,10 +84,10 @@
         <link rel="SHORTCUT ICON" href="${thisSiteAddress}jsp/favicon.png" type="image/x-icon">           <!-- Bild im Tab -->
     </head>
 
-    <body>  
+    <body style="background-image: url(http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/bgimage.png)">  
         <div class="header">
             <div class="headerint">
-                <img name="Wechselbild1" onmouseover="Wechselbild1.src = '${thisSiteAddress}jsp/logo_title2.png';" onmouseout="Wechselbild1.src = '${thisSiteAddress}jsp/logo_title.png';" src="${thisSiteAddress}jsp/logo_title.png" />
+                <img name="Wechselbild1" onmouseover="Wechselbild1.src = '${thisSiteAddress}jsp/logo_titlebunt.png';" onmouseout="Wechselbild1.src = '${thisSiteAddress}jsp/logo_title.png';" src="${thisSiteAddress}jsp/logo_title.png" />
             </div>
             <a align="right" href="${thisSiteAddress}" onmouseover="Wechselbild2.src='${thisSiteAddress}jsp/zurueck_omo.png';" onmouseout="Wechselbild2.src='${thisSiteAddress}jsp/zurueck.png';">
               <img src="${thisSiteAddress}jsp/zurueck.png" name="Wechselbild2"></a>
@@ -109,6 +109,6 @@
         </div>
     </body>
     <footer>
-        <div class="footer"><img src="${thisSiteAddress}jsp/logo1.png" style="height: 100px" align="bottom"></div> 
+        <div class="footer"><img src="${thisSiteAddress}jsp/logo1.png" style="height: 120px" align="bottom"></div> 
     </footer>     
 </html>

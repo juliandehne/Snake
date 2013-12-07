@@ -54,7 +54,7 @@
     <body style="background-image: url(http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/bgimage.png)"> 
         <div class="header">
             <div class="headerint">
-                <img name="Wechselbild1" onmouseover="Wechselbild1.src = '${thisSiteAddress}jsp/logo_title2.png';" onmouseout="Wechselbild1.src = '${thisSiteAddress}jsp/logo_title.png';" src="${thisSiteAddress}jsp/logo_title.png" />
+                <img name="Wechselbild1" onmouseover="Wechselbild1.src = '${thisSiteAddress}jsp/logo_titlebunt.png';" onmouseout="Wechselbild1.src = '${thisSiteAddress}jsp/logo_title.png';" src="${thisSiteAddress}jsp/logo_title.png" />
             </div>
             <a onmouseover="Wechselbild2.src = '${thisSiteAddress}jsp/highscore_omo.png';"       
                onmouseout="Wechselbild2.src = '${thisSiteAddress}jsp/highscore.png';" 
@@ -86,7 +86,7 @@
     </body>
 
     <footer>
-        <div class="footer"><img src="${thisSiteAddress}/jsp/logo1.png" style="height: 100px"></div> 
+        <div class="footer"><img src="${thisSiteAddress}/jsp/logo1.png" style="height: 120px"></div> 
         <!--Dieses Div gibt einige Daten und kann bei Ende des Projektes gelöscht werden-->
         <%--        <div id="helperdiv" style="width:900px;margin-left:auto;margin-right:auto;visibility:hidden;">
                    <h2>Hilfestellung</h2>
