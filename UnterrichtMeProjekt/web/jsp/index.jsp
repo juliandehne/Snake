@@ -19,11 +19,11 @@
     String picturePath = "/git/UnterrichtMe/UnterrichtMeProjekt/web/pics/spiel.png";
     // Hier müsst ihr den Pfad des ROOT Verzeichnis auf euerem Server angeben
     // bei euch zu 99% /var/lib/tomcat6/webapps/ROOT/
-    String tomcatRootPath = "/var/lib/tomcat6/webapps/ROOT/";
+    String tomcatRootPath = "C:/Dokumente und Einstellungen/RA Markus Gehrke/Desktop/Keanu/xampp/tomcat/webapps/ROOT/";
     File deployStream = new File(tomcatRootPath + picturePath);
     request.setAttribute("Pfad für die Erstellung von Bildern", deployStream.getPath());
     // Hier müsst ihr eure IP eintragen
-    String ip = "http://10.25.25.130:8080";
+    String ip = "http://localhost:8080";
     String pictureRootAddress = picturePath;
     String pictureAddress = ip + pictureRootAddress;
     request.setAttribute("Pfad für die Addressierung von Bildern per URl", pictureAddress);
@@ -54,12 +54,12 @@
     <body style="scrolling:none;">
         <div class="header">
             <div class="headerint">
-                <img src="${thisSiteAddress}jsp/logo_title.png" />
+                <img name="Wechselbild1" onmouseover="Wechselbild1.src = '${thisSiteAddress}jsp/logo_title2.png';" onmouseout="Wechselbild1.src = '${thisSiteAddress}jsp/logo_title.png';" src="${thisSiteAddress}jsp/logo_title.png" />
             </div>
-            <a onmouseover="Wechselbild1.src = '${thisSiteAddress}jsp/highscore_omo.png';"       
-               onmouseout="Wechselbild1.src = '${thisSiteAddress}jsp/highscore.png';" 
+            <a onmouseover="Wechselbild2.src = '${thisSiteAddress}jsp/highscore_omo.png';"       
+               onmouseout="Wechselbild2.src = '${thisSiteAddress}jsp/highscore.png';" 
                align="right" href="${thisSiteAddress}jsp/highscore.jsp">
-                <img src="${thisSiteAddress}jsp/highscore.png" name="Wechselbild1"></a>          
+                <img src="${thisSiteAddress}jsp/highscore.png" name="Wechselbild2"></a>          
         </div> 
         <div class="wrapper">
             <table style="overflow:hidden;width:900px;height:400px;margin-left:auto;margin-right:auto;">

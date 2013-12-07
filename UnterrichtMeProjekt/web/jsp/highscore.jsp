@@ -55,11 +55,11 @@
     String picturePath = "/git/UnterrichtMe/UnterrichtMeProjekt/web/pics/spiel.png";
     // Hier müsst ihr den Pfad des ROOT Verzeichnis auf euerem Server angeben
     // bei euch zu 99% /var/lib/tomcat6/webapps/ROOT/
-    String tomcatRootPath = "/var/lib/tomcat6/webapps/ROOT/";
+    String tomcatRootPath = "C:/Dokumente und Einstellungen/RA Markus Gehrke/Desktop/Keanu/xampp/tomcat/webapps/ROOT/";
     File deployStream = new File(tomcatRootPath + picturePath);
     request.setAttribute("Pfad für die Erstellung von Bildern", deployStream.getPath());
     // Hier müsst ihr eure IP eintragen
-    String ip = "http://10.25.25.130:8080";
+    String ip = "http://localhost:8080";
     String pictureRootAddress = picturePath;
     String pictureAddress = ip + pictureRootAddress;
     request.setAttribute("Pfad für die Addressierung von Bildern per URl", pictureAddress);
@@ -86,9 +86,11 @@
 
     <body>
         <div class="header">
-            <div class="headerint"><img src="${thisSiteAddress}jsp/logo_title.png" /></div>
-            <a align="right" href="${thisSiteAddress}" onmouseover="Wechselbild1.src='${thisSiteAddress}jsp/zurueck_omo.png';" onmouseout="Wechselbild1.src='${thisSiteAddress}jsp/zurueck.png';">
-              <img src="${thisSiteAddress}jsp/zurueck.png" name="Wechselbild1"></a>
+            <div class="headerint">
+                <img name="Wechselbild1" onmouseover="Wechselbild1.src = '${thisSiteAddress}jsp/logo_title2.png';" onmouseout="Wechselbild1.src = '${thisSiteAddress}jsp/logo_title.png';" src="${thisSiteAddress}jsp/logo_title.png" />
+            </div>
+            <a align="right" href="${thisSiteAddress}" onmouseover="Wechselbild2.src='${thisSiteAddress}jsp/zurueck_omo.png';" onmouseout="Wechselbild2.src='${thisSiteAddress}jsp/zurueck.png';">
+              <img src="${thisSiteAddress}jsp/zurueck.png" name="Wechselbild2"></a>
         </div> 
         <div class="wrapper">
 <%                     
