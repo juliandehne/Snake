@@ -92,7 +92,7 @@
             <a align="right" href="${thisSiteAddress}" onmouseover="Wechselbild2.src='${thisSiteAddress}jsp/zurueck_omobunt.png';" onmouseout="Wechselbild2.src='${thisSiteAddress}jsp/zurueck.png';">
               <img src="${thisSiteAddress}jsp/zurueck.png" name="Wechselbild2"></a>
         </div> 
-        <div class="wrapper">
+        <div class="wrapper" style="background-image: url('${thisSiteAddress}jsp/stars.png'); left: 300px;">
 <%                     
             out.println("<html>");
             out.println("<table style='overflow: hidden; width: 900px; height: 400px; margin-left: auto; margin-right: auto; border: 1px solid #878787; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; border-top-left-radius: 6px; border-top-right-radius: 6px; background-color: #822323; box-shadow: 2px 4px 4px'>");
