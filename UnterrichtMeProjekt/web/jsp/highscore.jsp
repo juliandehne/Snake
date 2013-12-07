@@ -89,7 +89,7 @@
             <div class="headerint">
                 <img name="Wechselbild1" onmouseover="Wechselbild1.src = '${thisSiteAddress}jsp/logo_titlebunt.png';" onmouseout="Wechselbild1.src = '${thisSiteAddress}jsp/logo_title.png';" src="${thisSiteAddress}jsp/logo_title.png" />
             </div>
-            <a align="right" href="${thisSiteAddress}" onmouseover="Wechselbild2.src='${thisSiteAddress}jsp/zurueck_omo.png';" onmouseout="Wechselbild2.src='${thisSiteAddress}jsp/zurueck.png';">
+            <a align="right" href="${thisSiteAddress}" onmouseover="Wechselbild2.src='${thisSiteAddress}jsp/zurueck_omobunt.png';" onmouseout="Wechselbild2.src='${thisSiteAddress}jsp/zurueck.png';">
               <img src="${thisSiteAddress}jsp/zurueck.png" name="Wechselbild2"></a>
         </div> 
         <div class="wrapper">
