@@ -9,16 +9,10 @@ package gamelogic;
  * @author René Weichert
  */
 public class Collision {
-    PlayingGround playingground;
-    public Collision(){
-        
-        
-        
-     
     
-    }
-
-    Collision(PlayingGround aThis) {
+    PlayingGround playingground;
+    
+       Collision(PlayingGround aThis) {
         this.playingground = aThis;
     }
     
@@ -31,33 +25,32 @@ public class Collision {
     public boolean update() {
 
         
-        for (int x = 0; x < playingground.length; x++) {
+        for (int x = 0; x < playingground.playingGround.length; x++) {
             for (int y = 0; y < playingground.playingGround[x].length; y++) {
-                if (x == playingground.snake.getPos().getX() && y == snake.getPos().getY() && 
-                    playingGround[x][y] == PositionType.BORDER) {
+                if (x == playingground.snake.getPos().getX() && y == playingground.snake.getPos().getY() && 
+                    playingground.playingGround[x][y] == PositionType.BORDER) {
                     //GAME ZU ENDE, false wird zurückgegeben
                     return false;
                 }
-                //Erweiterung durch René Weichert
                 else{
-                    if (x == snake.getPos().getX() && y == snake.getPos().getY() && 
-                        playingGround[x][y] == PositionType.SNAKETAIL) {
+                    if (x == playingground.snake.getPos().getX() && y == playingground.snake.getPos().getY() && 
+                        playingground.playingGround[x][y] == PositionType.SNAKETAIL) {
                         return false;
                     }
                     else{
-                        if(x == snake.getPos().getX() && y == snake.getPos().getY() && 
-                            playingGround[x][y] == PositionType.ITEMNORMAL){
-                            
+                        if(x == playingground.snake.getPos().getX() && y == playingground.snake.getPos().getY() && 
+                            playingground.playingGround[x][y] == PositionType.ITEMNORMAL){
+                            collisionEventItemNormal();
                         }
                         else{
-                            if (x == snake.getPos().getX() && y == snake.getPos().getY() && 
-                                playingGround[x][y] == PositionType.ITEMSHORT) {
-                                
+                            if (x == playingground.snake.getPos().getX() && y == playingground.snake.getPos().getY() && 
+                                playingground.playingGround[x][y] == PositionType.ITEMSHORT) {
+                                collisionEventItemShort();
                             }
                             else{
-                                if (x == snake.getPos().getX() && y == snake.getPos().getY() && 
-                                    playingGround[x][y] == PositionType.ITEMFAST) {
-                                    
+                                if (x == playingground.snake.getPos().getX() && y == playingground.snake.getPos().getY() && 
+                                    playingground.playingGround[x][y] == PositionType.ITEMFAST) {
+                                    collisionEventItemFast();
                                 }
                                 else{
                                     return true;
@@ -70,12 +63,26 @@ public class Collision {
                     
                 }
                     
-                playingGround[x][y] = populateArrayAt(x, y, 
-                        this.playingGround.length -1,
-                        this.playingGround[x].length-1);
+                playingground.playingGround[x][y] = playingground.populateArrayAt(x, y, 
+                        this.playingground.playingGround.length -1,
+                        this.playingground.playingGround[x].length-1);
                 //weitere logik behandlung (items usw...)...
             }
         } 
         return false;
     }
+    
+    //Macht dies in der Item-Klasse mehr Sinn?
+    private void collisionEventItemNormal(){
+        playingground.snake.move(true);
+    }
+    
+    private void collisionEventItemFast(){
+    
+    }
+    
+    private void collisionEventItemShort(){
+    
+    }
+    
 }

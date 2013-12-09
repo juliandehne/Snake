@@ -13,10 +13,10 @@ import java.util.ArrayList;
  */
 public class PlayingGround {
 
-    private final Snake snake;
-    private final PositionType[][] playingGround;
-    private ArrayList items = new ArrayList();
-    private Collision collision = null;
+    public final Snake snake;
+    public final PositionType[][] playingGround;
+    public ArrayList items = new ArrayList();
+    public Collision collision = null;
 
     public PlayingGround(int sizeX, int sizeY, Snake snake) {
         this.playingGround = new PositionType[sizeX][sizeY];
