@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,7 +21,7 @@ public class MysqlConnect {
      * Mit dieser Methode stellt man die Verbindung zu der Datenbank her.
      */
     public void connect() {
-        try {            
+        try {
             conn = DriverManager.getConnection("jdbc:mysql://10.25.25.155/mydb?user=schueler&password=schueler");
         } catch (SQLException ex) {
             System.out.println("SQLException: " + ex.getMessage());
@@ -28,12 +30,12 @@ public class MysqlConnect {
             throw new Error("could not connect to mysql");
         }
     }
-    
+
     /**
      * Diese Methode verwendet Julian Dehne für seine lokale Testdatenbank
      */
     public void connectLokal() {
-        try {            
+        try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost/mydb?user=root&password=voyager");
         } catch (SQLException ex) {
             System.out.println("SQLException: " + ex.getMessage());
@@ -42,7 +44,6 @@ public class MysqlConnect {
             throw new Error("could not connect to mysql");
         }
     }
-    
 
     /**
      * Mit dieser Methode wird die Verbindung zu der Datenbank geschlossen
@@ -53,74 +54,98 @@ public class MysqlConnect {
                 conn.close();
             }
         } catch (final SQLException e) {
+            throw new Error("could not close mysql");
         }
     }
 
- 
     /**
-     * Hilfsmethode 2 - fügt der einem PreparedStatement die entsprechenden Parameter hinzu
+     * Hilfsmethode 2 - fügt der einem PreparedStatement die entsprechenden
+     * Parameter hinzu
+     *
      * @param statement
      * @param args
      * @return
-     * @throws SQLException 
+     * @throws SQLException
      */
-    private PreparedStatement addParameters(final String statement, final Object[] args) throws SQLException {
-        final PreparedStatement ps = conn.prepareStatement(statement);
-        if (args != null) {
-            for (int i = 0; i < args.length; i++) {
-                final Object arg = args[i];
-                setParam(ps, arg, i + 1);
+    private PreparedStatement addParameters(final String statement, final Object[] args) {
+        try {
+            final PreparedStatement ps = conn.prepareStatement(statement);
+            if (args != null) {
+                for (int i = 0; i < args.length; i++) {
+                    final Object arg = args[i];
+                    setParam(ps, arg, i + 1);
+                }
             }
+            return ps;
+        } catch (SQLException ex) {
+            Logger.getLogger(MysqlConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return ps;
+        return null;
     }
-    
+
     /**
      * Mit dieser Methode können select-Statements abgesetzt werden.
+     *
      * @param statement
      * @param args
      * @return
-     * @throws SQLException 
      */
-    public ResultSet issueSelectStatement(final String statement, final Object... args) throws SQLException {
-        PreparedStatement ps = addParameters(statement, args);
-        return ps.executeQuery();
+    public VereinfachtesResultSet issueSelectStatement(final String statement, final Object... args) {
+        try {
+            PreparedStatement ps = addParameters(statement, args);
+            return new VereinfachtesResultSet(ps.executeQuery());
+        } catch (SQLException ex) {
+            Logger.getLogger(MysqlConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
-    
+
     /**
      * Mit dieser Methode können Statements ohne Variablen und ohne Rückgaben
      * ausgeführt werden.
+     *
      * @param statement
-     * @throws SQLException 
      */
-    public void otherStatements(final String statement) throws SQLException {
-        this.conn.createStatement().execute(statement);
+    public void otherStatements(final String statement) {
+        try {
+            this.conn.createStatement().execute(statement);
+        } catch (SQLException ex) {
+            Logger.getLogger(MysqlConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
+
     /**
      * Mit dieser Methode können updateStatements abgesetzt werden.
+     *
      * @param statement
      * @param args
      * @return
-     * @throws SQLException 
      */
-    public int issueUpdateStatement(final String statement, final Object... args) throws SQLException {
+    public Integer issueUpdateStatement(final String statement, final Object... args) {
         PreparedStatement ps = addParameters(statement, args);
-        return ps.executeUpdate();
-    }   
-    
+        try {
+            return ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(MysqlConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
     /**
-     * Mit dieser Methode können insert- oder delete-Statements abgesetzt werden.
+     * Mit dieser Methode können insert- oder delete-Statements abgesetzt
+     * werden.
+     *
      * @param statement
      * @param args
-     * @throws SQLException 
      */
-    public void issueInsertOrDeleteStatement(final String statement, final Object... args) throws SQLException {
+    public void issueInsertOrDeleteStatement(final String statement, final Object... args) {
         PreparedStatement ps = addParameters(statement, args);
-        ps.execute();
-    }   
-        
-    
+        try {
+            ps.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(MysqlConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     private void setParam(final PreparedStatement ps, final Object arg, final int i) throws SQLException {
         if (arg instanceof String) {
@@ -158,5 +183,5 @@ public class MysqlConnect {
     public void setConnection(Connection conn) {
         this.conn = conn;
     }
-    
+
 }
