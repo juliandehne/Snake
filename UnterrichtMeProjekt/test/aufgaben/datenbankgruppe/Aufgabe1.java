@@ -34,7 +34,7 @@ public class Aufgabe1 {
         System.out.println("connect");
         instance = new MysqlConnect();
         // hier die richtige Datenbankverbindung auswählen
-        conn = DriverManager.getConnection("jdbc:mysql://10.25.25.155/mydb?user=schueler&password=schueler");
+        conn = DriverManager.getConnection("jdbc:mysql://localhost/mydb?user=root&password=voyager");
         //conn = DriverManager.getConnection("jdbc:mysql://10.25.25.155/mydb?user=schueler&password=schueler");
         instance.setConnection(conn);                
         instance.connect();
@@ -70,7 +70,7 @@ public class Aufgabe1 {
     /**
      * Erstelle eine Datenbanktabelle für jedes Objekt, welches ihr speichern
      * wollt. Zum Beispiel Schlange, Spielfeld, Position der Schlangen, Richtung
-     * der Schlangenbewegung... 
+     * der Schlangenbewegung...
      *
      * Mit Rechtsclick -> Test File könnt ihr die Tests ausführen lassen
      * Vergleiche Beispiel oben
@@ -92,10 +92,4 @@ public class Aufgabe1 {
         instance.getConnection().createStatement().execute("create table spielfeld (id INT, xkoordinate BOOLEAN, ykoordinate BOOLEAN)ENGINE=InnoDB DEFAULT CHARSET=utf8 ;");
         instance.getConnection().createStatement().execute("drop table spielfeld");
     }
-    
- 
-    
-    
-    
-    
 }
