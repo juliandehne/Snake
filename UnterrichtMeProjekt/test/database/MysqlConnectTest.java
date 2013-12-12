@@ -49,10 +49,13 @@ public class MysqlConnectTest {
         System.out.println("connect");
         MysqlConnect instance = new MysqlConnect();                
         // Verbindung erstellen
-//        instance.connect(); --> bitte einkommentieren
-        instance.connectLokal(); // bite auskommentieren
+        instance.connect(); 
+ //       instance.connectLokal(); // bite auskommentieren        
+        
+        instance.otherStatements("create table lehrer (id INT, name varchar(1000))ENGINE=InnoDB DEFAULT CHARSET=utf8 ;");
         // Tabelle löschen
         instance.otherStatements("drop table lehrer");
+        
         // Tabelle erstellen
         instance.otherStatements("create table lehrer (id INT, name varchar(1000))ENGINE=InnoDB DEFAULT CHARSET=utf8 ;");
         // Werte in Tabelle einfügen
