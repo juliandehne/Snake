@@ -13,7 +13,10 @@ import java.util.ArrayList;
 public class Spielfeld {
     int[][] feld = new int[400][400];
     
+    
     public Spielfeld(){
+        // das Spielfeld muss nicht mit 0 initialisiert werden, da
+        // alle Werte breits mit null belegt sind
         Snake schlange = new Snake(this);
         for(int i = 0; i < feld.length; i++){
             for(int j = 0; j < feld[0].length; j++){

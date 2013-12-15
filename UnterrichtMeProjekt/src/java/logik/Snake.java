@@ -31,6 +31,12 @@ public class Snake {
     public int getSchlangeSize(){
         return schlange.size();
     }
+    /**
+     * Warum gibt die Methode getSchlange einen int zurück und kein 
+     * Schlangenobjekt? (Dehne)
+     * @param index
+     * @return 
+     */
     public int getSchlange(int index){
         return schlange.get(index);
     }
