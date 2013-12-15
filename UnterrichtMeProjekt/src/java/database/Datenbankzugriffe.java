@@ -4,6 +4,7 @@ import example.Point;
 import gamelogic.Item;
 import gamelogic.PlayingGround;
 import gamelogic.Spieler;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,28 +12,67 @@ import java.util.List;
  * @author Julian
  */
 public class Datenbankzugriffe {
+    MysqlConnect instance;
+ 
+    public Datenbankzugriffe() {
+        instance = new MysqlConnect();        
+    }
+    
+    
 
     /**
      * Diese Methode mit Code füllen...
      */
     public void erstelleHighScore(List<IdNamePair> idNamePairs) {
-        throw new Error("Methode noch nicht implemetiert."); //To change body of generated methods, choose Tools | Templates.
+        
+        for(IdNamePair idNamePair : idNamePairs) {
+            instance.connect();
+            instance.issueInsertOrDeleteStatement("insert into spieler (id,name) values (?,?) " , idNamePair.getId(), idNamePair.getName());
+            instance.close();
+        }
+        
     }
     
     /**
      * Diese Methode mit Code füllen...
      * @return 
      */
-    public List<IdNamePair> holeHighscore() {        
-        throw new Error("Methode noch nicht implemetiert."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public List<IdNamePair> holeHighscore() { 
+        instance.connect();
+        
+        VereinfachtesResultSet result = instance.issueSelectStatement("select id, name from spieler;");
+        
+        List<IdNamePair> idNamePairs = new ArrayList<IdNamePair>();
+
+        while (result.next()) {                        
+            idNamePairs.add(new IdNamePair(result.getInt("id"), result.getString("name")));
+        }
+        instance.close();
+        return idNamePairs;
+        
+        
+    }    
+    
     
     public int getId() {
     /// datenbankgruppe organisiert die id dies testspielers
-        throw new Error("Methode noch nicht implemetiert."); //To change body of generated methods, choose Tools | Templates.
+        
+        
+        
+        
+        
     }
     
     public List<Point> getPosition(int id) { 
+    instance.connect();
+    
+    
+    
+    VereinfachtesResultSet result = instance.issueSelectStatement("select x, y from positionschlange where id = ?;",id);
+    
+    
+    
+    
     return null;
     }
     
