@@ -10,16 +10,12 @@ import java.util.logging.Logger;
 import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.http.HttpSessionBindingListener;
 import picture.CreatePicture;
-import gamelogic.*;
 
 /**
  *
  * @author Julian
  */
 public class Task extends Thread implements HttpSessionBindingListener {
-   
-    //Vielleicht ein bisschen gehackt --> ja leicht, aber das ist ok
-    public static Facing facing = Facing.UP;
 
     private final File deployStream;
 
@@ -30,30 +26,11 @@ public class Task extends Thread implements HttpSessionBindingListener {
     Task() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    static synchronized void setFacing(Facing facing) {
-       Task.facing = facing;
-    }
 
     public void run() {
-        Snake snake = new Snake(new Position(25,25),5, Facing.LEFT);
-        PlayingGround playingGround = new PlayingGround(100,100,snake);
         while (true) {
             CreatePicture instance = new CreatePicture();
-            instance.paintPicture(deployStream,playingGround); //Size von dem Feld ist unabhängig von der größe des Pictures
-            //instance.paintPicture(deployStream);
-            
-            //Hacking
-            snake.setFacing(Task.facing);
-            
-            
-            snake.move(false);
-            boolean gameRunning = playingGround.update();
-            if (!gameRunning) {
-                //return;
-            }
-            
-
+            instance.paintPicture(deployStream);
             try {
                 this.sleep(800);
             } catch (InterruptedException ex) {
