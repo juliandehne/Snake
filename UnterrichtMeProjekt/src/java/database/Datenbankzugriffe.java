@@ -55,12 +55,8 @@ public class Datenbankzugriffe {
     
     
     public int getId() {
-    /// datenbankgruppe organisiert die id dies testspielers
-        
-        
-        
-        
-        
+    /// datenbankgruppe organisiert die id dies testspielers                                
+        return 0;
     }
     
     public List<Point> getPosition(int id) { 
