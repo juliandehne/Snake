@@ -56,9 +56,13 @@ public class CreatePicture {
 
     }
 
-    public static synchronized void paintPicture(File outputStream, PlayingGround playingGround) {
+    /**
+     *
+     * @author lenni
+     */
+    public static synchronized void paintPicture(File outputStream, PositionType[][] playingGroundArray) {
 
-        PositionType[][] playingGround2DArray = Helpers.mapArray(playingGround.getPlayingGround(), PICTURE_SIZE);
+        PositionType[][] playingGround2DArray = Helpers.mapArray(playingGroundArray, PICTURE_SIZE);
         //PositionType[][] playingGround2DArray = playingGround.getPlayingGround();
 
         ImageInfo imi = new ImageInfo(PICTURE_SIZE, PICTURE_SIZE, 8, false); // 8 bits per channel, no alpha

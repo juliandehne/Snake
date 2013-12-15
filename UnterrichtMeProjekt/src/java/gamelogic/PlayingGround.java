@@ -5,30 +5,43 @@
  */
 package gamelogic;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author lenni
  */
 public class PlayingGround {
 
-    public final Snake snake;
-    public final PositionType[][] playingGround;
-    public ArrayList items = new ArrayList();
-    public Collision collision = null;
+    private final Snake snake;
+    private final PositionType[][] playingGround;
 
     public PlayingGround(int sizeX, int sizeY, Snake snake) {
         this.playingGround = new PositionType[sizeX][sizeY];
         this.snake = snake;
-        this.collision = new Collision(this);
-        collision.update();
+        this.update();
     }
 
-   
-    
-    public boolean bordercheck(){
+    /**
+     * Hauptmehtode zur Logikbehandlung Design: um die Schlange zu updaten,
+     * diese direkt verändern, folgende Methode merkt dies dann
+     * @return returns whether the game still running (->Game Over)
+     */
+    public boolean update() {
+
+        for (int x = 0; x < this.playingGround.length; x++) {
+            for (int y = 0; y < this.playingGround[x].length; y++) {
+                if (x == snake.getPos().getX() && y == snake.getPos().getY() && 
+                    playingGround[x][y] == PositionType.BORDER) {
+                    //GAME ZU ENDE, false wird zurückgegeben
+                    return false;
+                }
+                playingGround[x][y] = populateArrayAt(x, y, 
+                        this.playingGround.length -1,
+                        this.playingGround[x].length-1);
+                //weitere logik behandlung (items usw...)...
+            }
+        }
         return true;
+        
     }
 
     /**
@@ -63,10 +76,4 @@ public class PlayingGround {
     public PositionType[][] getPlayingGround() {
         return playingGround;
     }
-
-    // to be implemented 
-    public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-  
 }
