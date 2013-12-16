@@ -6,8 +6,8 @@ package gamelogic;
  */
 public class PlayingGround {
 
-    private final Snake snake;
-    private final PositionType[][] playingGround;
+    public final Snake snake;
+    public final PositionType[][] playingGround;
 
     public PlayingGround(int sizeX, int sizeY, Snake snake) {
         this.playingGround = new PositionType[sizeX][sizeY];
