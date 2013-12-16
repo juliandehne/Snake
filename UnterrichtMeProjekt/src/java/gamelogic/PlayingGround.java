@@ -23,7 +23,7 @@ public class PlayingGround {
     public boolean update() {
 
         for (int x = 0; x < this.playingGround.length; x++) {
-            for (int y = 0; y < this.playingGround[x].length; y++) {
+            for (int y = 0; y < this.playingGround[0].length; y++) {
                 if (x == snake.getPos().getX() && y == snake.getPos().getY() && 
                     playingGround[x][y] == PositionType.BORDER) {
                     //GAME ZU ENDE, false wird zurückgegeben
@@ -31,7 +31,7 @@ public class PlayingGround {
                 }
                 playingGround[x][y] = populateArrayAt(x, y, 
                         this.playingGround.length -1,
-                        this.playingGround[x].length-1);
+                        this.playingGround[0].length-1);
                 //weitere logik behandlung (items usw...)...
             }
         }
@@ -71,4 +71,14 @@ public class PlayingGround {
     public PositionType[][] getPlayingGround() {
         return playingGround;
     }
+    
+    public int playingGround0Length() {
+        return playingGround[0].length;
+    }
+    
+    public int playingGroundLength() {
+        return playingGround.length;
+    }
+    
+   
 }
