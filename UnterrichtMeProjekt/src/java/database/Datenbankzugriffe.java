@@ -64,26 +64,43 @@ public class Datenbankzugriffe {
     }
 
     public void move(Integer id, String richtung) {
-
     }
 
-    public String getRichtung(int id) {
+    public String getDirection(int id) {
         throw new UnsupportedOperationException("Methode noch nicht implemetiert."); //To change body of generated methods, choose Tools | Templates.
+    }
+    public void setDirection(int id) {
+        
     }
 
     public PlayingGround getPlayingGround() {
         throw new UnsupportedOperationException("Methode noch nicht implemetiert.");
     }
 
+    public PlayingGround setPlayingGround(PlayingGround playingGround) {
+        throw new UnsupportedOperationException("Methode noch nicht implemetiert.");
+
+    }
+
     public List<Item> getItems() {
         throw new UnsupportedOperationException("Methode noch nicht implemetiert.");
     }
 
-    public void spielerAnlegen(Spieler spieler) {
-        // bitte implementiere
+    public void setItems(List<Item> item) {
+        throw new UnsupportedOperationException("Methode noch nicht implemetiert.");
     }
 
-    public Spieler getSpieler(Integer id) {
+    public void setPlayer(Spieler spieler) {
         throw new UnsupportedOperationException("Methode noch nicht implemetiert.");
+    }
+
+    public Spieler getPlayer(Integer id) {
+        throw new UnsupportedOperationException("Methode noch nicht implemetiert.");
+    }
+    
+    
+    public void setHigscoreForPlayerID(int id, int Highscore) {
+        throw new UnsupportedOperationException("Methode noch nicht implemetiert.");
+
     }
 }
