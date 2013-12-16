@@ -37,7 +37,9 @@ public class PlayingGround {
                 playingGround[x][y] = populateArrayAt(x, y, 
                         this.playingGround.length -1,
                         this.playingGround[x].length);
+             
                 //weitere logik behandlung (items usw...)...
+            
             }
         }
         return true;
