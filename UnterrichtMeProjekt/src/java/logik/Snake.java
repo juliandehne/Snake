@@ -40,9 +40,17 @@ public class Snake {
     public int getSchlange(int index){
         return schlange.get(index);
     }
+    /**
+     * Kommentar fehlt
+     * @return 
+     */
     public int getfeldlength(){
         return spielfeld.getfeldlength();
     }
+    /***
+     * Kommentar fehlt
+     * @return 
+     */
     public int getfeld0length(){
         return spielfeld.getfeld0length();
     }
