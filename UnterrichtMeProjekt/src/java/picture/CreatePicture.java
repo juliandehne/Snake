@@ -39,15 +39,14 @@ public class CreatePicture {
 
         // schreibt eine Spalte
         for (int col = 0; col < imi.cols; col++) {
-            if (col == 200){
-           ImageLineHelper.setPixelRGB8(iline, col, 100, 100, 100);
-                
-                    }
-                    else {
-            ImageLineHelper.setPixelRGB8(iline, col, c.getRed(), c.getGreen(), c.getBlue());
+            if (col == 200) {
+                ImageLineHelper.setPixelRGB8(iline, col, 100, 100, 100);
+
+            } else {
+                ImageLineHelper.setPixelRGB8(iline, col, c.getRed(), c.getGreen(), c.getBlue());
             }
-        
-        }    
+
+        }
         // die Spalte wird in alle Zeilen geschrieben.
         for (int row = 0; row < png.imgInfo.rows; row++) {
             png.writeRow(iline);
@@ -57,9 +56,13 @@ public class CreatePicture {
 
     }
 
-    public static synchronized void paintPicture(File outputStream, PlayingGround playingGround) {
+    /**
+     *
+     * @author lenni
+     */
+    public static synchronized void paintPicture(File outputStream, PositionType[][] playingGroundArray) {
 
-        PositionType[][] playingGround2DArray = Helpers.mapArray(playingGround.getPlayingGround(), PICTURE_SIZE);
+        PositionType[][] playingGround2DArray = Helpers.mapArray(playingGroundArray, PICTURE_SIZE);
         //PositionType[][] playingGround2DArray = playingGround.getPlayingGround();
 
         ImageInfo imi = new ImageInfo(PICTURE_SIZE, PICTURE_SIZE, 8, false); // 8 bits per channel, no alpha
@@ -69,39 +72,12 @@ public class CreatePicture {
 
         ImageLineInt iline = new ImageLineInt(imi);
 
-        Color borderColor = new Color(0, 0, 255);
-        Color snakeHeadColor = new Color(0, 255, 0);
-        Color snakeTailColor = new Color(0, 125, 0);
-        Color defaultColor = new Color(0, 0, 0);
-
         for (int x = 0; x < playingGround2DArray.length; x++) {
             for (int y = 0; y < playingGround2DArray.length; y++) {
-                switch (playingGround2DArray[x][y]) {
-                    case SNAKEHEAD:
-                        ImageLineHelper.setPixelRGB8(iline, y,
-                                snakeHeadColor.getRed(),
-                                snakeHeadColor.getGreen(),
-                                snakeHeadColor.getBlue());
-                        break;
-                    case BORDER:
-                        ImageLineHelper.setPixelRGB8(iline, y,
-                                borderColor.getRed(),
-                                borderColor.getGreen(),
-                                borderColor.getBlue());
-                        break;
-                    case SNAKETAIL:
-                        ImageLineHelper.setPixelRGB8(iline, y,
-                                snakeTailColor.getRed(),
-                                snakeTailColor.getGreen(),
-                                snakeTailColor.getBlue());
-                        break;
-                    default:
-                        ImageLineHelper.setPixelRGB8(iline, y,
-                                defaultColor.getRed(),
-                                defaultColor.getGreen(),
-                                defaultColor.getBlue());
-                        break;
-                }
+                ImageLineHelper.setPixelRGB8(iline, y,
+                        playingGround2DArray[x][y].color.getRed(),
+                        playingGround2DArray[x][y].color.getGreen(),
+                        playingGround2DArray[x][y].color.getBlue());
             }
             png.writeRow(iline);
         }

@@ -6,7 +6,7 @@ package database;
  */
 public class IdNamePair {
     private int id;
-    private String name;
+    private String name;    
 
     public IdNamePair(int id, String name) {
         this.id = id;

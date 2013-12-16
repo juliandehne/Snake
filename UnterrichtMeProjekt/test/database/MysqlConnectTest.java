@@ -45,12 +45,14 @@ public class MysqlConnectTest {
      * Beispielstatements
      */
     @Test
-    public void testWrapper() throws SQLException {
+    public void testWrapper() {
         System.out.println("connect");
-        MysqlConnect instance = new MysqlConnect();                
+        MysqlConnect instance = new MysqlConnect();   //voodoo             
         // Verbindung erstellen
-//        instance.connect(); --> bitte einkommentieren
+        //instance.connect(); 
         instance.connectLokal(); // bite auskommentieren
+        // datenbank test verwenden
+        instance.otherStatements("use test;");
         // Tabelle löschen
         instance.otherStatements("drop table lehrer");
         // Tabelle erstellen
@@ -64,14 +66,16 @@ public class MysqlConnectTest {
         // update ausführen
         instance.issueUpdateStatement("update lehrer set name = ? where id = ?", "updatedhello", 1);
         // delete ausführen
+        int i = 5;
+        
         instance.issueInsertOrDeleteStatement("delete from lehrer where id = ?", 2);
         // select ausführen
-        ResultSet result = instance.issueSelectStatement("select id, name from lehrer");                
+        VereinfachtesResultSet result = instance.issueSelectStatement("select id, name from lehrer");                
         // resultset auslesen
         ArrayList<IdNamePair> ergebnisAlsArray = new ArrayList<IdNamePair>();        
         while (result.next()) {                        
             ergebnisAlsArray.add(new IdNamePair(result.getInt("id"), result.getString("name")));
-        }                
+        }                        
         instance.close();
         // Ergebnis ausgeben
         for(IdNamePair idNamePair : ergebnisAlsArray) {

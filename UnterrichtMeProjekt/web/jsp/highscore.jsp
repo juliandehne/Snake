@@ -51,6 +51,28 @@
     name.add("Robby");
     Iterator<String> niterator = name.iterator(); 
     
+    //Konfiguration für PictureLoad  
+    String picturePath = "/git/UnterrichtMe/UnterrichtMeProjekt/web/pics/spiel.png";
+    // Hier müsst ihr den Pfad des ROOT Verzeichnis auf euerem Server angeben
+    // bei euch zu 99% /var/lib/tomcat6/webapps/ROOT/
+    String tomcatRootPath = "/var/lib/tomcat6/webapps/ROOT/";
+    File deployStream = new File(tomcatRootPath + picturePath);
+    request.setAttribute("Pfad für die Erstellung von Bildern", deployStream.getPath());
+    // Hier müsst ihr eure IP eintragen
+    String ip = "http://10.25.25.130:8080";
+    String pictureRootAddress = picturePath;
+    String pictureAddress = ip + pictureRootAddress;
+    request.setAttribute("Pfad für die Addressierung von Bildern per URl", pictureAddress);
+    request.setAttribute("pictureAddress", pictureAddress); //fürs einsetzen in HTML 
+
+    // Die Addresse dieser Seite
+    String thisSiteRootAddress = "/git/UnterrichtMe/UnterrichtMeProjekt/build/web/";
+    String thisSiteAddress = ip + thisSiteRootAddress;
+    request.setAttribute("thisSiteAddress", thisSiteRootAddress);
+
+    //Bilder laden im Hintergrund aktivieren
+    request.getSession().setAttribute("task", new Task(deployStream));
+
 %>
 
 <!--Hier beginnt die HTML-Seite-->
@@ -59,24 +81,26 @@
         <meta http-equiv="Content-Type" content="width=device-width; charset=UTF-8" name="viewport">        
         <title>Snake Projekt</title>
         <link rel="stylesheet" href="http://www.aavirtual.net/ada/CodeIgniter/style.css" type="text/css">
-        <link rel="SHORTCUT ICON" href="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/favicon.png" type="image/x-icon">           <!-- Bild im Tab -->
+        <link rel="SHORTCUT ICON" href="${thisSiteAddress}jsp/favicon.png" type="image/x-icon">           <!-- Bild im Tab -->
     </head>
 
-    <body>
+    <body style="background-image: url('${thisSiteAddress}jsp/bgimage.png')">  
         <div class="header">
-            <div class="headerint"><img src="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/logo_title.png" /></div>
-            <a align="right" href="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/" onmouseover="Wechselbild1.src='http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/zurueck_omo.png';" onmouseout="Wechselbild1.src='http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/zurueck.png';">
-              <img src="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/zurueck.png" name="Wechselbild1"></a>
+            <div class="headerint" align="center">
+                <img name="Wechselbild1" onmouseover="Wechselbild1.src = '${thisSiteAddress}jsp/logo_titlebunt.png';" onmouseout="Wechselbild1.src = '${thisSiteAddress}jsp/logo_title.png';" src="${thisSiteAddress}jsp/logo_title.png" />
+            </div>
+            <a align="right" href="${thisSiteAddress}" onmouseover="Wechselbild2.src='${thisSiteAddress}jsp/zurueck_omobunt.png';" onmouseout="Wechselbild2.src='${thisSiteAddress}jsp/zurueck.png';">
+              <img src="${thisSiteAddress}jsp/zurueck.png" name="Wechselbild2"></a>
         </div> 
-        <div class="wrapper">
+        <div class="wrapper" style="background-image: url('${thisSiteAddress}jsp/stars.png'); left: 300px;">
 <%                     
             out.println("<html>");
-            out.println("<table style='overflow: hidden; width: 900px; height: 400px; margin-left: auto; margin-right: auto; border: 1px solid #878787; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; border-top-left-radius: 6px; border-top-right-radius: 6px; background-color: #E16F60; box-shadow: 2px 4px 4px'>");
+            out.println("<table style='overflow: hidden; width: 900px; height: 400px; margin-left: auto; margin-right: auto; border: 1px solid #878787; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; border-top-left-radius: 6px; border-top-right-radius: 6px; background-color: #822323; box-shadow: 2px 4px 4px'>");
             out.println("<tr style='border-botton-width: 1px'>");
-            out.println("<th><span style='font-family:BankGothic Md BT;font-size:1.7em; text-shadow:black 2px 4px 8px;color: #440000'>Platz</span></th><th><span style='font-family:BankGothic Md BT;font-size:1.7em; text-shadow:black 2px 4px 8px;color: #440000'>Score</span></th><th><span style='font-family:BankGothic Md BT;font-size:1.7em; text-shadow:black 2px 4px 8px;color: #440000'>Name</span></th>");
+            out.println("<th><span style='font-family:BankGothic Md BT;font-size:1.7em; text-shadow:black 2px 4px 8px;color: #090131'>Platz</span></th><th><span style='font-family:BankGothic Md BT;font-size:1.7em; text-shadow:black 2px 4px 8px;color: #090131'>Score</span></th><th><span style='font-family:BankGothic Md BT;font-size:1.7em; text-shadow:black 2px 4px 8px;color: #090131'>Name</span></th>");
             out.println("</tr>"); 
                     for (int i = 1; hiterator.hasNext() ; i++){
-                        out.println("<tr align='center'><td><span style='font-family:BankGothic Md BT;font-size:1.3em; color: #440000'>" + i + "</span></td><td><span style='font-family:BankGothic Md BT;font-size:1.3em; color: #440000'>" + hiterator.next() + "</span></td><td><span style='font-family:BankGothic Md BT;font-size:1.3em; color: #440000'>" + niterator.next() + "</span></td></tr>");
+                        out.println("<tr align='center'><td><span style='font-family:BankGothic Md BT;font-size:1.3em; color: #090131'>" + i + "</span></td><td><span style='font-family:BankGothic Md BT;font-size:1.3em; color: #090131'>" + hiterator.next() + "</span></td><td><span style='font-family:BankGothic Md BT;font-size:1.3em; color: #090131'>" + niterator.next() + "</span></td></tr>");
                     }
             out.println("</table></html>");
 %>                                                                      
@@ -85,6 +109,6 @@
         </div>
     </body>
     <footer>
-        <div class="footer"><img src="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/web/jsp/logo1.png" style="height: 100px" align="bottom"></div> 
+        <div class="footer"><img src="${thisSiteAddress}jsp/logo1.png" style="height: 120px" align="bottom"></div> 
     </footer>     
 </html>

@@ -19,22 +19,21 @@
     String picturePath = "/git/UnterrichtMe/UnterrichtMeProjekt/web/pics/spiel.png";
     // Hier müsst ihr den Pfad des ROOT Verzeichnis auf euerem Server angeben
     // bei euch zu 99% /var/lib/tomcat6/webapps/ROOT/
-    String tomcatRootPath = "C:/Dokumente und Einstellungen/RA Markus Gehrke/Desktop/Keanu/xampp/tomcat/webapps/ROOT";
+    String tomcatRootPath = "/var/lib/tomcat6/webapps/ROOT/";
     File deployStream = new File(tomcatRootPath + picturePath);
     request.setAttribute("Pfad für die Erstellung von Bildern", deployStream.getPath());
     // Hier müsst ihr eure IP eintragen
-    String ip = "http://localhost:8080";
+    String ip = "http://10.25.25.130:8080";
     String pictureRootAddress = picturePath;
     String pictureAddress = ip + pictureRootAddress;
     request.setAttribute("Pfad für die Addressierung von Bildern per URl", pictureAddress);
     request.setAttribute("pictureAddress", pictureAddress); //fürs einsetzen in HTML 
-    
+
     // Die Addresse dieser Seite
     String thisSiteRootAddress = "/git/UnterrichtMe/UnterrichtMeProjekt/build/web/";
-    String thisSiteAddress = ip + thisSiteRootAddress; 
+    String thisSiteAddress = ip + thisSiteRootAddress;
     request.setAttribute("thisSiteAddress", thisSiteRootAddress);
-    
-    
+
     //Bilder laden im Hintergrund aktivieren
     request.getSession().setAttribute("task", new Task(deployStream));
 %>
@@ -49,20 +48,20 @@
         <script src="js/jquery.js" type="text/javascript"></script>
         <script src="js/javascript.js?id=${pageContext.session.id}" type="text/javascript"></script>
         <link rel="stylesheet" href="http://www.aavirtual.net/ada/CodeIgniter/style.css" type="text/css">
-        <link rel="SHORTCUT ICON" href="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/favicon.png" type="image/x-icon">   <!-- Bild im Tab -->
+        <link rel="SHORTCUT ICON" href="${thisSiteAddress}jsp/favicon.png" type="image/x-icon">   <!-- Bild im Tab -->
     </head>
 
- <body style="scrolling:none;">
+    <body style="background-image: url('${thisSiteAddress}jsp/bgimage.png');"> 
         <div class="header">
-            <div class="headerint">
-                        <img src="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/logo_title.png" />
-            </div>
-            <a onmouseover="Wechselbild1.src='http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/highscore_omo.png';"       
-               onmouseout="Wechselbild1.src='http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/highscore.png';" 
-               align="right" href="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/highscore.jsp">
-                <img src="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/highscore.png" name="Wechselbild1"></a>          
+            <div class="headerint" align="center">
+                <img name="Wechselbild1" onmouseover="Wechselbild1.src = '${thisSiteAddress}jsp/logo_titlebunt.png';" onmouseout="Wechselbild1.src = '${thisSiteAddress}jsp/logo_title.png';" src="${thisSiteAddress}jsp/logo_title.png" />
+                </div>
+            <a onmouseover="Wechselbild2.src = '${thisSiteAddress}jsp/highscore_omobunt.png';"       
+               onmouseout="Wechselbild2.src = '${thisSiteAddress}jsp/highscore.png';" 
+               href="${thisSiteAddress}jsp/highscore.jsp">
+                <img src="${thisSiteAddress}jsp/highscore.png" name="Wechselbild2"></a>          
         </div> 
-        <div class="wrapper">
+        <div class="wrapper" style="background-image: url('${thisSiteAddress}jsp/stars.png'); left: 300px;">
             <table style="overflow:hidden;width:900px;height:400px;margin-left:auto;margin-right:auto;">
                 <tr>
                     <td valign="top">
@@ -73,50 +72,50 @@
                     </td>
                 </tr>
             </table>
-<table style="margin-left:auto;margin-right:auto;">
-<tr>
-     <td></td><td><a href="${thisSiteAddress}?direction=oben" class="up"/></a></td><td></td>
-</tr>
-<tr>
-<td> <a href="${thisSiteAddress}?direction=links" class="left"/></a></td><td>
-           <a href="${thisSiteAddress}?direction=unten" class="down"/></a></td><td>
-            <a href="${thisSiteAddress}?direction=rechts" class="right"/></a></td>
-</tr>
-</table>
+            <table style="margin-left:auto;margin-right:auto;">
+                <tr>
+                    <td></td><td><a href="${thisSiteAddress}?direction=oben" class="up"/></a></td><td></td>
+                </tr>
+                <tr>
+                    <td> <a href="${thisSiteAddress}?direction=links" class="left"/></a></td><td>
+                        <a href="${thisSiteAddress}?direction=unten" class="down"/></a></td><td>
+                        <a href="${thisSiteAddress}?direction=rechts" class="right"/></a></td>
+                </tr>
+            </table>
         </div>
     </body>
-  
-  <footer>
-        <div class="footer"><img src="http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/web/jsp/logo1.png" style="height: 100px"></div> 
+
+    <footer>
+        <div class="footer"><img src="${thisSiteAddress}/jsp/logo1.png" style="height: 120px"></div> 
         <!--Dieses Div gibt einige Daten und kann bei Ende des Projektes gelöscht werden-->
-                 <%--        <div id="helperdiv" style="width:900px;margin-left:auto;margin-right:auto;visibility:hidden;">
-                            <h2>Hilfestellung</h2>
-                            <p>
-                                <br>Die aufgerufene JSP Seite hat folgenden Pfad (von Root):</br>
-                                <br>
-                                <%
-                                    String referrer = request.getServletPath();
-                                    out.println("[ip]:8080" + referrer);
-                                %>
-                                </br>                            
-                                <br>Folgende Attribute wurden uebergeben:</br>
-                                <br>   
-                                <%
-                                    for (Enumeration<String> enumeration = request.getAttributeNames(); enumeration.hasMoreElements();) {
-                                        String attributeName = enumeration.nextElement();
-                                        Object attribute = request.getAttribute(attributeName);
-                                        out.println(attributeName + ":  " + attribute + "</br>" + "</br>");
-                                    }
-                                %>
-                                </br>                
-                            </p>
-                        </div>  --%> 
+        <%--        <div id="helperdiv" style="width:900px;margin-left:auto;margin-right:auto;visibility:hidden;">
+                   <h2>Hilfestellung</h2>
+                   <p>
+                       <br>Die aufgerufene JSP Seite hat folgenden Pfad (von Root):</br>
+                       <br>
+                       <%
+                           String referrer = request.getServletPath();
+                           out.println("[ip]:8080" + referrer);
+                       %>
+                       </br>                            
+                       <br>Folgende Attribute wurden uebergeben:</br>
+                       <br>   
+                       <%
+                           for (Enumeration<String> enumeration = request.getAttributeNames(); enumeration.hasMoreElements();) {
+                               String attributeName = enumeration.nextElement();
+                               Object attribute = request.getAttribute(attributeName);
+                               out.println(attributeName + ":  " + attribute + "</br>" + "</br>");
+                           }
+                       %>
+                       </br>                
+                   </p>
+               </div>  --%> 
     </footer>     
 </html>
 
 <%
 // direction nimmt die Werte "links", "rechts", "oben" oder "unten an"                                   
-String direction = (String)request.getAttribute("direction");
+    String direction = (String) request.getAttribute("direction");
 //Hier könnt ihr die Spiellogik anhängen, je nach dem in welche Richtung die Schlange bewegt werden soll
 %>
 

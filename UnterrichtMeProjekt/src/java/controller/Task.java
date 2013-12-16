@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.http.HttpSessionBindingListener;
 import picture.CreatePicture;
 import gamelogic.*;
+import itemlogic.ItemController;
 
 /**
  *
@@ -40,20 +41,20 @@ public class Task extends Thread implements HttpSessionBindingListener {
         PlayingGround playingGround = new PlayingGround(100,100,snake);
         while (true) {
             CreatePicture instance = new CreatePicture();
-            instance.paintPicture(deployStream,playingGround); //Size von dem Feld ist unabhängig von der größe des Pictures
+            instance.paintPicture(deployStream,playingGround.getPlayingGround()); //Size von dem Feld ist unabhängig von der größe des Pictures
             //instance.paintPicture(deployStream);
-            
-            //Hacking
-            snake.setFacing(Task.facing);
-            
-            
-            snake.move(false);
-            boolean gameRunning = playingGround.update();
-            if (!gameRunning) {
-                //return;
-            }
-            
+                       
+            // das hier muss in die paintPictureMethode und dort als Datenbankzugriff implementiert werden
+            //snake.setFacing(Task.facing);                        
+//            snake.move(false);
+//            boolean gameRunning = playingGround.update();
+//            if (!gameRunning) {
+//                //return;
+//            }            
 
+            ItemController itemController = new ItemController();
+            itemController.spawnItems();
+            
             try {
                 this.sleep(800);
             } catch (InterruptedException ex) {

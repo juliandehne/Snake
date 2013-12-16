@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gamelogic;
 
 import java.util.ArrayList;
@@ -29,9 +24,9 @@ public class Snake {
     }
 
     public void move(boolean shouldAddLength) {
-        //if (!shouldAddLength) {
+        if (!shouldAddLength) {
             this.snakePositions.remove(snakePositions.size()-1);
-        //}
+        }
         this.snakePositions.add(0, this.pos);
         switch (this.facing) {
             case UP:
@@ -47,7 +42,6 @@ public class Snake {
                 this.pos = new Position(this.pos.getX() - 1, this.pos.getY());
                 break;
         }
-
     }
 
     //getter and setter
