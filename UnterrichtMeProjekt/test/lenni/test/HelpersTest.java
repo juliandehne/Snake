@@ -40,4 +40,6 @@ public class HelpersTest {
         instance.paintPicture(new File("C:\\Users\\Public\\Pictures/lennis_test.png"), arr);
 
     }
+    
+ 
 }

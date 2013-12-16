@@ -1,8 +1,8 @@
 package database;
 
-import example.Point;
 import gamelogic.Item;
 import gamelogic.PlayingGround;
+import gamelogic.Position;
 import gamelogic.Spieler;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +57,7 @@ public class Datenbankzugriffe {
         return 0;
     }
 
-    public List<Point> getPosition(int id) {
+    public List<Position> getPosition(int id) {
         instance.connect();
         VereinfachtesResultSet result = instance.issueSelectStatement("select x, y from positionschlange where id = ?;", id);
         return null;

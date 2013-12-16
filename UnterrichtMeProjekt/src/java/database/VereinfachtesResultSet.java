@@ -1,44 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package database;
 
-import com.mysql.jdbc.JDBC4ResultSet;
-import com.mysql.jdbc.MySQLConnection;
-import com.mysql.jdbc.StatementImpl;
-import java.io.InputStream;
-import java.io.Reader;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.math.BigDecimal;
-import java.net.URL;
-import java.sql.Array;
-import java.sql.Blob;
-import java.sql.Clob;
 import java.sql.Date;
-import java.sql.NClob;
-import java.sql.Ref;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
-import java.sql.RowId;
 import java.sql.SQLException;
-import java.sql.SQLWarning;
-import java.sql.SQLXML;
-import java.sql.Statement;
-import java.sql.Time;
 import java.sql.Timestamp;
-import java.util.Calendar;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.jboss.weld.util.reflection.Reflections;
 
 /**
  *
  * @author Julian
+ * Diese Klasse dient dazu, die Exceptions von ResultSet zu kapseln, so dass diese nicht
+ * gehandled werden müssen.
  */
 public class VereinfachtesResultSet {
 
