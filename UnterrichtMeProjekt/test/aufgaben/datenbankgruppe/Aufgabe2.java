@@ -55,5 +55,17 @@ public class Aufgabe2 {
      */
     @Test
     public void aufgabe2() throws SQLException {
+        System.out.println("connect");
+        MysqlConnect instance = new MysqlConnect();                
+        // Verbindung erstellen
+        //instance.connect(); 
+        instance.connect(); // bite auskommentieren    
+        instance.otherStatements("drop table spieler");
+        instance.issueInsertOrDeleteStatement("create table spieler (id INT, username varchar(100), uservorname varchar(100))ENGINE=InnoDB DEFAULT CHARSET=utf8 ;");
+        instance.issueInsertOrDeleteStatement("insert into spieler (id,username,uservorname) values(?,?,? )", 5,"dummyb1","bsp1");
+        instance.issueInsertOrDeleteStatement("insert into spieler (id,username,uservorname) values(?,?,? )", 6,"dummyb2","bsp2");
+        instance.issueInsertOrDeleteStatement("insert into spieler (id,username,uservorname) values(?,?,? )", 7,"dummyb3","bsp3");
+        instance.issueUpdateStatement("update spieler set uservorname = ? where id = ?", "bsp4", 5);
+        instance.issueInsertOrDeleteStatement("delete from spieler where id = ?", 6);        
     }
 }
