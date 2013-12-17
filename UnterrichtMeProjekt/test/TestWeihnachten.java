@@ -23,7 +23,8 @@ public class TestWeihnachten {
         Thread2 thread2 = new Thread2(false);
         thread1.start();
         thread2.start();
-        Thread.sleep(10000);
+                
+        Thread.sleep(50000);
         thread1.stop = true;
         thread2.stop = true;
     }
