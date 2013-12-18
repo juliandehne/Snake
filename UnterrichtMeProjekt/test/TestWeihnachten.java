@@ -5,13 +5,14 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import threadexample.Thread1;
-import threadexample.Thread2;
+import KLCF.Thread1;
+import KLCF.Thread2; 
 
 /**
  *
  * @author Julian
  */
+
 public class TestWeihnachten {
 
     public TestWeihnachten() {
@@ -24,7 +25,7 @@ public class TestWeihnachten {
         thread1.start();
         thread2.start();
                 
-        Thread.sleep(50000);
+        Thread.sleep(300000);
         thread1.stop = true;
         thread2.stop = true;
     }
