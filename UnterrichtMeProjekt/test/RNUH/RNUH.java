@@ -5,33 +5,7 @@
 
 package RNUH;
 
-<<<<<<< HEAD
-import org.junit.Test;
 
-
-/**
- *
- * @author weichert
- */
-public class RNUH {
-
-    public RNUH() {
-    }
-
-    @Test
-    public void rnuh() throws InterruptedException{
-        Thread1 thread1 = new Thread1(false);
-        Thread2 thread2 = new Thread2(false);
-
-        thread1.start();
-        thread2.start();
-
-        Thread.sleep(300000);
-        thread1.stop = true;
-        thread2.stop = true;
-
-    }
-=======
 /**
  *
  * @author yilmaz
@@ -96,5 +70,5 @@ public class RNUH {
         instance.issueInsertOrDeleteStatement("delete from spieler where id = ?", 6);
     }
 
->>>>>>> 779da78d512e244906ed942c979d65a3ba318e39
+
 }
