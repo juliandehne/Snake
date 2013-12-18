@@ -79,6 +79,17 @@ public class Aufgabe1 {
      */
     @Test
     public void aufgabe1() throws SQLException {
-        // hier euer code
+        instance.getConnection().createStatement().execute("create table positionschlange (id INT, x INT, y INT)ENGINE=InnoDB DEFAULT CHARSET=utf8 ;");
+        instance.getConnection().createStatement().execute("drop table positionschlange");
+        instance.getConnection().createStatement().execute("create table richtungschlangenbewegung (id INT, richtung VARCHAR(1))ENGINE=InnoDB DEFAULT CHARSET=utf8 ;");
+        instance.getConnection().createStatement().execute("drop table richtungschlangenbewegung");
+        instance.getConnection().createStatement().execute("create table schlangenzustand (id INT, laenge INT, geschwindigkeit INT)ENGINE=InnoDB DEFAULT CHARSET=utf8 ;");
+        instance.getConnection().createStatement().execute("drop table schlangenzustand");
+        instance.getConnection().createStatement().execute("create table score (id INT, punkte INT)ENGINE=InnoDB DEFAULT CHARSET=utf8 ;");
+        instance.getConnection().createStatement().execute("drop table score");
+        instance.getConnection().createStatement().execute("create table spieler (id INT, username VARCHAR(50), uservorname VARCHAR(50))ENGINE=InnoDB DEFAULT CHARSET=utf8 ;");
+        instance.getConnection().createStatement().execute("drop table spieler");
+        instance.getConnection().createStatement().execute("create table spielfeld (id INT, xkoordinate BOOLEAN, ykoordinate BOOLEAN)ENGINE=InnoDB DEFAULT CHARSET=utf8 ;");
+        instance.getConnection().createStatement().execute("drop table spielfeld");
     }
 }
