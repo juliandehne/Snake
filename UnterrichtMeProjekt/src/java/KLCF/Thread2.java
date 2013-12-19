@@ -24,7 +24,7 @@ public class Thread2 extends Thread {
         Integer i=1;
         //instance.issueInsertOrDeleteStatement("insert into klcf (id,fw) values (?,?)", "i", "Frohe Weihnachten");    
         while (!stop) {
-            instance.issueInsertOrDeleteStatement("insert into klcf (id,fw2) values (?, ?)", "i", "Frohe Weihnachten");
+            instance.issueInsertOrDeleteStatement("insert into klcf (id,fw2) values (?, ?)", i, "Frohe Weihnachten");
             i=i++;
         }
         interrupt();
