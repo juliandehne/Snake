@@ -2,12 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package database;
+package KLCF;
 
 /**
  *
- * @author Julian
+ * @author forthmann
  */
-public class TryDB {
-    public int ich = 5;
+class instance {
+    
 }
