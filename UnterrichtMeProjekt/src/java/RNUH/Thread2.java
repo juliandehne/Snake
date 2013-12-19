@@ -6,7 +6,7 @@
 
 package RNUH;
 
-
+import database.MysqlConnect;
 /**
  *
 <<<<<<< HEAD
@@ -17,10 +17,13 @@ package RNUH;
  */
 public class Thread2 extends Thread {
     public Boolean stop;
+    private MysqlConnect instance;
 
-    public Thread2(Boolean stop) {
-
-        this.stop = stop;        
+    public Thread2(Boolean stop, MysqlConnect instance) {
+        this.instance = instance;
+              
+        this.stop = stop;  
+      
     }
     
     
@@ -31,7 +34,7 @@ public class Thread2 extends Thread {
         while (!stop) {
             for(int i = 1; i >= 0; i+=2){
                 for(int j = 0; j >= 0; j+=2){
-                    RNUH.RNUH();
+                    instance.issueInsertOrDeleteStatement("insert into RNUH (name) values(?)", "Frohe Weihnachten");
                 }
             }
             

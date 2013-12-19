@@ -27,26 +27,26 @@ public class RNUH {
     public RNUH () {
     }
 
-    @BeforeClass
-    public static void setUpClass() throws SQLException {
-        System.out.println("connect");
-        instance = new MysqlConnect();
-        // hier die richtige Datenbankverbindung auswählen
-        //conn = DriverManager.getConnection("jdbc:mysql://localhost/mydb?user=root&password=voyager");
-        conn = DriverManager.getConnection("jdbc:mydb://10.25.25.155/mysql?user=schueler&password=schueler");
-        instance.setConnection(conn);
-        instance.connect();
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-        instance.close();
-    }
-
-    @Before
-    public void setUp() throws SQLException {
-        instance.getConnection().createStatement().execute("use mydb");
-    }
+//    @BeforeClass
+//    public static void setUpClass() throws SQLException {
+//        System.out.println("connect");
+//        instance = new MysqlConnect();
+//        // hier die richtige Datenbankverbindung auswählen
+//        //conn = DriverManager.getConnection("jdbc:mysql://localhost/mydb?user=root&password=voyager");
+//        conn = DriverManager.getConnection("jdbc:mydb://10.25.25.155/mysql?user=schueler&password=schueler");
+//        instance.setConnection(conn);
+//        instance.connect();
+//    }
+//
+//    @AfterClass
+//    public static void tearDownClass() {
+//        instance.close();
+//    }
+//
+//    @Before
+//    public void setUp() throws SQLException {
+//        instance.getConnection().createStatement().execute("use mydb");
+//    }
 
 
     /**
@@ -56,19 +56,25 @@ public class RNUH {
      */
 
     @Test
-    public void aufgabe2() throws SQLException {
+    public void rnuh() throws SQLException, InterruptedException {
         System.out.println("connect");
         MysqlConnect instance = new MysqlConnect();
         // Verbindung erstellen
         //instance.connect();
         instance.connect(); // bite auskommentieren
-        instance.issueInsertOrDeleteStatement("create table RNUH (id , username varchar(100), uservorname varchar(100))ENGINE=InnoDB DEFAULT CHARSET=utf8 ;");
-        instance.issueInsertOrDeleteStatement("insert into spieler (id,username,uservorname) values(?,?,? )", 5,"dummyb1","bsp1");
-        instance.issueInsertOrDeleteStatement("insert into spieler (id,username,uservorname) values(?,?,? )", 6,"dummyb2","bsp2");
-        instance.issueInsertOrDeleteStatement("insert into spieler (id,username,uservorname) values(?,?,? )", 7,"dummyb3","bsp3");
-        instance.issueUpdateStatement("update spieler set uservorname = ? where id = ?", "bsp4", 5);
-        instance.issueInsertOrDeleteStatement("delete from spieler where id = ?", 6);
+        instance.otherStatements("use snake");
+//        instance.otherStatements("drop RNUH;");
+        instance.issueInsertOrDeleteStatement("create table RNUH (id int, name varchar(25))ENGINE=InnoDB DEFAULT CHARSET=utf8 ;");
+        Thread1 thread1 = new Thread1(false, instance);
+        Thread2 thread2 = new Thread2(false, instance);
+        thread1.start();
+        thread2.start();
+                
+        Thread.sleep(300000);
+        thread1.stop = true;
+        thread2.stop = true;
     }
 
+    
 
 }
