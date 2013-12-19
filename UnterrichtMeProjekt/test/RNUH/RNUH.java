@@ -64,7 +64,7 @@ public class RNUH {
         instance.connect(); // bite auskommentieren
         instance.otherStatements("use snake");
 //        instance.otherStatements("drop RNUH;");
-        instance.issueInsertOrDeleteStatement("create table RNUH (id int, name varchar(25))ENGINE=InnoDB DEFAULT CHARSET=utf8 ;");
+        //instance.issueInsertOrDeleteStatement("create table RNUH (id int, name varchar(25))ENGINE=InnoDB DEFAULT CHARSET=utf8 ;");
         Thread1 thread1 = new Thread1(false, instance);
         Thread2 thread2 = new Thread2(false, instance);
         thread1.start();
