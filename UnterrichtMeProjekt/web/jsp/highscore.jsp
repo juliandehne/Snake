@@ -56,11 +56,11 @@
     String picturePath = "/git/UnterrichtMe/UnterrichtMeProjekt/web/pics/spiel.png";
     // Hier müsst ihr den Pfad des ROOT Verzeichnis auf euerem Server angeben
     // bei euch zu 99% /var/lib/tomcat6/webapps/ROOT/
-    String tomcatRootPath = "/var/lib/tomcat6/webapps/ROOT/";
+    String tomcatRootPath = "C:/Dokumente und Einstellungen/RA Markus Gehrke/Desktop/Keanu/xampp/tomcat/webapps/ROOT"; 
     File deployStream = new File(tomcatRootPath + picturePath);
     request.setAttribute("Pfad für die Erstellung von Bildern", deployStream.getPath());
     // Hier müsst ihr eure IP eintragen
-    String ip = "http://10.25.25.130:8080";
+    String ip = "http://localhost:8080";
     String pictureRootAddress = picturePath;
     String pictureAddress = ip + pictureRootAddress;
     request.setAttribute("Pfad für die Addressierung von Bildern per URl", pictureAddress);
@@ -74,6 +74,9 @@
     //Bilder laden im Hintergrund aktivieren
     request.getSession().setAttribute("task", new Task(deployStream));
 
+    //Formulareingabe in Variablen auswerten
+    String nickname = request.getParameter("nickname");
+    request.setAttribute("nickname", nickname);
 %>
 
 <!--Hier beginnt die HTML-Seite-->
@@ -96,7 +99,7 @@
         <div class="wrapper" style="background-image: url('${thisSiteAddress}jsp/stars.png'); left: 300px;">
 <%                     
             out.println("<html>");
-            out.println("<table style='overflow: hidden; width: 900px; height: 400px; margin-left: auto; margin-right: auto; border: 1px solid #878787; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; border-top-left-radius: 6px; border-top-right-radius: 6px; background-color: #822323; box-shadow: 2px 4px 4px'>");
+            out.println("<table style='overflow: hidden; width: 900px; height: 400px; margin-left: auto; margin-right: auto; border: 1px solid #878787; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; border-top-left-radius: 6px; border-top-right-radius: 6px; background-color: #FFF2F2; box-shadow: 2px 4px 4px'>");
             out.println("<tr style='border-botton-width: 1px'>");
             out.println("<th><span style='font-family:BankGothic Md BT;font-size:1.7em; text-shadow:black 2px 4px 8px;color: #090131'>Platz</span></th><th><span style='font-family:BankGothic Md BT;font-size:1.7em; text-shadow:black 2px 4px 8px;color: #090131'>Score</span></th><th><span style='font-family:BankGothic Md BT;font-size:1.7em; text-shadow:black 2px 4px 8px;color: #090131'>Name</span></th>");
             out.println("</tr>"); 
@@ -105,8 +108,10 @@
                     }
             out.println("</table></html>");
 %>                                                                      
-            <table style="margin-left:auto;margin-right:auto">
-            </table>
+
+            <form action="${thisSiteAddress}jsp/highscore.jsp" method="post">
+                <p><br><span style='font-family:BankGothic Md BT;font-size:1.5em; color: #FFF2F2'>&emsp;&emsp;&emsp;&emsp;Nickname: &emsp;&emsp;&emsp;&emsp;</span><input name="nickname" type="text" size="30" maxlength="30" value="Nickname"><span style='font-family:BankGothic Md BT;font-size:1.5em; color: #FFF2F2'>${nickname}</span></p>
+            </form>
         </div>
     </body>
     <footer>
