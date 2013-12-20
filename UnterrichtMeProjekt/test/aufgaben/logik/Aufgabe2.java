@@ -39,7 +39,7 @@ public class Aufgabe2 {
         //CreatePicture.paintPicture(, playingGround);
         
         snake.setPos(new Position(20,20));
-        playingGround.update();
+        playingGround.getCollision().update();
         //CreatePicture.paintPicture(, playingGround);            
     }
 }

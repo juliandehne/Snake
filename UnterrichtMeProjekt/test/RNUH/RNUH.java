@@ -27,26 +27,26 @@ public class RNUH {
     public RNUH () {
     }
 
-//    @BeforeClass
-//    public static void setUpClass() throws SQLException {
-//        System.out.println("connect");
-//        instance = new MysqlConnect();
-//        // hier die richtige Datenbankverbindung auswählen
-//        //conn = DriverManager.getConnection("jdbc:mysql://localhost/mydb?user=root&password=voyager");
-//        conn = DriverManager.getConnection("jdbc:mydb://10.25.25.155/mysql?user=schueler&password=schueler");
-//        instance.setConnection(conn);
-//        instance.connect();
-//    }
-//
-//    @AfterClass
-//    public static void tearDownClass() {
-//        instance.close();
-//    }
-//
-//    @Before
-//    public void setUp() throws SQLException {
-//        instance.getConnection().createStatement().execute("use mydb");
-//    }
+    @BeforeClass
+    public static void setUpClass() throws SQLException {
+        System.out.println("connect");
+        instance = new MysqlConnect();
+        // hier die richtige Datenbankverbindung auswählen
+        //conn = DriverManager.getConnection("jdbc:mysql://localhost/mydb?user=root&password=voyager");
+        conn = DriverManager.getConnection("jdbc:mydb://10.25.25.155/mysql?user=schueler&password=schueler");
+        instance.setConnection(conn);
+        instance.connect();
+    }
+
+    @AfterClass
+    public static void tearDownClass() {
+        instance.close();
+    }
+
+    @Before
+    public void setUp() throws SQLException {
+        instance.getConnection().createStatement().execute("use mydb");
+    }
 
 
     /**
