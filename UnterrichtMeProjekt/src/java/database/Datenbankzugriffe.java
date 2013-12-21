@@ -25,7 +25,7 @@ public class Datenbankzugriffe {
     public void erstelleHighScore(List<IdNamePair> idNamePairs) {
 
         for (IdNamePair idNamePair : idNamePairs) {
-            instance.connect();
+            instance.connect(); 
             instance.issueInsertOrDeleteStatement("insert into spieler (id,name) values (?,?) ", idNamePair.getId(), idNamePair.getName());
             instance.close();
         }

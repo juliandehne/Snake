@@ -18,7 +18,8 @@
 <%@page import="java.io.File"%>
 <%@page import="java.util.LinkedList" %>
 <%@page import="java.util.ListIterator" %>
-<%@page import="database.Datenbankzugriffe" %> 
+<%@page import="database.Datenbankzugriffe" %>
+<%@page import="database.MysqlConnect" %> 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -56,11 +57,11 @@
     String picturePath = "/git/UnterrichtMe/UnterrichtMeProjekt/web/pics/spiel.png";
     // Hier müsst ihr den Pfad des ROOT Verzeichnis auf euerem Server angeben
     // bei euch zu 99% /var/lib/tomcat6/webapps/ROOT/
-    String tomcatRootPath = "/var/lib/tomcat6/webapps/ROOT/"; 
+    String tomcatRootPath = "C:/Dokumente und Einstellungen/RA Markus Gehrke/Desktop/LK Informatik/xampp/tomcat/webapps/ROOT"; 
     File deployStream = new File(tomcatRootPath + picturePath);
     request.setAttribute("Pfad für die Erstellung von Bildern", deployStream.getPath());
     // Hier müsst ihr eure IP eintragen
-    String ip = "http://10.25.25.130:8080";
+    String ip = "http://localhost:8080";
     String pictureRootAddress = picturePath;
     String pictureAddress = ip + pictureRootAddress;
     request.setAttribute("Pfad für die Addressierung von Bildern per URl", pictureAddress);
@@ -74,7 +75,11 @@
     //Bilder laden im Hintergrund aktivieren
     request.getSession().setAttribute("task", new Task(deployStream));
 
-    //Formulareingabe in Variablen auswerten
+    //Verbindung mit der Datenbank
+    MysqlConnect instance = new MysqlConnect();
+    instance.connect();  
+    
+    //Formulareingabe in Variablen auswerten 
     String nickname = request.getParameter("nickname");
     request.setAttribute("nickname", nickname);
 %>
@@ -108,7 +113,6 @@
                     }
             out.println("</table></html>");
 %>                                                                      
-
             <form action="${thisSiteAddress}jsp/highscore.jsp" method="post">
                 <p><br><span style='font-family:BankGothic Md BT;font-size:1.5em; color: #FFF2F2'>&emsp;&emsp;&emsp;&emsp;Nickname: &emsp;&emsp;&emsp;&emsp;</span><input name="nickname" type="text" size="30" maxlength="30" value="Nickname"><span style='font-family:BankGothic Md BT;font-size:1.5em; color: #FFF2F2'>${nickname}</span></p>
             </form>
