@@ -49,7 +49,7 @@ public class Task extends Thread implements HttpSessionBindingListener {
         while (true) {
             CreatePicture instance = new CreatePicture();
             instance.paintPicture(deployStream, playingGround.getPlayingGround()); //Size von dem Feld ist unabhängig von der größe des Pictures
-            //instance.paintPicture(deployStream);
+            //instance.paintPicturedeployStream);
 
             // das hier muss in die paintPictureMethode und dort als Datenbankzugriff implementiert werden
             //snake.setFacing(Task.facing);                        
@@ -88,18 +88,18 @@ public class Task extends Thread implements HttpSessionBindingListener {
      */
     public static Logger initLogger()  {
         Logger logger = Logger.getRootLogger();
-        // Initialize logging once
-        if (!hasInitializedLogger) {
-            /* it is enough to set this once, because it impacts each RootLogger */
-            /* TODO: set to error/warn for competition */
+//         Initialize logging once
+        if (!hasInitializedLogger) {           
             logger.setLevel(Level.INFO);
             SimpleLayout layout = new SimpleLayout();
             ConsoleAppender consoleAppend = new ConsoleAppender(layout);
             logger.addAppender(consoleAppend);
             try {
-                logger.addAppender(new FileAppender(layout, "Snakerrors.log"));
+                // logging path needs to be changed to linux paths such as /var/lib/tomcat6/webapps/ROOT/
+                logger.addAppender(new FileAppender(layout, "C:\\Users\\Julian\\Desktop\\snakelog.log"));
             } catch (IOException ex) {
-                java.util.logging.Logger.getLogger(Task.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                // cannot log if logger is not initializied
+                System.err.println("could not init logger");
             }
             hasInitializedLogger = true;
         }
