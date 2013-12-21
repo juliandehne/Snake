@@ -51,7 +51,7 @@ public class MysqlConnectTest {
         // Verbindung erstellen
         //instance.connect(); 
         //instance.connectLokal(); // bitte auskommentieren
-        instance.connectLokalKeanu();
+        instance.connect();
         // datenbank test verwenden
         instance.otherStatements("use test;");
         // Tabelle löschen

@@ -75,13 +75,16 @@
     //Bilder laden im Hintergrund aktivieren
     request.getSession().setAttribute("task", new Task(deployStream));
 
-    //Verbindung mit der Datenbank
+    //Verbindung mit der Datenbank und der Snake Tabelle
     MysqlConnect instance = new MysqlConnect();
     instance.connect();  
+    instance.otherStatements("use snake;");
     
     //Formulareingabe in Variablen auswerten 
     String nickname = request.getParameter("nickname");
     request.setAttribute("nickname", nickname);
+    instance.issueInsertOrDeleteStatement("insert into spieler (id, nickname) values (1, 'nickname')"); 
+    instance.close();
 %>
 
 <!--Hier beginnt die HTML-Seite-->
