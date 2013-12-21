@@ -13,7 +13,7 @@ import java.util.logging.Logger;
  *
  * @author Julian
  */
-public class MysqlConnect {
+public class MysqlConnect {   
 
     public Connection conn = null;
 
