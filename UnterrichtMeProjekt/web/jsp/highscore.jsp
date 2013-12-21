@@ -33,7 +33,7 @@
     File deployStream = new File(tomcatRootPath + picturePath);
     request.setAttribute("Pfad für die Erstellung von Bildern", deployStream.getPath());
     // Hier müsst ihr eure IP eintragen
-    String ip = "localhost:8080";
+    String ip = "http://localhost:8080";
     String pictureRootAddress = picturePath;
     String pictureAddress = ip + pictureRootAddress;
     request.setAttribute("Pfad für die Addressierung von Bildern per URl", pictureAddress);
@@ -84,7 +84,7 @@
     name.add("Timmy");
     name.add("Tommy");
     name.add("Joe");
-    name.add(nickname);
+    name.add("Brian");
     Iterator<String> niterator = name.iterator();     
 %>
 
