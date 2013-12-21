@@ -10,7 +10,9 @@ import javax.servlet.http.HttpSessionBindingListener;
 import picture.CreatePicture;
 import gamelogic.*;
 import itemlogic.ItemController;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.FileAppender;
 import org.apache.log4j.Level;
@@ -20,25 +22,19 @@ import org.apache.log4j.SimpleLayout;
 /**
  *
  * @author Julian
+ * 
+ * Diese Klasse ist die Hauptmethode des Spiels. Sie wird bei jedem Seitenbesuch am
+ * Anfang aufgerufen
  */
 public class Task extends Thread implements HttpSessionBindingListener {    
     //Vielleicht ein bisschen gehackt --> ja leicht, aber das ist ok
     public static Facing facing = Facing.UP;
     private static boolean hasInitializedLogger = false;
-
-    private final File deployStream;
-
-    public Task(File file) {
-        this.deployStream = file;
-    }
-
-    Task() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    public static ByteArrayOutputStream deployStream = new ByteArrayOutputStream();               
+ 
     static synchronized void setFacing(Facing facing) {
         Task.facing = facing;
-    }
+    }    
 
     public void run() {
         Logger logger = initLogger();
@@ -47,27 +43,36 @@ public class Task extends Thread implements HttpSessionBindingListener {
         Snake snake = new Snake(new Position(25, 25), 5, Facing.LEFT);
         PlayingGround playingGround = new PlayingGround(100, 100, snake);
         while (true) {
-            CreatePicture instance = new CreatePicture();
-            instance.paintPicture(deployStream, playingGround.getPlayingGround()); //Size von dem Feld ist unabhängig von der größe des Pictures
-            //instance.paintPicturedeployStream);
-
-            // das hier muss in die paintPictureMethode und dort als Datenbankzugriff implementiert werden
-            //snake.setFacing(Task.facing);                        
+            try {
+                // create Picture
+                CreatePicture instance = new CreatePicture();
+                deployStream.flush();
+                instance.paintPicture(deployStream, playingGround.getPlayingGround()); //Size von dem Feld ist unabhängig von der größe des Pictures
+                //instance.paintPicturedeployStream);
+                
+                // das hier muss in die paintPictureMethode und dort als Datenbankzugriff implementiert werden
+                //snake.setFacing(Task.facing);                        
 //            snake.move(false);
 //            boolean gameRunning = playingGround.update();
 //            if (!gameRunning) {
 //                //return;
-//            }            
-            ItemController itemController = new ItemController();
-            itemController.spawnItems();
-
-            try {
-                this.sleep(800);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Task.class.getName()).log(Level.ERROR, null, ex);
-            }
-            if (isInterrupted()) {
-                return;
+//            }
+                
+                // hier werden die neuen Items generiert
+                ItemController itemController = new ItemController();
+                itemController.spawnItems();
+                
+                // black magic
+                try {
+                    this.sleep(800);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Task.class.getName()).log(Level.ERROR, null, ex);
+                }
+                if (isInterrupted()) {
+                    return;
+                }
+            } catch (IOException ex) {
+                logger.error("io exception" + ex.getMessage());
             }
         }
     }

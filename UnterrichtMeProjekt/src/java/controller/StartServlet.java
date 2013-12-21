@@ -29,14 +29,11 @@ public class StartServlet extends HttpServlet {
             throws ServletException, IOException {
         Logger logger = Task.initLogger();
         logger.info("Opening Start servlet class");
-        if (firstVisit) {
-            logger.info("first visit");
-            //some magic        
-            //Bilder laden im Hintergrund aktivieren
-            request.getSession().setAttribute("task", new Task());
-            request.getRequestDispatcher("/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/index.jsp").forward(request, response);
-            firstVisit = false;
-        }
+
+        //some magic        
+        //Bilder laden im Hintergrund aktivieren
+//        request.getSession().setAttribute("task", new Task());
+        request.getRequestDispatcher("/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/index.jsp").forward(request, response);
     }
 
 //    Hier können HTML POST Nachrichten verarbeitet werden

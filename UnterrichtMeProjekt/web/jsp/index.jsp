@@ -20,8 +20,8 @@
     Logger logger = Task.initLogger();
     logger.info("started JSP page at " + new Date(System.currentTimeMillis()));
    //Konfiguration für PictureLoad  
-    String picturePath = "/git/UnterrichtMe/UnterrichtMeProjekt/web/pics/spiel.png";
-    //String picturePath = "git/UnterrichtMe/UnterrichtMeProjekt/web/pics/spiel.png";
+//    String picturePath = "/git/UnterrichtMe/UnterrichtMeProjekt/web/pics/spiel.png";
+    String picturePath = "/image/spiel.png";    
     // Hier müsst ihr den Pfad des ROOT Verzeichnis auf euerem Server angeben
     // bei euch zu 99% /var/lib/tomcat6/webapps/ROOT/
     String tomcatRootPath = "C:/Program Files/Apache Software Foundation/Tomcat 6.0/webapps/ROOT";
@@ -45,7 +45,7 @@
     
 
     //Bilder laden im Hintergrund aktivieren
-    request.getSession().setAttribute("task", new Task(deployStream));
+    request.getSession().setAttribute("task", new Task());
 %>
 
 <!DOCTYPE html>
