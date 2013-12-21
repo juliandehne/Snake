@@ -23,37 +23,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%
+<%  
 
-    ArrayList<Integer> hs = new ArrayList<Integer>();   //-Erstellen einer ArrayList "hs" (=highscore) 
-    hs.add(999999);                                     //mit Dummy-Daten, die später theoretisch aus der
-    hs.add(234555);                                     //Datenbank abgefragt und eingelesen werden
-    hs.add(55555);                                      //-ArrayList hat den Vorteil die dem "Array" 
-    hs.add(44324);                                      //keine feste Größe geben zu müssen, sondern
-    hs.add(5443);                                       //ihn stets erweitern zu können 
-    hs.add(666);
-    hs.add(333);
-    hs.add(144);
-    hs.add(23);
-    hs.add(1);
-    Iterator<Integer> hiterator = hs.iterator();
-    
-    int size = hs.size();                               //-Festhalten der ArrayList Größe in der Variable "size"
-    
-    ArrayList<String> name = new ArrayList<String>();
-    name.add("Marky");                                         //-identisch zur obigen ArrayList Erstellung
-    name.add("Ricky");                                         //wird hier der ebenfalls in der DB gespeicherte
-    name.add("Denny");                                         //Name vorläufig angelegt 
-    name.add("Terry");                                         //-"<String>" kann manuell
-    name.add("Mike");                                          //festgelegt werden, wie oben 
-    name.add("Dave");                                         
-    name.add("Timmy");
-    name.add("Tommy");
-    name.add("Joe");
-    name.add("Robby");
-    Iterator<String> niterator = name.iterator(); 
-    
-    //Konfiguration für PictureLoad  
+   //Konfiguration für PictureLoad  
     String picturePath = "/git/UnterrichtMe/UnterrichtMeProjekt/web/pics/spiel.png";
     // Hier müsst ihr den Pfad des ROOT Verzeichnis auf euerem Server angeben
     // bei euch zu 99% /var/lib/tomcat6/webapps/ROOT/
@@ -85,6 +57,35 @@
     request.setAttribute("nickname", nickname);
     connect.issueInsertOrDeleteStatement("insert into spieler (id, nickname) values (?, ?)", 12345, "TEST"); 
     connect.close(); 
+
+
+    ArrayList<Integer> hs = new ArrayList<Integer>();   //-Erstellen einer ArrayList "hs" (=highscore) 
+    hs.add(999999);                                     //mit Dummy-Daten, die später theoretisch aus der
+    hs.add(234555);                                     //Datenbank abgefragt und eingelesen werden
+    hs.add(55555);                                      //-ArrayList hat den Vorteil die dem "Array" 
+    hs.add(44324);                                      //keine feste Größe geben zu müssen, sondern
+    hs.add(5443);                                       //ihn stets erweitern zu können 
+    hs.add(666);
+    hs.add(333);
+    hs.add(144);
+    hs.add(23);
+    hs.add(1);
+    Iterator<Integer> hiterator = hs.iterator();
+    
+    int size = hs.size();                               //-Festhalten der ArrayList Größe in der Variable "size"
+    
+    ArrayList<String> name = new ArrayList<String>();
+    name.add("Marky");                                         //-identisch zur obigen ArrayList Erstellung
+    name.add("Ricky");                                         //wird hier der ebenfalls in der DB gespeicherte
+    name.add("Denny");                                         //Name vorläufig angelegt 
+    name.add("Terry");                                         //-"<String>" kann manuell
+    name.add("Mike");                                          //festgelegt werden, wie oben 
+    name.add("Dave");                                         
+    name.add("Timmy");
+    name.add("Tommy");
+    name.add("Joe");
+    name.add(nickname);
+    Iterator<String> niterator = name.iterator();     
 %>
 
 <!--Hier beginnt die HTML-Seite-->

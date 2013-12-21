@@ -19,7 +19,7 @@
     String picturePath = "/git/UnterrichtMe/UnterrichtMeProjekt/web/pics/spiel.png";
     // Hier müsst ihr den Pfad des ROOT Verzeichnis auf euerem Server angeben
     // bei euch zu 99% /var/lib/tomcat6/webapps/ROOT/
-    String tomcatRootPath = "C:/Dokumente und Einstellungen/RA Markus Gehrke/Desktop/LK Informatik/xampp/tomcat/webapps/ROOT"; 
+    String tomcatRootPath = "C:/Dokumente und Einstellungen/RA Markus Gehrke/Desktop/LK Informatik/xampp/tomcat/webapps/ROOT/"; 
     File deployStream = new File(tomcatRootPath + picturePath);
     request.setAttribute("Pfad für die Erstellung von Bildern", deployStream.getPath());
     // Hier müsst ihr eure IP eintragen
