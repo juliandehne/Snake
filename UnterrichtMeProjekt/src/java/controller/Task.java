@@ -22,57 +22,37 @@ import org.apache.log4j.SimpleLayout;
 /**
  *
  * @author Julian
- * 
- * Diese Klasse ist die Hauptmethode des Spiels. Sie wird bei jedem Seitenbesuch am
- * Anfang aufgerufen
+ *
+ * Diese Klasse ist die Hauptmethode des Spiels. Sie wird bei jedem Seitenbesuch
+ * am Anfang aufgerufen
  */
-public class Task extends Thread implements HttpSessionBindingListener {    
+public class Task extends Thread implements HttpSessionBindingListener {
+
     //Vielleicht ein bisschen gehackt --> ja leicht, aber das ist ok
     public static Facing facing = Facing.UP;
     private static boolean hasInitializedLogger = false;
-    public static ByteArrayOutputStream deployStream = new ByteArrayOutputStream();               
- 
+
     static synchronized void setFacing(Facing facing) {
         Task.facing = facing;
-    }    
+    }
 
     public void run() {
         Logger logger = initLogger();
-        logger.info("starte SnakeThread");        
-
-        Snake snake = new Snake(new Position(25, 25), 5, Facing.LEFT);
-        PlayingGround playingGround = new PlayingGround(100, 100, snake);
+        logger.info("starte SnakeThread");
         while (true) {
+                
+            // hier werden die neuen Items generiert
+            ItemController itemController = new ItemController();
+            itemController.spawnItems();
+
+            // black magic
             try {
-                // create Picture
-                CreatePicture instance = new CreatePicture();
-                deployStream.flush();
-                instance.paintPicture(deployStream, playingGround.getPlayingGround()); //Size von dem Feld ist unabhängig von der größe des Pictures
-                //instance.paintPicturedeployStream);
-                
-                // das hier muss in die paintPictureMethode und dort als Datenbankzugriff implementiert werden
-                //snake.setFacing(Task.facing);                        
-//            snake.move(false);
-//            boolean gameRunning = playingGround.update();
-//            if (!gameRunning) {
-//                //return;
-//            }
-                
-                // hier werden die neuen Items generiert
-                ItemController itemController = new ItemController();
-                itemController.spawnItems();
-                
-                // black magic
-                try {
-                    this.sleep(800);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Task.class.getName()).log(Level.ERROR, null, ex);
-                }
-                if (isInterrupted()) {
-                    return;
-                }
-            } catch (IOException ex) {
-                logger.error("io exception" + ex.getMessage());
+                this.sleep(800);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Task.class.getName()).log(Level.ERROR, null, ex);
+            }
+            if (isInterrupted()) {
+                return;
             }
         }
     }
@@ -86,15 +66,15 @@ public class Task extends Thread implements HttpSessionBindingListener {
     }
 
     /**
-     * Diese Methode initialisiert einen Logger, den man verwenden kann,
-     * um den aktuellen Zustand des Programmes zu evaluieren
-     * 
-     * @return 
+     * Diese Methode initialisiert einen Logger, den man verwenden kann, um den
+     * aktuellen Zustand des Programmes zu evaluieren
+     *
+     * @return
      */
-    public static Logger initLogger()  {
+    public static Logger initLogger() {
         Logger logger = Logger.getRootLogger();
 //         Initialize logging once
-        if (!hasInitializedLogger) {           
+        if (!hasInitializedLogger) {
             logger.setLevel(Level.INFO);
             SimpleLayout layout = new SimpleLayout();
             ConsoleAppender consoleAppend = new ConsoleAppender(layout);

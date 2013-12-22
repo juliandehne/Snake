@@ -5,8 +5,14 @@
  */
 package controller;
 
+import gamelogic.Facing;
+import gamelogic.PlayingGround;
+import gamelogic.Position;
+import gamelogic.Snake;
+import itemlogic.ItemController;
 import java.io.BufferedWriter;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -17,13 +23,23 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import picture.CreatePicture;
 
 /**
  *
  * @author Julian
  */
 public class ImageServlet extends HttpServlet {
+
+    public ByteArrayOutputStream deployStream;
+
+    public ImageServlet() {
+        this.deployStream = new ByteArrayOutputStream();
+    }
+    
+    
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,14 +53,21 @@ public class ImageServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Logger logger = Task.initLogger();
-        logger.info("receiving picture");
+
+        // neue TestSchlange erstellen
+        Snake snake = new Snake(new Position(25, 25), 5, Facing.LEFT);
+        // neues Spielfeld erstellen
+        PlayingGround playingGround = new PlayingGround(100, 100, snake);
+        
+        // Bild erstellen
+        logger.info("neues Bild erstellen");
+        CreatePicture instance = new CreatePicture();
+        instance.paintPicture(deployStream, playingGround.getPlayingGround()); //Size von dem Feld ist unabhängig von der größe des Pictures
+        logger.info("show picture" + deployStream.toString());
         response.setContentType("image/png");
-        Reader reader = new InputStreamReader(new ByteArrayInputStream(Task.deployStream.toByteArray()));
-        PrintWriter out = response.getWriter();        
-        int i = 0;
-        while ((i = reader.read()) != -1) {
-            out.print(i);
-        }                              
+        response.getOutputStream().write(deployStream.toByteArray());
+        response.getOutputStream().flush();
+        response.getOutputStream().close();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

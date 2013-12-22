@@ -39,6 +39,15 @@ public class CreatePicture {
             Logger.getLogger(CreatePicture.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    // das hier muss in die paintPictureMethode und dort als Datenbankzugriff implementiert werden
+            //snake.setFacing(Task.facing);                        
+//            snake.move(false);
+//            boolean gameRunning = playingGround.update();
+//            if (!gameRunning) {
+//                //return;
+//            }
+    
 
     public synchronized void paintPicture(OutputStream outputStream) {
         ImageInfo imi = new ImageInfo(400, 400, 8, false); // 8 bits per channel, no alpha

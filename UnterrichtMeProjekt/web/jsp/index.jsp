@@ -44,7 +44,7 @@
     request.setAttribute("thisSiteAddress", thisSiteAddress);
     
 
-    //Bilder laden im Hintergrund aktivieren
+    //startet Hintegrundprozesse (Items spawnen)    
     request.getSession().setAttribute("task", new Task());
 %>
 
