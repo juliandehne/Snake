@@ -83,7 +83,7 @@
     //Formulareingabe in Variablen auswerten 
     String nickname = request.getParameter("nickname");
     request.setAttribute("nickname", nickname);
-    instance.issueInsertOrDeleteStatement("insert into spieler (id, nickname) values (1, 'nickname')"); 
+    instance.issueInsertOrDeleteStatement("insert into spieler (id, nickname) values (?, ?)", 12345, "TEST"); 
     instance.close();
 %>
 

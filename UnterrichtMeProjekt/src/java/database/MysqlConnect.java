@@ -13,7 +13,7 @@ import java.util.logging.Logger;
  *
  * @author Julian
  */
-public class MysqlConnect {
+public class MysqlConnect {   
 
     public Connection conn = null;
 
@@ -22,7 +22,7 @@ public class MysqlConnect {
      */
     public void connect() {
       try {
-          conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Snake?user=root&password=");
+          conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/snake?user=root&password=root");
       } catch (SQLException ex) {
             System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());
