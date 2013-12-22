@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import util.LoggerHelper;
 
 /**
  *
@@ -40,7 +41,7 @@ public class Loggertest {
 
     @Test
     public void hello() {
-        Logger logger = Task.initLogger();
+        Logger logger = LoggerHelper.initLogger();
         logger.info("startedhellotest");
     }
 }

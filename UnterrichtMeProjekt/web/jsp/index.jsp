@@ -17,7 +17,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
-    Logger logger = Task.initLogger();
+    Logger logger = util.LoggerHelper.initLogger();
     logger.info("started JSP page at " + new Date(System.currentTimeMillis()));
    //Konfiguration für PictureLoad  
 //    String picturePath = "/git/UnterrichtMe/UnterrichtMeProjekt/web/pics/spiel.png";

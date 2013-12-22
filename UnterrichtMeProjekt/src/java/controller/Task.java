@@ -18,6 +18,7 @@ import org.apache.log4j.FileAppender;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.log4j.SimpleLayout;
+import util.LoggerHelper;
 
 /**
  *
@@ -30,17 +31,18 @@ public class Task extends Thread implements HttpSessionBindingListener {
 
     //Vielleicht ein bisschen gehackt --> ja leicht, aber das ist ok
     public static Facing facing = Facing.UP;
-    private static boolean hasInitializedLogger = false;
 
     static synchronized void setFacing(Facing facing) {
         Task.facing = facing;
     }
 
     public void run() {
-        Logger logger = initLogger();
+        Logger logger = LoggerHelper.initLogger();
         logger.info("starte SnakeThread");
-        while (true) {
-                
+        
+        // hier sollte eine Datenbankabfrage hin, die schaut, ob dieser Thread schon existiert, damit die 
+        // Threads sich nicht multiplizieren
+        while (true) {                
             // hier werden die neuen Items generiert
             ItemController itemController = new ItemController();
             itemController.spawnItems();
@@ -57,38 +59,13 @@ public class Task extends Thread implements HttpSessionBindingListener {
         }
     }
 
+    
     public void valueBound(HttpSessionBindingEvent event) {
         start(); // Will instantly be started when doing session.setAttribute("task", new Task());
     }
 
     public void valueUnbound(HttpSessionBindingEvent event) {
         interrupt(); // Will signal interrupt when session expires.
-    }
-
-    /**
-     * Diese Methode initialisiert einen Logger, den man verwenden kann, um den
-     * aktuellen Zustand des Programmes zu evaluieren
-     *
-     * @return
-     */
-    public static Logger initLogger() {
-        Logger logger = Logger.getRootLogger();
-//         Initialize logging once
-        if (!hasInitializedLogger) {
-            logger.setLevel(Level.INFO);
-            SimpleLayout layout = new SimpleLayout();
-            ConsoleAppender consoleAppend = new ConsoleAppender(layout);
-            logger.addAppender(consoleAppend);
-            try {
-                // logging path needs to be changed to linux paths such as /var/lib/tomcat6/webapps/ROOT/
-                logger.addAppender(new FileAppender(layout, "C:\\Users\\Julian\\Desktop\\snakelog.log"));
-            } catch (IOException ex) {
-                // cannot log if logger is not initializied
-                System.err.println("could not init logger");
-            }
-            hasInitializedLogger = true;
-        }
-        return logger;
     }
 
 }

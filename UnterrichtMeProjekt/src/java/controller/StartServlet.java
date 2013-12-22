@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
+import util.LoggerHelper;
 
 /**
  *
@@ -27,7 +28,7 @@ public class StartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Logger logger = Task.initLogger();
+        Logger logger = LoggerHelper.initLogger();
         logger.info("Opening Start servlet class");
 
         //some magic        

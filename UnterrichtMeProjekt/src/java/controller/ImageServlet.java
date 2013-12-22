@@ -9,27 +9,22 @@ import gamelogic.Facing;
 import gamelogic.PlayingGround;
 import gamelogic.Position;
 import gamelogic.Snake;
-import itemlogic.ItemController;
-import java.io.BufferedWriter;
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.io.Reader;
-import java.io.StringWriter;
-import java.io.Writer;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import picture.CreatePicture;
+import util.LoggerHelper;
 
 /**
  *
  * @author Julian
+ * 
+ * Diese Klasse gibt bei Request der URL 
+ * [ip]/image/* das Bild zurück
  */
 public class ImageServlet extends HttpServlet {
 
@@ -52,7 +47,7 @@ public class ImageServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Logger logger = Task.initLogger();
+        Logger logger = LoggerHelper.initLogger();
 
         // neue TestSchlange erstellen
         Snake snake = new Snake(new Position(25, 25), 5, Facing.LEFT);
