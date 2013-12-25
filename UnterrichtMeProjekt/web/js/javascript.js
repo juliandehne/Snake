@@ -11,7 +11,7 @@ $(window).ready(function() {
 
 function reloadGameCanvas() {
      var d = new Date();    
-     $("#reloadingPng").attr("src", picturepath+ "?"+d.getTime());   
+     $("#reloadingPng").attr("src", picturepath+ "/"+d.getTime());   
 //     $("#reloadingPng").attr("src", "http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/web/pics/test2.png?"+d.getTime());   
 }
 

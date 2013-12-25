@@ -4,28 +4,22 @@
  */
 package controller;
 
-import java.io.File;
 import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.http.HttpSessionBindingListener;
-import picture.CreatePicture;
 import gamelogic.*;
 import itemlogic.ItemController;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import org.apache.log4j.ConsoleAppender;
-import org.apache.log4j.FileAppender;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.apache.log4j.SimpleLayout;
 import util.LoggerHelper;
 
 /**
  *
- * @author Julian
+ * @author Julian Dehne
  *
  * Diese Klasse ist die Hauptmethode des Spiels. Sie wird bei jedem Seitenbesuch
  * am Anfang aufgerufen
+ * 
+ * WICHTIGE ÄNDERUNG: Das Bild wird nun in der Klasse ImageServlet generiert
  */
 public class Task extends Thread implements HttpSessionBindingListener {
 
@@ -47,8 +41,32 @@ public class Task extends Thread implements HttpSessionBindingListener {
             ItemController itemController = new ItemController();
             itemController.spawnItems();
 
-            // black magic
-            try {
+            // black magic: Bewirkt, dass die Schleife für 800 Millisekunden angehalten wird.
+            stopThreadfor800millis();
+        }
+    }
+
+    /**
+     * Am besten ignorieren
+     * @param event 
+     */
+    public void valueBound(HttpSessionBindingEvent event) {
+        start(); // Will instantly be started when doing session.setAttribute("task", new Task());
+    }
+
+    /**
+     * Am besten ignorieren
+     * @param event 
+     */
+    public void valueUnbound(HttpSessionBindingEvent event) {
+        interrupt(); // Will signal interrupt when session expires.
+    }
+
+    /**
+     * stop Thread for 800 millis 
+     */
+    private void stopThreadfor800millis() {
+          try {
                 this.sleep(800);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Task.class.getName()).log(Level.ERROR, null, ex);
@@ -56,16 +74,6 @@ public class Task extends Thread implements HttpSessionBindingListener {
             if (isInterrupted()) {
                 return;
             }
-        }
-    }
-
-    
-    public void valueBound(HttpSessionBindingEvent event) {
-        start(); // Will instantly be started when doing session.setAttribute("task", new Task());
-    }
-
-    public void valueUnbound(HttpSessionBindingEvent event) {
-        interrupt(); // Will signal interrupt when session expires.
     }
 
 }
