@@ -35,7 +35,8 @@ public class LoggerHelper {
             ConsoleAppender consoleAppend = new ConsoleAppender(layout);
             logger.addAppender(consoleAppend);
             try {
-                logger.addAppender(new FileAppender(layout, "C:\\Users\\Julian\\Desktop\\snakelog.log"));
+//                logger.addAppender(new FileAppender(layout, "C:\\Users\\Julian\\Desktop\\snakelog.log"));
+                logger.addAppender(new FileAppender(layout, "snakelog.log"));
             } catch (IOException ex) {
                 System.err.println("could not init logger");
             }
