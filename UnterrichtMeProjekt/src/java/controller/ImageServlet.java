@@ -51,51 +51,8 @@ public class ImageServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {        
-        Logger logger = initLogger();
-        
-        
-        /**
-         * Aufgabe1 Team Schlange          
-         * 
-         * Hier musst jetzt der Code eingefügt werden, der die letzte Position aus der Datenbank ließt
-         * und dann ein update durchführt, das die neue Position dann in die Datenbank schreibt.
-         * 
-         * Erstellt hierfür eine Testschlange in der Datenbank!
-         */
-        
-        /**
-         * Aufgabe2 Team Schlange
-         * Erweitert den Code von oben, so dass die Richtungsänderungen die Team Frontend in die Datenbank 
-         * schreibt beachtet werden.
-         * 
-         * Lest die aktuelle Richtung aus einer entsprechenden Tabelle!
-         */
-        
-        /**
-         * Aufgabe3 Team Schlange
-         * Wenn es eine Kollision gibt, 
-         * dann muss die Schlange aus der Datenbank gelöscht werden
-         * 
-         * Ladet hierfür die Position aller Schlangen - zunächst mehrere Testschlangen - aus der Datenbank!
-         * 
-         * Bei der Spielertabelle, die zu der Schlange gehört, muss markiert werden, dass
-         * der Spieler "tot" ist
-         */
-        
-        /**
-         * Aufgabe 4 Team Schlange
-         * Erweitert Aufgabe1, so dass die Items aus der Datenbank gelesen werden, die Team Item in die Datenbank schreibt!
-         *
-         */
-        
-          // neue TestSchlange erstellen
-        Position position = new Position(random.nextInt(99), random.nextInt(99));             
-        Snake snake = new Snake(position,5, Facing.RIGHT);    
-        PlayingGround playingGround = new PlayingGround(100, 100, snake);
-        //logger.info(playingGround.toString()); // should be deleted in deploy version, because it creates huge files
-        //logger.info(position.toString()); // should be deleted in deploy version, because it creates huge files
-        
-        
+        Einstiegspunkte e = new Einstiegspunkte();
+   
         // Bild erstellen ab hier bitte ignorieren
         // Cache für Bilder ausschalten
         CreatePicture instance = new CreatePicture();
@@ -103,7 +60,7 @@ public class ImageServlet extends HttpServlet {
         response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
         response.setDateHeader("Expires", 0); // Proxies.
         
-        instance.paintPicture(deployStream, playingGround.getPlayingGround()); //Size von dem Feld ist unabhängig von der größe des Pictures                
+        instance.paintPicture(deployStream, e.getPlayingGround()); //Size von dem Feld ist unabhängig von der größe des Pictures                
         response.setContentType("image/png");
         response.getOutputStream().write(deployStream.toByteArray());
         response.getOutputStream().flush();

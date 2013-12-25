@@ -37,9 +37,8 @@ public class Task extends Thread implements HttpSessionBindingListener {
         // hier sollte eine Datenbankabfrage hin, die schaut, ob dieser Thread schon existiert, damit die 
         // Threads sich nicht multiplizieren
         while (true) {                
-            // hier werden die neuen Items generiert
-            ItemController itemController = new ItemController();
-            itemController.spawnItems();
+            Einstiegspunkte e = new Einstiegspunkte();
+            e.itemTeam();
 
             // black magic: Bewirkt, dass die Schleife für 800 Millisekunden angehalten wird.
             stopThreadfor800millis();
