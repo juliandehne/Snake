@@ -41,6 +41,10 @@ public class StartServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        /**
+         * hier muss die spielerid dynamisch erstellt werden
+         */        
         response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 }

@@ -52,13 +52,17 @@ public class ImageServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {        
         Einstiegspunkte e = new Einstiegspunkte();
+        
+        //e.setSpielerId((Integer)request.getAttribute("spielerid"));
+        e.setSpielerId(1);
+        
    
         // Bild erstellen ab hier bitte ignorieren
         // Cache für Bilder ausschalten
         CreatePicture instance = new CreatePicture();
         response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
         response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
-        response.setDateHeader("Expires", 0); // Proxies.
+        response.setDateHeader("Expires", 0); // Proxies.                
         
         instance.paintPicture(deployStream, e.getPlayingGround()); //Size von dem Feld ist unabhängig von der größe des Pictures                
         response.setContentType("image/png");

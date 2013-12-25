@@ -15,12 +15,15 @@ import static util.LoggerHelper.initLogger;
  * @author Julian Dehne
  */
 public class Einstiegspunkte {
+    private int spielerid;
 
     /**
      * Team Schlange
+     * Spielerid des Testspielers ist 1 
+     * @param spielerid
      * @return 
      */
-    public PositionType[][] teamschlange() {
+    public PositionType[][] teamschlange(Integer spielerid) {
         Logger logger = initLogger();
 
         // neue TestSchlange erstellen
@@ -43,7 +46,7 @@ public class Einstiegspunkte {
          */
         /**
          * Aufgabe2 Team Schlange Erweitert den Code von oben, so dass die
-         * Richtungsänderungen die Team Frontend in die Datenbank schreibt
+         * Richtungsänderungen die Team Richtungsänderungen in die Datenbank schreibt
          * beachtet werden.
          *
          * Lest die aktuelle Richtung aus einer entsprechenden Tabelle!
@@ -62,7 +65,19 @@ public class Einstiegspunkte {
          * Aufgabe 4 Team Schlange Erweitert Aufgabe1, so dass die Items aus der
          * Datenbank gelesen werden, die Team "Items" in die Datenbank schreibt!
          *
+         */        
+        /**
+         * Aufgabe 5: Erweitert den Algorithmus so, dass ein Highscore geführt
+         * wird und dieser in die Highscoretabelle eingetragen wird 
+         * (Zuarbeit von Highscore-Team)
+         * 
+         * 
          */
+        /**
+         * Aufgabe 6: Erweitert den Algorithmus so, dass anstatt dem Testspieler
+         * der jewailige Spieler 
+         */        
+        
         //logger.info(playingGround.toString()); // should be deleted in deploy version, because it creates huge files
         //logger.info(position.toString()); // should be deleted in deploy version, because it creates huge files
         return playingGround.getPlayingGround();
@@ -81,7 +96,11 @@ public class Einstiegspunkte {
     
 
     public PositionType[][] getPlayingGround() {
-        return teamschlange();
+        return teamschlange(this.spielerid);
+    }
+
+    void setSpielerId(int attribute) {
+        this.spielerid = attribute;
     }
 
 }
