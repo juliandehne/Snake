@@ -20,11 +20,11 @@ public class Thread1 extends Thread {
         MysqlConnect instance = new MysqlConnect();
         instance.connect();
         instance.otherStatements("use snake;");
-        Integer i=1;
+        Integer t=1;
         //instance.issueInsertOrDeleteStatement("insert into klcf (id,fw) values (?,?)", "i", "Frohe Weihnachten");    
         while (!stop) {
-            instance.issueInsertOrDeleteStatement("insert into klcf (id,fw) values (?, ?)", i, "Frohe Weihnachten");
-            i=i++;
+            instance.issueInsertOrDeleteStatement("insert into klcf (id,fw) values (?, ?)", t, "Frohe Weihnachten");
+            t=t++;
         }
         interrupt();
     }

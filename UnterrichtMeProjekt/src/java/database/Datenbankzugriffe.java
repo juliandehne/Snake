@@ -67,8 +67,18 @@ public class Datenbankzugriffe {
 
     }
 
-    public String getRichtung(int id) {
-        throw new UnsupportedOperationException("Methode noch nicht implemetiert."); //To change body of generated methods, choose Tools | Templates.
+    public List<IdRichtungPair> getRichtung(int id) {
+        instance.connect();
+
+        VereinfachtesResultSet result = instance.issueSelectStatement("select id, richtung from richtungschlangenbwegegung");
+
+        List<IdRichtungPair> idRichtungPair = new ArrayList<IdRichtungPair>();
+
+        while (result.next()) {
+            idRichtungPair.add(new IdRichtungPair(result.getInt("id"), result.getString("name")));
+        }
+        instance.close();
+        return idRichtungPair;
     }
 
     public PlayingGround getPlayingGround() {
