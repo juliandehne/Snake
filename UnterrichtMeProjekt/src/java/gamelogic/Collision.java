@@ -27,29 +27,24 @@ public class Collision {
         
         for (int x = 0; x < playingGround.playingGroundLength(); x++) {
             for (int y = 0; y < playingGround.playingGround0Length(); y++) {
-                if (x == playingGround.getSnake().getPos().getX() && y == playingGround.getSnake().getPos().getY() && 
-                    playingGround[x][y] == PositionType.BORDER) {
+                if (comparePositionsXY(x, y) && playingGround.getPositiontype(x, y) == PositionType.BORDER) {
                     //GAME ZU ENDE, false wird zurückgegeben
                     return false;
                 }
                 else{
-                    if (x == playingGround.getSnake().getPos().getX() && y == playingGround.getSnake().getPos().getY() && 
-                        playingGround[x][y] == PositionType.SNAKETAIL) {
+                    if (comparePositionsXY(x, y) && playingGround.getPositiontype(x, y) == PositionType.SNAKETAIL) {
                         return false;
                     }
                     else{
-                        if(x == playingGround.getSnake().getPos().getX() && y == playingGround.getSnake().getPos().getY() && 
-                            playingGround[x][y] == PositionType.ITEMNORMAL){
+                        if(comparePositionsXY(x, y) && playingGround.getPositiontype(x, y) == PositionType.ITEMNORMAL){
                             collisionEventItemNormal();
                         }
                         else{
-                            if (x == playingGround.getSnake().getPos().getX() && y == playingGround.getSnake().getPos().getY() && 
-                                playingGround[x][y] == PositionType.ITEMSHORT) {
+                            if (comparePositionsXY(x, y) && playingGround.getPositiontype(x, y) == PositionType.ITEMSHORT) {
                                 collisionEventItemShort();
                             }
                             else{
-                                if (x == playingGround.getSnake().getPos().getX() && y == playingGround.getSnake().getPos().getY() && 
-                                    playingGround[x][y] == PositionType.ITEMFAST) {
+                                if (comparePositionsXY(x, y) && playingGround.getPositiontype(x, y) == PositionType.ITEMFAST) {
                                     collisionEventItemFast();
                                 }
                                 else{
@@ -63,18 +58,28 @@ public class Collision {
                     
                 }
                     
-                playingGround[x][y] = populateArrayAt(x, y, 
-                        this.playingGround.length -1,
-                        this.playingGround[x].length-1);
+                playingGround.setPositiontype(x, y, 
+                                              playingGround.populateArrayAt(x, y, 
+                                              this.playingGround.playingGround0Length() -1, 
+                                              this.playingGround.playingGround0Length()));
                 //weitere logik behandlung (items usw...)...
             }
         } 
         return false;
     }
     
+    private boolean comparePositionsXY(int x, int y){
+        if(x == playingGround.getSnake().getPos().getX() && y == playingGround.getSnake().getPos().getY()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
     //Macht dies in der Item-Klasse mehr Sinn?
     private void collisionEventItemNormal(){
-        snake.move(true);
+        playingGround.snake.move(true);
     }
     
     private void collisionEventItemFast(){
