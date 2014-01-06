@@ -3,6 +3,7 @@ package database;
 import gamelogic.Item;
 import gamelogic.PlayingGround;
 import gamelogic.Position;
+import gamelogic.Snake;
 import gamelogic.Spieler;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
  *
  * @author Julian
  */
-public class Datenbankzugriffe {
+public class Datenbankzugriffe implements IDatenbankZugriff {
 
     MysqlConnect instance;
 
@@ -22,7 +23,8 @@ public class Datenbankzugriffe {
     /**
      * Diese Methode mit Code füllen...
      */
-    public void erstelleHighScore(List<IdNamePair> idNamePairs) {
+    @Override
+    public void createHighscore(List<IdNamePair> idNamePairs) {
 
         for (IdNamePair idNamePair : idNamePairs) {
             instance.connect(); 
@@ -32,74 +34,51 @@ public class Datenbankzugriffe {
 
     }
 
-    /**
-     * Diese Methode mit Code füllen...
-     *
-     * @return
-     */
-    public List<IdNamePair> holeHighscore() {
-        instance.connect();
-
-        VereinfachtesResultSet result = instance.issueSelectStatement("select id, name from spieler;");
-
-        List<IdNamePair> idNamePairs = new ArrayList<IdNamePair>();
-
-        while (result.next()) {
-            idNamePairs.add(new IdNamePair(result.getInt("id"), result.getString("name")));
-        }
-        instance.close();
-        return idNamePairs;
-
-    }
-
-    public int getId() {
+    @Override
+    public int getCurrentPlayerID() {
         /// datenbankgruppe organisiert die id dies testspielers                                
         return 0;
     }
 
-    public List<Position> getPosition(int id) {
-        instance.connect();
-        VereinfachtesResultSet result = instance.issueSelectStatement("select x, y from positionschlange where id = ?;", id);
-        return null;
-    }
-
-    public void move(Integer id, String richtung) {
-    }
-
-    public String getDirection(int id) {
-        throw new UnsupportedOperationException("Methode noch nicht implemetiert."); //To change body of generated methods, choose Tools | Templates.
-    }
-    public void setDirection(int id) {
-        
-    }
-
-    public PlayingGround getPlayingGround() {
+    @Override
+    public PlayingGround getCurrentPlayingGround() {
         throw new UnsupportedOperationException("Methode noch nicht implemetiert.");
     }
 
-    public PlayingGround setPlayingGround(PlayingGround playingGround) {
+    @Override
+    public void setCurrentPlayingGround(PlayingGround playingGround) {
         throw new UnsupportedOperationException("Methode noch nicht implemetiert.");
 
     }
 
-    public List<Item> getItems() {
+    @Override
+    public List<Item> getCurrentItems() {
         throw new UnsupportedOperationException("Methode noch nicht implemetiert.");
     }
 
-    public void setItems(List<Item> item) {
+    @Override
+    public void setCurrentItems(List<Item> item) {
         throw new UnsupportedOperationException("Methode noch nicht implemetiert.");
     }
 
-    public void setPlayer(Spieler spieler) {
+    @Override
+    public void setCurrentPlayer(Spieler spieler) {
         throw new UnsupportedOperationException("Methode noch nicht implemetiert.");
     }
 
-    public Spieler getPlayer(Integer id) {
+    @Override
+    public Spieler getCurrentPlayer() {
         throw new UnsupportedOperationException("Methode noch nicht implemetiert.");
     }
     
     
+    @Override
     public void setHigscoreForPlayerID(int id, int Highscore) {
+        throw new UnsupportedOperationException("Methode noch nicht implemetiert.");
+
+    }
+    @Override
+    public int getHigscoreForPlayerID(int id) {
         throw new UnsupportedOperationException("Methode noch nicht implemetiert.");
 
     }
