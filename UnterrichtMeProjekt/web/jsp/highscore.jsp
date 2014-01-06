@@ -134,7 +134,8 @@
 <%@page import="java.io.File"%>
 <%@page import="java.util.LinkedList" %>
 <%@page import="java.util.ListIterator" %>
-<%@page import="database.Datenbankzugriffe" %> 
+<%@page import="database.Datenbankzugriffe" %>
+<%@page import="database.MysqlConnect" %> 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -172,7 +173,7 @@
     String picturePath = "/git/UnterrichtMe/UnterrichtMeProjekt/web/pics/spiel.png";
     // Hier müsst ihr den Pfad des ROOT Verzeichnis auf euerem Server angeben
     // bei euch zu 99% /var/lib/tomcat6/webapps/ROOT/
-    String tomcatRootPath = "/var/lib/tomcat6/webapps/ROOT/";
+    String tomcatRootPath = "/var/lib/tomcat6/webapps/ROOT/"; 
     File deployStream = new File(tomcatRootPath + picturePath);
     request.setAttribute("Pfad für die Erstellung von Bildern", deployStream.getPath());
     // Hier müsst ihr eure IP eintragen
@@ -190,6 +191,16 @@
     //Bilder laden im Hintergrund aktivieren
     request.getSession().setAttribute("task", new Task(deployStream));
 
+    //Verbindung mit der Datenbank und der Snake Tabelle
+    MysqlConnect instance = new MysqlConnect();
+    instance.connect();  
+    instance.otherStatements("use snake;");
+    
+    //Formulareingabe in Variablen auswerten 
+    String nickname = request.getParameter("nickname");
+    request.setAttribute("nickname", nickname);
+    instance.issueInsertOrDeleteStatement("insert into spieler (id, nickname) values (?, ?)", 12345, "TEST"); 
+    instance.close();
 %>
 
 <!--Hier beginnt die HTML-Seite-->
@@ -212,7 +223,7 @@
         <div class="wrapper" style="background-image: url('${thisSiteAddress}jsp/stars.png'); left: 300px;">
 <%                     
             out.println("<html>");
-            out.println("<table style='overflow: hidden; width: 900px; height: 400px; margin-left: auto; margin-right: auto; border: 1px solid #878787; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; border-top-left-radius: 6px; border-top-right-radius: 6px; background-color: #822323; box-shadow: 2px 4px 4px'>");
+            out.println("<table style='overflow: hidden; width: 900px; height: 400px; margin-left: auto; margin-right: auto; border: 1px solid #878787; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; border-top-left-radius: 6px; border-top-right-radius: 6px; background-color: #FFF2F2; box-shadow: 2px 4px 4px'>");
             out.println("<tr style='border-botton-width: 1px'>");
             out.println("<th><span style='font-family:BankGothic Md BT;font-size:1.7em; text-shadow:black 2px 4px 8px;color: #090131'>Platz</span></th><th><span style='font-family:BankGothic Md BT;font-size:1.7em; text-shadow:black 2px 4px 8px;color: #090131'>Score</span></th><th><span style='font-family:BankGothic Md BT;font-size:1.7em; text-shadow:black 2px 4px 8px;color: #090131'>Name</span></th>");
             out.println("</tr>"); 
@@ -221,8 +232,9 @@
                     }
             out.println("</table></html>");
 %>                                                                      
-            <table style="margin-left:auto;margin-right:auto">
-            </table>
+            <form action="${thisSiteAddress}jsp/highscore.jsp" method="post">
+                <p><br><span style='font-family:BankGothic Md BT;font-size:1.5em; color: #FFF2F2'>&emsp;&emsp;&emsp;&emsp;Nickname: &emsp;&emsp;&emsp;&emsp;</span><input name="nickname" type="text" size="30" maxlength="30" value="Nickname"><span style='font-family:BankGothic Md BT;font-size:1.5em; color: #FFF2F2'>${nickname}</span></p>
+            </form>
         </div>
     </body>
     <footer>

@@ -10,7 +10,7 @@ import threadexample.Thread2;
 
 /**
  *
- * @author Julian
+ * @author Julian Dehne
  */
 public class TestWeihnachten {
 
@@ -20,8 +20,16 @@ public class TestWeihnachten {
     @Test
     public void hello() throws InterruptedException {
         Thread1 thread1 = new Thread1(false);
+        Thread1 thread1a = new Thread1(false);
+        Thread1 thread1b = new Thread1(false);
+        Thread1 thread1c = new Thread1(false);
+        Thread1 thread1d = new Thread1(false);
         Thread2 thread2 = new Thread2(false);
         thread1.start();
+        thread1a.start();
+        thread1b.start();
+        thread1c.start();
+        thread1d.start();        
         thread2.start();
                 
         Thread.sleep(50000);
