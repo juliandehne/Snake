@@ -4,14 +4,14 @@ var picturePath;
 //var eventObject;
 $(window).ready(function() {
     picturepath = $("#reloadingPng").attr("src");
-    setInterval(reloadGameCanvas, 2000);      
+    setInterval(reloadGameCanvas, 200);      
 });
 
 
 
 function reloadGameCanvas() {
      var d = new Date();    
-     $("#reloadingPng").attr("src", picturepath+ "?"+d.getTime());   
+     $("#reloadingPng").attr("src", picturepath+ "/"+d.getTime());   
 //     $("#reloadingPng").attr("src", "http://localhost:8080/git/UnterrichtMe/UnterrichtMeProjekt/web/pics/test2.png?"+d.getTime());   
 }
 

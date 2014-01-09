@@ -71,4 +71,24 @@ public class PlayingGround {
     public PositionType[][] getPlayingGround() {
         return playingGround;
     }
+
+    @Override
+    public String toString() {
+        String result = "";
+        for (PositionType[] positionTypes : playingGround) { 
+            result+="\n";
+            for (PositionType positionType : positionTypes) {
+                if (positionType.equals(PositionType.SNAKETAIL)) {
+                    result+="+";
+                } else {
+                    result+="-";
+                }
+            }
+        }
+        return result;
+    }
+    
+    
+    
+    
 }
