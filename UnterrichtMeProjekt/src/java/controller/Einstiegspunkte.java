@@ -7,6 +7,8 @@ import gamelogic.Position;
 import gamelogic.PositionType;
 import gamelogic.Snake;
 import itemlogic.ItemController;
+import java.util.LinkedList;
+import java.util.Queue;
 import org.apache.log4j.Logger;
 import static util.LoggerHelper.initLogger;
 
@@ -27,13 +29,23 @@ public class Einstiegspunkte {
         Logger logger = initLogger();
 
         // neue TestSchlange erstellen
-        Position position = new Position(random.nextInt(99), random.nextInt(99));
-        Snake snake = new Snake(position, 5, Facing.RIGHT);
-        PlayingGround playingGround = new PlayingGround(100, 100, snake);
         
         /**
          * Aufgabe 0 Korregiert den Algorithmus... siehe Stunde
          */
+         Position position = new Position(random.nextInt(99), random.nextInt(99));
+         Queue<Position> queue = new LinkedList<Position>();
+         for (int i = 1; i < 5; i++) {
+             queue.add(new Position(position.getX() + i, position.getY()));
+         }
+         queue.add(position);
+         //datenbank lesen
+         Snake snake = new Snake(Facing.RIGHT, queue); //TODO
+         PlayingGround playingGround = new PlayingGround(100, 100, snake);
+         snake.move(false); //TODO
+         queue = snake.getSnakePositions();
+         //in datenbank schreibenb
+
 
         /**
          * Aufgabe1 Team Schlange

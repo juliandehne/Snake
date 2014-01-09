@@ -1,6 +1,7 @@
 package gamelogic;
 
 import java.util.ArrayList;
+import java.util.Queue;
 
 /**
  *
@@ -8,58 +9,48 @@ import java.util.ArrayList;
  */
 public class Snake {
 
-    private Position pos;
-    private int length;
     private Facing facing;
-    private ArrayList<Position> snakePositions;
+    private Queue<Position> snakePositions;
 
-    public Snake(Position pos, int length, Facing facing) {
-        this.pos = pos;
-        this.length = length;
+    public Snake(Facing facing, Queue<Position> snakePositions) {
         this.facing = facing;
+        this.snakePositions = snakePositions;
+        /*
         this.snakePositions = new ArrayList<Position>();
         for (int i = 0; i < length; i++) {
             this.snakePositions.add(new Position(this.pos.getX(), this.pos.getY() + i));
         }
+        */
     }
+    
+    
+    
 
     public void move(boolean shouldAddLength) {
         if (!shouldAddLength) {
-            this.snakePositions.remove(snakePositions.size()-1);
+            this.snakePositions.remove();
         }
-        this.snakePositions.add(0, this.pos);
         switch (this.facing) {
             case UP:
-                this.pos = new Position(this.pos.getX(), this.pos.getY() + 1);
+                this.snakePositions.add(new Position(this.snakePositions.element().getX(),this.snakePositions.element().getY()+1));
                 break;
             case DOWN:
-                this.pos = new Position(this.pos.getX(), this.pos.getY() - 1);
+                this.snakePositions.add(new Position(this.snakePositions.element().getX(),this.snakePositions.element().getY()-1));
                 break;
             case RIGHT:
-                this.pos = new Position(this.pos.getX() + 1, this.pos.getY());
+                this.snakePositions.add(new Position(this.snakePositions.element().getX()+1,this.snakePositions.element().getY()));               
                 break;
             case LEFT:
-                this.pos = new Position(this.pos.getX() - 1, this.pos.getY());
+                this.snakePositions.add(new Position(this.snakePositions.element().getX()-1,this.snakePositions.element().getY()));               
                 break;
         }
     }
 
     //getter and setter
     public Position getPos() {
-        return pos;
+        return this.snakePositions.element();
     }
 
-    public void setPos(Position pos) {
-        this.pos = pos;
-    }
-
-    public int getLength() {
-        return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
-    }
 
     public Facing getFacing() {
         return facing;
@@ -69,11 +60,11 @@ public class Snake {
         this.facing = facing;
     }
 
-    public ArrayList<Position> getSnakePositions() {
+    public Queue<Position> getSnakePositions() {
         return snakePositions;
     }
 
-    public void setSnakePositions(ArrayList<Position> snakePositions) {
+    public void setSnakePositions(Queue<Position> snakePositions) {
         this.snakePositions = snakePositions;
     }
 

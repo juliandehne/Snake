@@ -6,6 +6,7 @@ import gamelogic.Position;
 import gamelogic.Spieler;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  *
@@ -57,9 +58,9 @@ public class Datenbankzugriffe {
         return 0;
     }
 
-    public List<Position> getPosition(int id) {
+    public Queue<Position> getPositions(int id) {
         instance.connect();
-        VereinfachtesResultSet result = instance.issueSelectStatement("select x, y from positionschlange where id = ?;", id);
+        VereinfachtesResultSet result = instance.issueSelectStatement("select x, y from positionschlange where id=? order by indexPos;",id);
         return null;
     }
 
