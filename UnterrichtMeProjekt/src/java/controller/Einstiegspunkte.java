@@ -38,22 +38,26 @@ public class Einstiegspunkte {
         /**
          * Aufgabe1 Team Schlange
          *
-         * Hier musst jetzt der Code eingefügt werden, der die letzte Position
+         * Hier muss jetzt der Code eingefügt werden, der die letzte Position
          * aus der Datenbank ließt und dann ein update durchführt, das die neue
          * Position dann in die Datenbank schreibt.
          *
          * Erstellt hierfür eine Testschlange in der Datenbank!
          */
+        
         /**
-         * Aufgabe2 Team Schlange Erweitert den Code von oben, so dass die
-         * Richtungsänderungen die Team Richtungsänderungen in die Datenbank schreibt
+         * Aufgabe2 Team Schlange erweitert den Code von oben, so dass die
+         * Richtungsänderungen, die Team Richtungsänderungen in die Datenbank schreibt
          * beachtet werden.
          *
          * Lest die aktuelle Richtung aus einer entsprechenden Tabelle!
          */
+        
         /**
-         * Aufgabe3 Team Schlange Wenn es eine Kollision gibt, dann muss die
-         * Schlange aus der Datenbank gelöscht werden
+         * Aufgabe3 Team Schlange
+         * 
+         * Wenn es eine Kollision gibt, dann muss die
+         * Schlange aus der Datenbank gelöscht werden.
          *
          * Ladet hierfür die Position aller Schlangen - zunächst mehrere
          * Testschlangen - aus der Datenbank!
@@ -61,11 +65,13 @@ public class Einstiegspunkte {
          * Bei der Spielertabelle, die zu der Schlange gehört, muss markiert
          * werden, dass der Spieler "tot" ist
          */
+        
         /**
          * Aufgabe 4 Team Schlange Erweitert Aufgabe1, so dass die Items aus der
          * Datenbank gelesen werden, die Team "Items" in die Datenbank schreibt!
          *
-         */        
+         */
+        
         /**
          * Aufgabe 5: Erweitert den Algorithmus so, dass ein Highscore geführt
          * wird und dieser in die Highscoretabelle eingetragen wird 
@@ -73,9 +79,10 @@ public class Einstiegspunkte {
          * 
          * 
          */
+        
         /**
          * Aufgabe 6: Erweitert den Algorithmus so, dass anstatt dem Testspieler
-         * der jewailige Spieler 
+         * der jewailige Spieler verwendet wird.
          */        
         
         //logger.info(playingGround.toString()); // should be deleted in deploy version, because it creates huge files
