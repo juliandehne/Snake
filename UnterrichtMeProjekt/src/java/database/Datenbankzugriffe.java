@@ -66,7 +66,7 @@ public class Datenbankzugriffe {
     public void move(Integer id, String richtung) {
     }
 
-<<<<<<< HEAD
+
     public List<IdRichtungPair> getRichtung(int id) {
         instance.connect();
 
@@ -79,10 +79,10 @@ public class Datenbankzugriffe {
         }
         instance.close();
         return idRichtungPair;
-=======
-    public String getDirection(int id) {
-        throw new UnsupportedOperationException("Methode noch nicht implemetiert."); //To change body of generated methods, choose Tools | Templates.
->>>>>>> 8622e1ab16ed9f6a262f92e7274148574d061b35
+
+   //public String getDirection(int id) {
+        //throw new UnsupportedOperationException("Methode noch nicht implemetiert."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     public void setDirection(int id) {
         
