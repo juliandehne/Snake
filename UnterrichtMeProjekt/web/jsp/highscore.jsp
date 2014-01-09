@@ -73,11 +73,11 @@
     request.setAttribute("thisSiteAddress", thisSiteRootAddress);
 
     //Bilder laden im Hintergrund aktivieren
-    request.getSession().setAttribute("task", new Task(deployStream));
+    //request.getSession().setAttribute("task", new Task());
 
     //Verbindung mit der Datenbank und der Snake Tabelle
     MysqlConnect instance = new MysqlConnect();
-    instance.connect();  
+    instance.connect();        
     instance.otherStatements("use snake;");
     
     //Formulareingabe in Variablen auswerten 

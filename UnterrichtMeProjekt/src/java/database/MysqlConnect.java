@@ -13,7 +13,7 @@ import java.util.logging.Logger;
  *
  * @author Julian
  */
-public class MysqlConnect {   
+public class MysqlConnect {
 
     public Connection conn = null;
 
@@ -21,21 +21,21 @@ public class MysqlConnect {
      * Mit dieser Methode stellt man die Verbindung zu der Datenbank her.
      */
     public void connect() {
-      try {
-          conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/snake?user=root&password=root");
-      } catch (SQLException ex) {
+        try {
+            conn = DriverManager.getConnection("jdbc:mysql://10.25.25.155/mydb?user=schueler&password=schueler");
+        } catch (SQLException ex) {
             System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());
             System.out.println("VendorError: " + ex.getErrorCode());
             throw new Error("could not connect to mysql");
         }
     }
-    
-      /**
+
+    /**
      * Diese Methode verwendet Julian Dehne für seine lokale Testdatenbank
      */
     public void connectLokal() {
-      try {
+        try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost/mydb?user=root&password=voyager");
         } catch (SQLException ex) {
             System.out.println("SQLException: " + ex.getMessage());
@@ -43,7 +43,7 @@ public class MysqlConnect {
             System.out.println("VendorError: " + ex.getErrorCode());
             throw new Error("could not connect to mysql");
         }
-    } 
+    }
 
     /**
      * Mit dieser Methode wird die Verbindung zu der Datenbank geschlossen
@@ -56,7 +56,7 @@ public class MysqlConnect {
         } catch (final SQLException e) {
             throw new Error("could not close mysql");
         }
-    } 
+    }
 
     /**
      * Hilfsmethode 2 - fügt der einem PreparedStatement die entsprechenden
@@ -183,5 +183,4 @@ public class MysqlConnect {
     public void setConnection(Connection conn) {
         this.conn = conn;
     }
-  
-}  
+}

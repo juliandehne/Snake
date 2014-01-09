@@ -29,8 +29,8 @@
     File deployStream = new File(tomcatRootPath + picturePath);
     request.setAttribute("Pfad für die Erstellung von Bildern", deployStream.getPath());
     // Hier müsst ihr eure IP eintragen
-    String ip = "http://localhost:8080";
-    //String ip = "http://10.25.25.155:8080/";
+    //String ip = "http://localhost:8080";
+    String ip = "http://10.25.25.155:8080/";
     String pictureRootAddress = picturePath;
     String pictureAddress = ip + pictureRootAddress;
     request.setAttribute("Pfad für die Addressierung von Bildern per URl", pictureAddress);

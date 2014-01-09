@@ -103,4 +103,5 @@ public class Datenbankzugriffe {
         throw new UnsupportedOperationException("Methode noch nicht implemetiert.");
 
     }
+    
 }
