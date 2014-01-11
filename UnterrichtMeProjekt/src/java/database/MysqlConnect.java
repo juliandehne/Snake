@@ -11,8 +11,9 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Julian
+ * @author Julia
  */
+
 public class MysqlConnect {
 
     private Connection conn = null;
