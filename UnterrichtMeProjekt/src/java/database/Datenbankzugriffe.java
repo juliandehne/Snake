@@ -3,6 +3,7 @@ package database;
 import gamelogic.Item;
 import gamelogic.PlayingGround;
 import gamelogic.Position;
+import gamelogic.Snake;
 import gamelogic.Spieler;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.Queue;
  *
  * @author Julian
  */
-public class Datenbankzugriffe {
+public class Datenbankzugriffe implements IDatenbankZugriff {
 
     MysqlConnect instance;
 
@@ -23,7 +24,8 @@ public class Datenbankzugriffe {
     /**
      * Diese Methode mit Code füllen...
      */
-    public void erstelleHighScore(List<IdNamePair> idNamePairs) {
+    @Override
+    public void createHighscore(List<IdNamePair> idNamePairs) {
 
         for (IdNamePair idNamePair : idNamePairs) {
             instance.connect(); 
@@ -33,11 +35,14 @@ public class Datenbankzugriffe {
 
     }
 
+    @Override
+    public int getCurrentPlayerID() {
     /**
      * Diese Methode mit Code füllen...
      *
      * @return
      */
+     }
     public List<IdNamePair> holeHighscore() {
         instance.connect();
 
@@ -58,8 +63,8 @@ public class Datenbankzugriffe {
         return 0;
     }
 
-    public Queue<Position> getPositions(int id) {
-        instance.connect();
+    @Override
+    public PlayingGround getCurrentPlayingGround() {
         VereinfachtesResultSet result = instance.issueSelectStatement("select x, y from positionschlange where id=? order by indexPos;",id);
         return null;
     }
@@ -78,29 +83,40 @@ public class Datenbankzugriffe {
         throw new UnsupportedOperationException("Methode noch nicht implemetiert.");
     }
 
-    public PlayingGround setPlayingGround(PlayingGround playingGround) {
+    @Override
+    public void setCurrentPlayingGround(PlayingGround playingGround) {
         throw new UnsupportedOperationException("Methode noch nicht implemetiert.");
 
     }
 
-    public List<Item> getItems() {
+    @Override
+    public List<Item> getCurrentItems() {
         throw new UnsupportedOperationException("Methode noch nicht implemetiert.");
     }
 
-    public void setItems(List<Item> item) {
+    @Override
+    public void setCurrentItems(List<Item> item) {
         throw new UnsupportedOperationException("Methode noch nicht implemetiert.");
     }
 
-    public void setPlayer(Spieler spieler) {
+    @Override
+    public void setCurrentPlayer(Spieler spieler) {
         throw new UnsupportedOperationException("Methode noch nicht implemetiert.");
     }
 
-    public Spieler getPlayer(Integer id) {
+    @Override
+    public Spieler getCurrentPlayer() {
         throw new UnsupportedOperationException("Methode noch nicht implemetiert.");
     }
     
     
+    @Override
     public void setHigscoreForPlayerID(int id, int Highscore) {
+        throw new UnsupportedOperationException("Methode noch nicht implemetiert.");
+
+    }
+    @Override
+    public int getHigscoreForPlayerID(int id) {
         throw new UnsupportedOperationException("Methode noch nicht implemetiert.");
 
     }
