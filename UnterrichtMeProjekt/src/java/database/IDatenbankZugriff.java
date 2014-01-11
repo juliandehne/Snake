@@ -29,7 +29,7 @@ public interface IDatenbankZugriff {
 
     int getCurrentPlayerID();
 
-    PlayingGround getCurrentPlayingGround();
+    PlayingGround getCurrentPlayingGround(int spielerid);
 
     int getHigscoreForPlayerID(int id);
 
