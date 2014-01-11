@@ -1,4 +1,7 @@
 
+<%@page import="database.IdNamePair"%>
+<%@page import="database.VereinfachtesResultSet"%>
+<%@page import="database.MysqlConnect"%>
 <%--
     Document : highscore
     Created on : 28.11.2013, 22:20:13
@@ -23,7 +26,32 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
-
+    MysqlConnect instance = new MysqlConnect();
+    
+    instance.connect();
+    VereinfachtesResultSet result = instance.issueSelectStatement("select name from spieler");                
+    // resultset auslesen
+    ArrayList<IdNamePair> ergebnisAlsArray = new ArrayList<IdNamePair>();        
+    while (result.next()) {                        
+        ergebnisAlsArray.add(new IdNamePair(result.getInt("id"), result.getString("name")));
+    }                        
+    instance.close();
+   
+    //Iterator<String> niterator = name.iterator();
+    
+    /* instance.connect();
+    VereinfachtesResultSet result = instance.issueSelectStatement("select id, punkte from score");                
+    // resultset auslesen
+    ArrayList<IdScorePair> ergebnisAlsArray = new ArrayList<IdNamePair>();        
+    while (result.next()) {                        
+        ergebnisAlsArray.add(new IdScorePair(result.getInt("id"), result.getString("name")));
+    }                        
+    instance.close(); */
+    
+    
+    
+    
+    
     ArrayList<Integer> hs = new ArrayList<Integer>(); //-Erstellen einer ArrayList "hs" (=highscore)
     hs.add(999999); //mit Dummy-Daten, die später theoretisch aus der
     hs.add(234555); //Datenbank abgefragt und eingelesen werden
@@ -39,18 +67,21 @@
     
     int size = hs.size(); //-Festhalten der ArrayList Größe in der Variable "size"
     
-    ArrayList<String> name = new ArrayList<String>();
-    name.add("Marky"); //-identisch zur obigen ArrayList Erstellung
-    name.add("Ricky"); //wird hier der ebenfalls in der DB gespeicherte
-    name.add("Denny"); //Name vorläufig angelegt
-    name.add("Terry"); //-"<String>" kann manuell
-    name.add("Mike"); //festgelegt werden, wie oben
-    name.add("Dave");
-    name.add("Timmy");
-    name.add("Tommy");
-    name.add("Joe");
-    name.add("Robby");
-    Iterator<String> niterator = name.iterator();
+//    ArrayList<String> name = new ArrayList<String>();
+//    name.add("Marky"); //-identisch zur obigen ArrayList Erstellung
+//    name.add("Ricky"); //wird hier der ebenfalls in der DB gespeicherte
+//    name.add("Denny"); //Name vorläufig angelegt
+//    name.add("Terry"); //-"<String>" kann manuell
+//    name.add("Mike"); //festgelegt werden, wie oben
+//    name.add("Dave");
+//    name.add("Timmy");
+//    name.add("Tommy");
+//    name.add("Joe");
+//    name.add("Robby");
+//    Iterator<String> niterator = name.iterator();
+//    
+    
+    
     
     //Konfiguration für PictureLoad
     String picturePath = "/git/UnterrichtMe/UnterrichtMeProjekt/web/pics/spiel.png";
@@ -101,7 +132,7 @@
             out.println("<th><span style='font-family:BankGothic Md BT;font-size:1.7em; text-shadow:black 2px 4px 8px;color: #090131'>Platz</span></th><th><span style='font-family:BankGothic Md BT;font-size:1.7em; text-shadow:black 2px 4px 8px;color: #090131'>Score</span></th><th><span style='font-family:BankGothic Md BT;font-size:1.7em; text-shadow:black 2px 4px 8px;color: #090131'>Name</span></th>");
             out.println("</tr>");
                     for (int i = 1; hiterator.hasNext() ; i++){
-                        out.println("<tr align='center'><td><span style='font-family:BankGothic Md BT;font-size:1.3em; color: #090131'>" + i + "</span></td><td><span style='font-family:BankGothic Md BT;font-size:1.3em; color: #090131'>" + hiterator.next() + "</span></td><td><span style='font-family:BankGothic Md BT;font-size:1.3em; color: #090131'>" + niterator.next() + "</span></td></tr>");
+                 //       out.println("<tr align='center'><td><span style='font-family:BankGothic Md BT;font-size:1.3em; color: #090131'>" + i + "</span></td><td><span style='font-family:BankGothic Md BT;font-size:1.3em; color: #090131'>" + hiterator.next() + "</span></td><td><span style='font-family:BankGothic Md BT;font-size:1.3em; color: #090131'>" + niterator.next() + "</span></td></tr>");
                     }
             out.println("</table></html>");
 %>

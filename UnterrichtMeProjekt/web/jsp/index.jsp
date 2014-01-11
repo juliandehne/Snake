@@ -1,4 +1,5 @@
 
+<%@page import="database.MysqlConnect"%>
 <%--
     Document : snake
     Created on : 24.10.2013, 20:25:00
@@ -37,6 +38,8 @@
 
     //Bilder laden im Hintergrund aktivieren
     request.getSession().setAttribute("task", new Task());
+    
+    
 %>
 
 <!DOCTYPE html>
@@ -116,8 +119,14 @@
 
 <%
 // direction nimmt die Werte "links", "rechts", "oben" oder "unten an"
-    String direction = (String) request.getAttribute("direction");
-//Hier könnt ihr die Spiellogik anhängen, je nach dem in welche Richtung die Schlange bewegt werden soll
+    String direction = request.getSession().getAttribute("direction").toString();
+    out.print("direction");
+    MysqlConnect instance = new MysqlConnect();
+    instance.connect();
+    instance.otherStatements("use snake");
+    instance.issueUpdateStatement("update richtungschlangenbewegung set direktion = ? where id = 1", direction);
+    instance.close();
+    //Hier könnt ihr die Spiellogik anhängen, je nach dem in welche Richtung die Schlange bewegt werden soll
 %>
 
 

@@ -58,15 +58,30 @@ public class Datenbankzugriffe implements IDatenbankZugriff {
     public List<IdNamePair> holeHighscore() {
         instance.connect();
 
-        VereinfachtesResultSet result = instance.issueSelectStatement("select id, name from spieler;");
+        VereinfachtesResultSet result = instance.issueSelectStatement("select id, username from spieler;");
 
         List<IdNamePair> idNamePairs = new ArrayList<IdNamePair>();
 
         while (result.next()) {
-            idNamePairs.add(new IdNamePair(result.getInt("id"), result.getString("name")));
+            idNamePairs.add(new IdNamePair(result.getInt("id"), result.getString("username")));
         }
         instance.close();
         return idNamePairs;
+
+    }
+    
+        public List<IdScorePair> getHighscore() {
+        instance.connect();
+
+        VereinfachtesResultSet result = instance.issueSelectStatement("select id, punkte from score;");
+
+        List<IdScorePair> IdScorePair = new ArrayList<IdScorePair>();
+
+        while (result.next()) {
+            IdScorePair.add(new IdScorePair(result.getInt("id"), result.getInt("punkte")));
+        }
+        instance.close();
+        return IdScorePair;
 
     }
 
@@ -74,7 +89,7 @@ public class Datenbankzugriffe implements IDatenbankZugriff {
         /// datenbankgruppe organisiert die id dies testspielers                                
         return 0;
     }
-    //TODO: In ihterface packen
+    //TODO: In interface packen
     public Queue<Position> getPositions(int id) {
         instance.connect();
         VereinfachtesResultSet result = instance.issueSelectStatement("select x, y from positionschlange where id=? order by indexPos DESC;", id);
