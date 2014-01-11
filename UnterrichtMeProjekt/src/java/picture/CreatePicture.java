@@ -112,9 +112,8 @@ public class CreatePicture {
         PngWriter png = new PngWriter(outputStream, imi);
 
         ImageLineInt iline = new ImageLineInt(imi);
-
-        for (int x = 0; x < playingGround2DArray.length; x++) {
-            for (int y = 0; y < playingGround2DArray.length; y++) {
+   for (int x = 0; x < playingGround2DArray.length; x++) {
+            for (int y = 0; y < playingGround2DArray[0].length; y++) {
                 ImageLineHelper.setPixelRGB8(iline, y,
                         playingGround2DArray[x][y].color.getRed(),
                         playingGround2DArray[x][y].color.getGreen(),
@@ -122,6 +121,7 @@ public class CreatePicture {
             }
             png.writeRow(iline);
         }
+     
 
         png.end();
 

@@ -1,5 +1,6 @@
 package database;
 
+import gamelogic.Facing;
 import gamelogic.Item;
 import gamelogic.PlayingGround;
 import gamelogic.Position;
@@ -25,15 +26,13 @@ public class Datenbankzugriffe implements IDatenbankZugriff {
     /**
      * Diese Methode mit Code füllen...
      */
-    
     public void log(String logText) {
-            instance.connect();
-            instance.issueInsertOrDeleteStatement("insert into logdata (data) values (?) ", logText);
-            instance.close();
+        instance.connect();
+        instance.otherStatements("use snake");
+        instance.issueInsertOrDeleteStatement("insert into logdata (data) values (?) ", logText);
+        instance.close();
     }
-    
-    
-    
+
     @Override
     public void createHighscore(List<IdNamePair> idNamePairs) {
 
@@ -75,8 +74,10 @@ public class Datenbankzugriffe implements IDatenbankZugriff {
         return 0;
     }
     //TODO: In ihterface packen
+
     public Queue<Position> getPositions(int id) {
         instance.connect();
+        instance.otherStatements("use snake");
         VereinfachtesResultSet result = instance.issueSelectStatement("select x, y from positionschlange where id=? order by indexPos DESC;", id);
         Queue<Position> queue = new LinkedList<Position>();
         while (result.next()) {
@@ -85,13 +86,13 @@ public class Datenbankzugriffe implements IDatenbankZugriff {
         instance.close();
         return queue;
     }
-    
+
     public void setPositions(int id, Queue<Position> queue) {
         instance.connect();
         instance.issueInsertOrDeleteStatement("delete from positionschlange where id=?;", id);
         Position[] posArr = queue.toArray(new Position[0]);
-        for (int i = 0; i < posArr.length;i++) {
-            instance.issueInsertOrDeleteStatement("insert into positionschlange (x,y,id,indexPos) values (?,?,?,?)", posArr[i].getX(), posArr[i].getY(),id,i);
+        for (int i = 0; i < posArr.length; i++) {
+            instance.issueInsertOrDeleteStatement("insert into positionschlange (x,y,id,indexPos) values (?,?,?,?)", posArr[i].getX(), posArr[i].getY(), id, i);
         }
         instance.close();
     }
@@ -108,8 +109,28 @@ public class Datenbankzugriffe implements IDatenbankZugriff {
     public void move(Integer id, String richtung) {
     }
 
-    public String getDirection(int id) {
-        throw new UnsupportedOperationException("Methode noch nicht implemetiert."); //To change body of generated methods, choose Tools | Templates.
+    public Facing getDirection(int id) {
+        instance.connect();
+        instance.otherStatements("use snake");
+        VereinfachtesResultSet result = instance.issueSelectStatement("select direktion from richtungschlangenbewegung where id=?;", id);
+        String direction = "";
+        while (result.next()) {
+            direction = result.getString("direktion");
+        }
+        instance.close();
+        if (direction == "links") {
+            return Facing.LEFT;
+        }
+        if (direction == "rechts") {
+            return Facing.RIGHT;
+        }
+        if (direction == "oben") {
+            return Facing.UP;
+        }
+        if (direction == "unten") {
+            return Facing.DOWN;
+        }
+        return Facing.RIGHT;
     }
 
     public void setDirection(int id) {

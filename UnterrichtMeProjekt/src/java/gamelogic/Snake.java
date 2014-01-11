@@ -1,6 +1,7 @@
 package gamelogic;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Queue;
 
 /**
@@ -28,7 +29,9 @@ public class Snake {
 
     public void move(boolean shouldAddLength) {
         if (!shouldAddLength) {
-            this.snakePositions.remove();
+            LinkedList<Position> positins = new LinkedList<Position>(this.snakePositions);
+            positins.removeLast();
+            this.snakePositions = positins;
         }
         switch (this.facing) {
             case UP:

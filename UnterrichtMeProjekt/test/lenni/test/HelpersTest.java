@@ -4,12 +4,16 @@
  */
 package lenni.test;
 
+import database.MysqlConnect;
+import database.VereinfachtesResultSet;
 import gamelogic.Facing;
 import gamelogic.PlayingGround;
 import gamelogic.Position;
 import gamelogic.PositionType;
 import gamelogic.Snake;
 import java.io.File;
+import java.util.LinkedList;
+import java.util.Queue;
 import org.junit.Test;
 import picture.CreatePicture;
 
@@ -38,8 +42,18 @@ public class HelpersTest {
 //
 //        CreatePicture instance = new CreatePicture();
 //        instance.paintPicture(new File("C:\\Users\\Public\\Pictures/lennis_test.png"), arr);
-
     }
-    
- 
+
+    @Test
+    public void test2() {
+        MysqlConnect instance = new MysqlConnect();
+        instance.connect();
+        instance.otherStatements("use snake");
+        VereinfachtesResultSet result = instance.issueSelectStatement("select x, y from positionschlange where id=? order by indexPos DESC;", 1);
+        Queue<Position> queue = new LinkedList<Position>();
+        while (result.next()) {
+            queue.add(new Position(result.getInt("x"), result.getInt("y")));
+        }
+        instance.close();        
+    }
 }

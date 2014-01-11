@@ -1,5 +1,7 @@
 package gamelogic;
 
+import java.util.Queue;
+
 /**
  *
  * @author lenni
@@ -8,6 +10,8 @@ public class PlayingGround {
 
     public final Snake snake;
     public final PositionType[][] playingGround;
+    private Queue<Position> positions;
+    private Position firstPosition;
 
     public PlayingGround(int sizeX, int sizeY, Snake snake) {
         this.playingGround = new PositionType[sizeX][sizeY];
@@ -35,6 +39,9 @@ public class PlayingGround {
                 //weitere logik behandlung (items usw...)...
             }
         }
+        
+        
+        
         return true;
         
     }
@@ -48,18 +55,29 @@ public class PlayingGround {
      * @return returns the value which should be written at the position x,y
      */
     public PositionType populateArrayAt(int x, int y, int maxX, int maxY) {
-        if (x == snake.getPos().getX() && y == snake.getPos().getY()) {
-            return PositionType.SNAKEHEAD;
-        }
-        if (x == 0 || x == maxX || y == 0 || y == maxY) {
-            return PositionType.BORDER;
-        }
 
-        for (Position p : snake.getSnakePositions()) {
-            if (p.getX() == x && p.getY() == y) {
+        if (x == 0 || x == maxX-1 || y == 0 || y == maxY-1) {
+            return PositionType.BORDER;
+        }    
+                
+//        if (!positions.isEmpty()) {
+//        positions = snake.getSnakePositions();
+//        firstPosition = positions.poll();
+//        if (firstPosition.getX() == x && firstPosition.getY() == y) {
+//            return PositionType.SNAKEHEAD;
+//        }
+        
+        boolean ishead = true;
+        
+        for (Position p : snake.getSnakePositions()) {            
+            if (ishead && p.getX() == x && p.getY() == y) {                
+                ishead = false;
+                return PositionType.SNAKEHEAD;
+            }  else if (!ishead && p.getX() == x && p.getY() == y) {
                 return PositionType.SNAKETAIL;
-            }
+            }                         
         }
+//        }
         return PositionType.EMPTY;
     }
 
@@ -71,6 +89,14 @@ public class PlayingGround {
     public PositionType[][] getPlayingGround() {
         return playingGround;
     }
+    
+    public int getPlayingGroundLength(){
+        return playingGround.length;
+    }
+    
+    public int getPlayingGround0Length(){
+        return playingGround[0].length;
+    }
 
     @Override
     public String toString() {
@@ -80,7 +106,14 @@ public class PlayingGround {
             for (PositionType positionType : positionTypes) {
                 if (positionType.equals(PositionType.SNAKETAIL)) {
                     result+="+";
-                } else {
+                } 
+                if (positionType.equals(PositionType.SNAKEHEAD)) {
+                    result+="X";
+                }
+                if (positionType.equals(PositionType.BORDER)) {
+                    result+="#";
+                } 
+                else {
                     result+="-";
                 }
             }

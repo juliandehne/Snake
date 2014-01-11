@@ -26,40 +26,21 @@ public class Einstiegspunkte {
      * @param spielerid
      * @return 
      */
-    public PositionType[][] teamschlange(Integer spielerid) {
-        Logger logger = initLogger();
-
-        // neue TestSchlange erstellen
-        
-        /**
-         * Aufgabe 0 Korregiert den Algorithmus... siehe Stunde
-         */
+    public PositionType[][] teamschlange(Integer spielerid) {               
          Datenbankzugriffe dbz = new Datenbankzugriffe();
-         //Position position = new Position(random.nextInt(99), random.nextInt(99));
-         //         queue.add(position);       
-         
-         //datenbank lesen
-         Queue<Position> queue = dbz.getPositions(spielerid.intValue());
-         
-         Snake snake = new Snake(Facing.RIGHT, queue); //TODO
+         Queue<Position> queue = dbz.getPositions(spielerid.intValue());        
+         Snake snake = new Snake(dbz.getDirection(spielerid), queue); //TODO
          PlayingGround playingGround = new PlayingGround(100, 100, snake);
          snake.move(false); //TODO
-         playingGround.update();
+                  
+         // update 
+         playingGround.update();         
          queue = snake.getSnakePositions();
          
          //in datenbank schreibenb
          dbz.setPositions(spielerid.intValue(), queue);
-
-        /**
-         * Aufgabe1 Team Schlange
-         *
-         * Hier muss jetzt der Code eingefügt werden, der die letzte Position
-         * aus der Datenbank ließt und dann ein update durchführt, das die neue
-         * Position dann in die Datenbank schreibt.
-         *
-         * Erstellt hierfür eine Testschlange in der Datenbank!
-         */
-        
+                 
+       
         /**
          * Aufgabe2 Team Schlange erweitert den Code von oben, so dass die
          * Richtungsänderungen, die Team Richtungsänderungen in die Datenbank schreibt
@@ -103,6 +84,7 @@ public class Einstiegspunkte {
         //logger.info(playingGround.toString()); // should be deleted in deploy version, because it creates huge files
         //logger.info(position.toString()); // should be deleted in deploy version, because it creates huge files
         return playingGround.getPlayingGround();
+         
     }
     
     
