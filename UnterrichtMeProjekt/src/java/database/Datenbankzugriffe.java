@@ -25,6 +25,15 @@ public class Datenbankzugriffe implements IDatenbankZugriff {
     /**
      * Diese Methode mit Code füllen...
      */
+    
+    public void log(String logText) {
+            instance.connect();
+            instance.issueInsertOrDeleteStatement("insert into logdata (data) values (?) ", logText);
+            instance.close();
+    }
+    
+    
+    
     @Override
     public void createHighscore(List<IdNamePair> idNamePairs) {
 
@@ -65,23 +74,34 @@ public class Datenbankzugriffe implements IDatenbankZugriff {
         /// datenbankgruppe organisiert die id dies testspielers                                
         return 0;
     }
-
-<<<<<<< HEAD
+    //TODO: In ihterface packen
     public Queue<Position> getPositions(int id) {
         instance.connect();
-        VereinfachtesResultSet result = instance.issueSelectStatement("select x, y from positionschlange where id=? order by indexPos DESC;",id);
-        Queue<Position> queue = new LinkedList<Position>();        
-        while (result.next()) {                        
-            //queue.add(new Position(resul)IdNamePair(result.getInt("id"), result.getString("name")));
-        }  
-=======
+        VereinfachtesResultSet result = instance.issueSelectStatement("select x, y from positionschlange where id=? order by indexPos DESC;", id);
+        Queue<Position> queue = new LinkedList<Position>();
+        while (result.next()) {
+            queue.add(new Position(result.getInt("x"), result.getInt("y")));
+        }
+        instance.close();
+        return queue;
+    }
+    
+    public void setPositions(int id, Queue<Position> queue) {
+        instance.connect();
+        instance.issueInsertOrDeleteStatement("delete from positionschlange where id=?;", id);
+        Position[] posArr = queue.toArray(new Position[0]);
+        for (int i = 0; i < posArr.length;i++) {
+            instance.issueInsertOrDeleteStatement("insert into positionschlange (x,y,id,indexPos) values (?,?,?,?)", posArr[i].getX(), posArr[i].getY(),id,i);
+        }
+        instance.close();
+    }
+
     @Override
     public PlayingGround getCurrentPlayingGround(int id) {
         VereinfachtesResultSet result = instance.issueSelectStatement("select x, y from positionschlange where id=? order by indexPos;", id);
         /**
          * hier noch zu ende implementieren
-         */        
->>>>>>> 74832a9a1589b12647b420fd73a20da678124686
+         */
         return null;
     }
 
@@ -93,7 +113,6 @@ public class Datenbankzugriffe implements IDatenbankZugriff {
     }
 
     public void setDirection(int id) {
-
     }
 
     public PlayingGround getPlayingGround() {
@@ -137,5 +156,4 @@ public class Datenbankzugriffe implements IDatenbankZugriff {
         throw new UnsupportedOperationException("Methode noch nicht implemetiert.");
 
     }
-
 }

@@ -30,11 +30,12 @@ public class StartServlet extends HttpServlet {
             throws ServletException, IOException {
         Logger logger = LoggerHelper.initLogger();
         logger.info("Opening Start servlet class");
-
+        
         //some magic        
         //Bilder laden im Hintergrund aktivieren
 //        request.getSession().setAttribute("task", new Task());
         request.getRequestDispatcher("/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/index.jsp").forward(request, response);
+        
     }
 
 //    Hier können HTML POST Nachrichten verarbeitet werden

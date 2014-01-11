@@ -41,7 +41,7 @@ public class DantebankZugriffTest implements IDatenbankZugriff {
     }
 
     @Override
-    public PlayingGround getCurrentPlayingGround() {
+    public PlayingGround getCurrentPlayingGround(int id) {
         return currentPlayingGround;
     }
 
