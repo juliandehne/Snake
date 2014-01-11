@@ -1,6 +1,7 @@
 package controller;
 
 import static controller.ImageServlet.random;
+import database.Datenbankzugriffe;
 import gamelogic.Facing;
 import gamelogic.PlayingGround;
 import gamelogic.Position;
@@ -33,19 +34,21 @@ public class Einstiegspunkte {
         /**
          * Aufgabe 0 Korregiert den Algorithmus... siehe Stunde
          */
-         Position position = new Position(random.nextInt(99), random.nextInt(99));
-         Queue<Position> queue = new LinkedList<Position>();
-         for (int i = 1; i < 5; i++) {
-             queue.add(new Position(position.getX() + i, position.getY()));
-         }
-         queue.add(position);
+         Datenbankzugriffe dbz = new Datenbankzugriffe();
+         //Position position = new Position(random.nextInt(99), random.nextInt(99));
+         //         queue.add(position);       
+         
          //datenbank lesen
+         Queue<Position> queue = dbz.getPositions(spielerid.intValue());
+         
          Snake snake = new Snake(Facing.RIGHT, queue); //TODO
          PlayingGround playingGround = new PlayingGround(100, 100, snake);
          snake.move(false); //TODO
+         playingGround.update();
          queue = snake.getSnakePositions();
+         
          //in datenbank schreibenb
-
+         dbz.setPositions(spielerid.intValue(), queue);
 
         /**
          * Aufgabe1 Team Schlange

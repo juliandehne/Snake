@@ -4,7 +4,7 @@ var picturePath;
 //var eventObject;
 $(window).ready(function() {
     picturepath = $("#reloadingPng").attr("src");
-    setInterval(reloadGameCanvas, 200);      
+    setInterval(reloadGameCanvas, 500);      
 });
 
 

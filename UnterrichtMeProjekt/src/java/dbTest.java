@@ -2,50 +2,19 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package database;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import database.IdNamePair;
+import database.MysqlConnect;
+import database.VereinfachtesResultSet;
 import java.util.ArrayList;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
- * @author Julian
+ * @author vogelsang
  */
-public class MysqlConnectTest {
+public class dbTest {
+        
     
-    public MysqlConnectTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
-    /**
-     * Beispielstatements
-     */
-    @Test
-    public void testWrapper() {
+     public static void main(String[] args) {
         System.out.println("connect");
         MysqlConnect instance = new MysqlConnect();   //voodoo             
         // Verbindung erstellen
@@ -84,5 +53,5 @@ public class MysqlConnectTest {
             System.out.println("Der Name lautet: " + idNamePair.getName());
         }
     }
-
+    
 }

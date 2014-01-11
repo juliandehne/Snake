@@ -5,10 +5,7 @@
  */
 package controller;
 
-import gamelogic.Facing;
-import gamelogic.PlayingGround;
-import gamelogic.Position;
-import gamelogic.Snake;
+import database.Datenbankzugriffe;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Random;
@@ -16,10 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.log4j.Logger;
 import picture.CreatePicture;
-import util.LoggerHelper;
-import static util.LoggerHelper.initLogger;
 
 /**
  *
@@ -56,7 +50,8 @@ public class ImageServlet extends HttpServlet {
         //e.setSpielerId((Integer)request.getAttribute("spielerid"));
         e.setSpielerId(1);
         
-   
+        //Datenbankzugriffe dbz = new Datenbankzugriffe();
+        //dbz.log("ImageServlet");
         // Bild erstellen ab hier bitte ignorieren
         // Cache für Bilder ausschalten
         CreatePicture instance = new CreatePicture();
