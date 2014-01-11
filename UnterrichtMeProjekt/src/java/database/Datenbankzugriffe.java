@@ -5,6 +5,7 @@ import gamelogic.PlayingGround;
 import gamelogic.Position;
 import gamelogic.Spieler;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
@@ -60,7 +61,11 @@ public class Datenbankzugriffe {
 
     public Queue<Position> getPositions(int id) {
         instance.connect();
-        VereinfachtesResultSet result = instance.issueSelectStatement("select x, y from positionschlange where id=? order by indexPos;",id);
+        VereinfachtesResultSet result = instance.issueSelectStatement("select x, y from positionschlange where id=? order by indexPos DESC;",id);
+        Queue<Position> queue = new LinkedList<Position>();        
+        while (result.next()) {                        
+            //queue.add(new Position(resul)IdNamePair(result.getInt("id"), result.getString("name")));
+        }  
         return null;
     }
 
