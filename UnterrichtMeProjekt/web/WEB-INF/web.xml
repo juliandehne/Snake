@@ -7,11 +7,7 @@
     <servlet>
         <servlet-name>ImageServlet</servlet-name>
         <servlet-class>controller.ImageServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>Highscore</servlet-name>
-        <servlet-class>controller.HighscoreServlet</servlet-class>
-    </servlet>
+    </servlet>  
     <servlet-mapping>
         <servlet-name>StartServlet</servlet-name>
         <url-pattern>/</url-pattern>
@@ -30,11 +26,7 @@
     <servlet-mapping>
         <servlet-name>ImageServlet</servlet-name>
         <url-pattern>/image/*</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Highscore</servlet-name>
-        <url-pattern>/highscore/*</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>   
     <session-config>
         <session-timeout>
             30
