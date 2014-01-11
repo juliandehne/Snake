@@ -14,7 +14,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%
+<%    
+    
+    
     //Konfiguration für PictureLoad  
     String picturePath = "/git/UnterrichtMe/UnterrichtMeProjekt/web/pics/spiel.png";
     // Hier müsst ihr den Pfad des ROOT Verzeichnis auf euerem Server angeben
@@ -56,10 +58,10 @@
             <div class="headerint" align="center">
                 <img name="Wechselbild1" onmouseover="Wechselbild1.src = '${thisSiteAddress}jsp/logo_titlebunt.png';" onmouseout="Wechselbild1.src = '${thisSiteAddress}jsp/logo_title.png';" src="${thisSiteAddress}jsp/logo_title.png" />
                 </div>
-            <a onmouseover="Wechselbild2.src = '${thisSiteAddress}jsp/highscore_omobunt.png';"       
-               onmouseout="Wechselbild2.src = '${thisSiteAddress}jsp/highscore.png';" 
-               href="${thisSiteAddress}jsp/highscore.jsp">
-                <img src="${thisSiteAddress}jsp/highscore.png" name="Wechselbild2"></a>          
+            <a onmouseover="Wechselbild2.src = '${thisSiteAddress}highscore/highscore_omobunt.png';"       
+               onmouseout="Wechselbild2.src = '${thisSiteAddress}highscore/highscore.png';" 
+               href="${thisSiteAddress}highscore/highscore.jsp">
+                <img src="${thisSiteAddress}highscore/highscore.png" name="Wechselbild2"></a>          
         </div> 
         <div class="wrapper" style="background-image: url('${thisSiteAddress}jsp/stars.png'); left: 300px;">
             <table style="overflow:hidden;width:900px;height:400px;margin-left:auto;margin-right:auto;">
