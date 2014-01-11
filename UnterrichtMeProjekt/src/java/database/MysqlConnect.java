@@ -13,7 +13,6 @@ import java.util.logging.Logger;
  *
  * @author Julia
  */
-
 public class MysqlConnect {
 
     public Connection conn = null;
@@ -23,7 +22,13 @@ public class MysqlConnect {
      */
     public void connect() {
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://10.25.25.155/mydb?user=schueler&password=schueler");
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(MysqlConnect.class.getName()).log(Level.SEVERE, null, ex);
+            }
+//conn = DriverManager.getConnection("jdbc:mysql://localhost/mydb?user=root&password=voyager");
+            conn = DriverManager.getConnection("jdbc:mysql://10.25.25.155:3306/mydb?user=schueler&password=schueler");
         } catch (SQLException ex) {
             System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());
@@ -37,7 +42,13 @@ public class MysqlConnect {
      */
     public void connectLokal() {
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/mydb?user=root&password=voyager");
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MysqlConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        try {
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?user=root&password=voyager");
         } catch (SQLException ex) {
             System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());
