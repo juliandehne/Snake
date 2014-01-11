@@ -14,9 +14,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%
-    //Logger logger = util.LoggerHelper.initLogger();
-    //logger.info("started JSP page at " + new Date(System.currentTimeMillis()));
+<%    
+    
+   
    //Konfiguration für PictureLoad  
     //String picturePath = "/git/UnterrichtMe/UnterrichtMeProjekt/web/pics/spiel.png";
     String picturePath = "/image/spiel.png";    
@@ -24,18 +24,17 @@
     // bei euch zu 99% /var/lib/tomcat6/webapps/ROOT/
     //String tomcatRootPath = "C:/Program Files/Apache Software Foundation/Tomcat 6.0/webapps/ROOT";
 
-    //Konfiguration für PictureLoad  
-    //String picturePath = "/git/UnterrichtMe/UnterrichtMeProjekt/web/pics/spiel.png";
     // Hier müsst ihr den Pfad des ROOT Verzeichnis auf euerem Server angeben
     // bei euch zu 99% /var/lib/tomcat6/webapps/ROOT/
+
     String tomcatRootPath = "/var/lib/tomcat6/webapps/ROOT/";
     File deployStream = new File(tomcatRootPath + picturePath);
     request.setAttribute("Pfad für die Erstellung von Bildern", deployStream.getPath());
     // Hier müsst ihr eure IP eintragen
-    //String ip = "http://localhost:8080";
-    String ip = "http://10.25.25.142:8080/";
 
-    //String ip = "http://10.25.25.135:8080";
+    //String ip = "http://localhost:8080";
+    String ip = "http://10.25.25.135:8080";
+
     String pictureRootAddress = picturePath;
     String pictureAddress = ip + pictureRootAddress;
     request.setAttribute("Pfad für die Addressierung von Bildern per URl", pictureAddress);
@@ -68,10 +67,10 @@
             <div class="headerint" align="center">
                 <img name="Wechselbild1" onmouseover="Wechselbild1.src = '${thisSiteAddress}jsp/logo_titlebunt.png';" onmouseout="Wechselbild1.src = '${thisSiteAddress}jsp/logo_title.png';" src="${thisSiteAddress}jsp/logo_title.png" />
                 </div>
-            <a onmouseover="Wechselbild2.src = '${thisSiteAddress}jsp/highscore_omobunt.png';"       
-               onmouseout="Wechselbild2.src = '${thisSiteAddress}jsp/highscore.png';" 
-               href="${thisSiteAddress}jsp/highscore.jsp">
-                <img src="${thisSiteAddress}jsp/highscore.png" name="Wechselbild2"></a>          
+            <a onmouseover="Wechselbild2.src = '${thisSiteAddress}highscore/highscore_omobunt.png';"       
+               onmouseout="Wechselbild2.src = '${thisSiteAddress}highscore/highscore.png';" 
+               href="${thisSiteAddress}highscore/highscore.jsp">
+                <img src="${thisSiteAddress}highscore/highscore.png" name="Wechselbild2"></a>          
         </div> 
         <div class="wrapper" style="background-image: url('${thisSiteAddress}jsp/stars.png'); left: 300px;">
             <table style="overflow:hidden;width:900px;height:400px;margin-left:auto;margin-right:auto;">

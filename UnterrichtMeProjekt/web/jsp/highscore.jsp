@@ -70,7 +70,7 @@
     request.setAttribute("thisSiteAddress", thisSiteRootAddress);
 
     //Bilder laden im Hintergrund aktivieren
-    request.getSession().setAttribute("task", new Task(deployStream));
+    request.getSession().setAttribute("task", new Task());
 
 %>
 

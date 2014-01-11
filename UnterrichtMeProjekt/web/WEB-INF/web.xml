@@ -2,12 +2,12 @@
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <servlet>
         <servlet-name>StartServlet</servlet-name>
-        <servlet-class>controller.StartServlet</servlet-class>
+        <servlet-class>controller.HighscoreServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ImageServlet</servlet-name>
         <servlet-class>controller.ImageServlet</servlet-class>
-    </servlet>
+    </servlet>  
     <servlet-mapping>
         <servlet-name>StartServlet</servlet-name>
         <url-pattern>/</url-pattern>
@@ -26,7 +26,7 @@
     <servlet-mapping>
         <servlet-name>ImageServlet</servlet-name>
         <url-pattern>/image/*</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>   
     <session-config>
         <session-timeout>
             30
