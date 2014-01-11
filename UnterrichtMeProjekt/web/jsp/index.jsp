@@ -3,8 +3,6 @@
     Created on : 24.10.2013, 20:25:00
     Author     : Julian Dehne
 --%>
-<%@page import="java.sql.Date"%>
-<%@page import="org.apache.log4j.Logger"%>
 <!-- JSP Imports  -->
 <%@page import="controller.Task"%>
 <%@page import="java.util.HashMap"%>
@@ -17,6 +15,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
+<<<<<<< HEAD
     Logger logger = util.LoggerHelper.initLogger();
     logger.info("started JSP page at " + new Date(System.currentTimeMillis()));
    //Konfiguration für PictureLoad  
@@ -25,27 +24,34 @@
     // Hier müsst ihr den Pfad des ROOT Verzeichnis auf euerem Server angeben
     // bei euch zu 99% /var/lib/tomcat6/webapps/ROOT/
     //String tomcatRootPath = "C:/Program Files/Apache Software Foundation/Tomcat 6.0/webapps/ROOT";
+=======
+    //Konfiguration für PictureLoad  
+    String picturePath = "/git/UnterrichtMe/UnterrichtMeProjekt/web/pics/spiel.png";
+    // Hier müsst ihr den Pfad des ROOT Verzeichnis auf euerem Server angeben
+    // bei euch zu 99% /var/lib/tomcat6/webapps/ROOT/
+>>>>>>> 42b0233038c26a7073affaf98c76e7c80ddcc82d
     String tomcatRootPath = "/var/lib/tomcat6/webapps/ROOT/";
     File deployStream = new File(tomcatRootPath + picturePath);
     request.setAttribute("Pfad für die Erstellung von Bildern", deployStream.getPath());
     // Hier müsst ihr eure IP eintragen
+<<<<<<< HEAD
     //String ip = "http://localhost:8080";
     String ip = "http://10.25.25.142:8080/";
+=======
+    String ip = "http://10.25.25.135:8080";
+>>>>>>> 42b0233038c26a7073affaf98c76e7c80ddcc82d
     String pictureRootAddress = picturePath;
     String pictureAddress = ip + pictureRootAddress;
     request.setAttribute("Pfad für die Addressierung von Bildern per URl", pictureAddress);
     request.setAttribute("pictureAddress", pictureAddress); //fürs einsetzen in HTML 
-    
+
     // Die Addresse dieser Seite
     String thisSiteRootAddress = "/git/UnterrichtMe/UnterrichtMeProjekt/build/web/";
-    //String thisSiteRootAddress = "git/UnterrichtMe/UnterrichtMeProjekt/build/web/";
-    String thisSiteAddress = ip + thisSiteRootAddress; 
+    String thisSiteAddress = ip + thisSiteRootAddress;
     request.setAttribute("thisSiteAddress", thisSiteRootAddress);
-    request.setAttribute("thisSiteAddress", thisSiteAddress);
-    
 
-    //startet Hintegrundprozesse (Items spawnen)    
-    request.getSession().setAttribute("task", new Task());
+    //Bilder laden im Hintergrund aktivieren
+    request.getSession().setAttribute("task", new Task(deployStream));
 %>
 
 <!DOCTYPE html>
