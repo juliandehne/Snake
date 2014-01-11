@@ -49,10 +49,10 @@ public class MysqlConnectTest {
         System.out.println("connect");
         MysqlConnect instance = new MysqlConnect();   //voodoo             
         // Verbindung erstellen
-        //instance.connect(); 
-        instance.connectLokal(); // bitte auskommentieren
+        instance.connect(); 
+        //instance.connectLokal(); // bitte auskommentieren
         // datenbank test verwenden
-        instance.otherStatements("use test;");
+        instance.otherStatements("use mydb;");
         // Tabelle löschen
         instance.otherStatements("drop table lehrer");
         // Tabelle erstellen

@@ -38,8 +38,9 @@
     hs.add(1);
     Iterator<Integer> hiterator = hs.iterator();
     
-    MysqlConnect instance = new MysqlConnect();
+    MysqlConnect instance = new MysqlConnect();    
     instance.connect();     
+    instance.otherStatements("use mydb;");
     // select ausführen
     VereinfachtesResultSet result = instance.issueSelectStatement("select id, username from spieler");
     while (result.next()) {        
