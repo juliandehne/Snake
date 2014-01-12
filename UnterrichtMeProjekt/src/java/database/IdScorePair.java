@@ -4,13 +4,13 @@ package database;
  *
  * @author Julian
  */
-public class IdNamePair {
+public class IdScorePair {
     private int id;
-    private String name;    
+    private int punkte;    
 
-    public IdNamePair(int id, String username) {
+    public IdScorePair(int id, int punkte) {
         this.id = id;
-        this.name = username;
+        this.punkte = punkte;
     }
 
     /**
@@ -30,15 +30,16 @@ public class IdNamePair {
     /**
      * @return the name
      */
-    public String getName() {
-        return name;
+    public int getScore() {
+        return punkte;
     }
 
     /**
      * @param name the name to set
      */
-    public void setName(String username) {
-        this.name = username;
+    public void setScore(int punkte) {
+        this.punkte = punkte;
     }
     
 }
+
