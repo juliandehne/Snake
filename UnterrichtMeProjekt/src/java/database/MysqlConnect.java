@@ -11,29 +11,33 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Julia
+ * @author Julian Dehne
  */
 public class MysqlConnect {
 
     public Connection conn = null;
+    public static Boolean isLokal = true;
 
     /**
      * Mit dieser Methode stellt man die Verbindung zu der Datenbank her.
      */
     public void connect() {
-        try {
+        if (isLokal) {
+            connectLokal();
+        } else {
             try {
-                Class.forName("com.mysql.jdbc.Driver");
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(MysqlConnect.class.getName()).log(Level.SEVERE, null, ex);
+                try {
+                    Class.forName("com.mysql.jdbc.Driver");
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(MysqlConnect.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                conn = DriverManager.getConnection("jdbc:mysql://10.25.25.155:3306/mydb?user=schueler&password=schueler");
+            } catch (SQLException ex) {
+                System.out.println("SQLException: " + ex.getMessage());
+                System.out.println("SQLState: " + ex.getSQLState());
+                System.out.println("VendorError: " + ex.getErrorCode());
+                throw new Error("could not connect to mysql");
             }
-//conn = DriverManager.getConnection("jdbc:mysql://localhost/mydb?user=root&password=voyager");
-            conn = DriverManager.getConnection("jdbc:mysql://10.25.25.155:3306/mydb?user=schueler&password=schueler");
-        } catch (SQLException ex) {
-            System.out.println("SQLException: " + ex.getMessage());
-            System.out.println("SQLState: " + ex.getSQLState());
-            System.out.println("VendorError: " + ex.getErrorCode());
-            throw new Error("could not connect to mysql");
         }
     }
 

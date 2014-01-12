@@ -17,18 +17,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
-    //Konfiguration für PictureLoad
-    String picturePath = "/git/UnterrichtMe/UnterrichtMeProjekt/web/pics/spiel.png";
-    // Hier müsst ihr den Pfad des ROOT Verzeichnis auf euerem Server angeben
-    // bei euch zu 99% /var/lib/tomcat6/webapps/ROOT/
-    String tomcatRootPath = "/var/lib/tomcat6/webapps/ROOT/";
-    File deployStream = new File(tomcatRootPath + picturePath);
-    request.setAttribute("Pfad für die Erstellung von Bildern", deployStream.getPath());
+
     // Hier müsst ihr eure IP eintragen
-    String ip = "http://10.25.25.135:8080";
-    String pictureRootAddress = picturePath;
+    String ip = "http://localhost:8080";
+    String pictureRootAddress = "/image/*";
     String pictureAddress = ip + pictureRootAddress;
-    request.setAttribute("Pfad für die Addressierung von Bildern per URl", pictureAddress);
     request.setAttribute("pictureAddress", pictureAddress); //fürs einsetzen in HTML
 
     // Die Addresse dieser Seite
@@ -37,9 +30,8 @@
     request.setAttribute("thisSiteAddress", thisSiteRootAddress);
 
     //Bilder laden im Hintergrund aktivieren
-    request.getSession().setAttribute("task", new Task());
-    
-    
+    //request.getSession().setAttribute("task", new Task());
+
 %>
 
 <!DOCTYPE html>
@@ -59,7 +51,7 @@
         <div class="header">
             <div class="headerint" align="center">
                 <img name="Wechselbild1" onmouseover="Wechselbild1.src = '${thisSiteAddress}jsp/logo_titlebunt.png';" onmouseout="Wechselbild1.src = '${thisSiteAddress}jsp/logo_title.png';" src="${thisSiteAddress}jsp/logo_title.png" />
-                </div>
+            </div>
             <a onmouseover="Wechselbild2.src = '${thisSiteAddress}jsp/highscore_omobunt.png';"
                onmouseout="Wechselbild2.src = '${thisSiteAddress}jsp/highscore.png';"
                href="${thisSiteAddress}jsp/highscore.jsp">
@@ -117,15 +109,12 @@
     </footer>
 </html>
 
-<%
-// direction nimmt die Werte "links", "rechts", "oben" oder "unten an"
-    String direction = request.getSession().getAttribute("direction").toString();
-    out.print("direction");
-    MysqlConnect instance = new MysqlConnect();
-    instance.connect();
-    instance.otherStatements("use snake");
-    instance.issueUpdateStatement("update richtungschlangenbewegung set direktion = ? where id = 1", direction);
-    instance.close();
+<%// direction nimmt die Werte "links", "rechts", "oben" oder "unten an"
+    if (request.getSession().getAttribute("direction") != null) {
+        String direction = request.getSession().getAttribute("direction").toString();
+        out.print("direction");
+    }
+
     //Hier könnt ihr die Spiellogik anhängen, je nach dem in welche Richtung die Schlange bewegt werden soll
 %>
 

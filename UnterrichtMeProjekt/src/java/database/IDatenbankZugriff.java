@@ -41,4 +41,6 @@ public interface IDatenbankZugriff {
 
     void setHigscoreForPlayerID(int id, int Highscore);
     
+    void updateRichtung(String richtung);
+    
 }

@@ -68,8 +68,8 @@ public class Datenbankzugriffe implements IDatenbankZugriff {
         return idNamePairs;
 
     }
-    
-        public List<IdScorePair> getHighscore() {
+
+    public List<IdScorePair> getHighscore() {
         instance.connect();
 
         VereinfachtesResultSet result = instance.issueSelectStatement("select id, punkte from score;");
@@ -88,6 +88,7 @@ public class Datenbankzugriffe implements IDatenbankZugriff {
         /// datenbankgruppe organisiert die id dies testspielers                                
         return 0;
     }
+
     //TODO: In interface packen
     public Queue<Position> getPositions(int id) {
         instance.connect();
@@ -190,5 +191,14 @@ public class Datenbankzugriffe implements IDatenbankZugriff {
     public int getHigscoreForPlayerID(int id) {
         throw new UnsupportedOperationException("Methode noch nicht implemetiert.");
 
+    }
+
+    @Override
+    public void updateRichtung(String richtung) {
+        MysqlConnect instance = new MysqlConnect();
+        instance.connect();
+        instance.otherStatements("use snake");
+        instance.issueUpdateStatement("update richtungschlangenbewegung set direktion = ? where id = 1", richtung);
+        instance.close();
     }
 }
