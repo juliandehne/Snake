@@ -22,24 +22,20 @@ public class PlayingGround {
     /**
      * Hauptmehtode zur Logikbehandlung Design: um die Schlange zu updaten,
      * diese direkt verändern, folgende Methode merkt dies dann
+     *
      * @return returns whether the game still running (->Game Over)
      */
-    public boolean update() {
+    public void update() {
         for (int x = 0; x < this.playingGround.length; x++) {
             for (int y = 0; y < this.playingGround[x].length; y++) {
-                if (x == snake.getPos().getX() && y == snake.getPos().getY() && 
-                    playingGround[x][y] == PositionType.BORDER) {
-                    //GAME ZU ENDE, false wird zurückgegeben
-                    return false;
-                }
-                playingGround[x][y] = populateArrayAt(x, y, 
-                        this.playingGround.length -1,
-                        this.playingGround[x].length-1);
-                //weitere logik behandlung (items usw...)...
+                playingGround[x][y] = populateArrayAt(x, y,
+                        this.playingGround.length - 1,
+                        this.playingGround[x].length - 1);
+                //weitere logik behandlung (items usw...)...              
             }
         }
-        return true;
         
+
     }
 
     /**
@@ -51,29 +47,19 @@ public class PlayingGround {
      * @return returns the value which should be written at the position x,y
      */
     public PositionType populateArrayAt(int x, int y, int maxX, int maxY) {
-
-        if (x == 0 || x == maxX-1 || y == 0 || y == maxY-1) {
+        if (x == 0 || x == maxX - 1 || y == 0 || y == maxY - 1) {
             return PositionType.BORDER;
-        }    
-                
-//        if (!positions.isEmpty()) {
-//        positions = snake.getSnakePositions();
-//        firstPosition = positions.poll();
-//        if (firstPosition.getX() == x && firstPosition.getY() == y) {
-//            return PositionType.SNAKEHEAD;
-//        }
-        
-        boolean ishead = true;
-        
-        for (Schlangenteil p : snake.getSnakePositions()) {            
-            if (ishead && p.getX() == x && p.getY() == y) {                
-                ishead = false;
-                return PositionType.SNAKEHEAD;
-            }  else if (!ishead && p.getX() == x && p.getY() == y) {
-                return PositionType.SNAKETAIL;
-            }                         
+        } else {
+            for (Schlangenteil p : snake.getSnakePositions()) {
+                if (x == p.getX() && y == p.getY()) {
+                    if (p.index == 1) {
+                        return PositionType.SNAKEHEAD;
+                    } else {
+                        return PositionType.SNAKETAIL;
+                    }
+                }
+            }
         }
-//        }
         return PositionType.EMPTY;
     }
 
@@ -85,39 +71,35 @@ public class PlayingGround {
     public PositionType[][] getPlayingGround() {
         return playingGround;
     }
-    
-    public int getPlayingGroundLength(){
+
+    public int getPlayingGroundLength() {
         return playingGround.length;
     }
-    
-    public int getPlayingGround0Length(){
+
+    public int getPlayingGround0Length() {
         return playingGround[0].length;
     }
 
     @Override
     public String toString() {
         String result = "";
-        for (PositionType[] positionTypes : playingGround) { 
-            result+="\n";
+        for (PositionType[] positionTypes : playingGround) {
+            result += "\n";
             for (PositionType positionType : positionTypes) {
                 if (positionType.equals(PositionType.SNAKETAIL)) {
-                    result+="+";
-                } 
+                    result += "+";
+                }
                 if (positionType.equals(PositionType.SNAKEHEAD)) {
-                    result+="X";
+                    result += "X";
                 }
                 if (positionType.equals(PositionType.BORDER)) {
-                    result+="#";
-                } 
-                else {
-                    result+="-";
+                    result += "#";
+                } else {
+                    result += "-";
                 }
             }
         }
         return result;
     }
-    
-    
-    
-    
+
 }

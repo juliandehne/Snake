@@ -59,5 +59,13 @@ public class Schlangenteil {
         return "Position: " + this.x + " " + this.y;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        Schlangenteil q = (Schlangenteil) o;
+        return (q.x == this.x && q.y == this.x) ;      
+    }
+    
+    
+
     
 }

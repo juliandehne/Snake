@@ -61,5 +61,23 @@ public class Snake {
     public void setSnakePositions(LinkedList<Schlangenteil> snakePositions) {
         this.snakePositions = snakePositions;
     }
+    
+    public Boolean collides(Schlangenteil pos) {
+        for (Schlangenteil s: snakePositions) {
+            if (s.equals(pos)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public Boolean hitsBorder(int maxx, int maxy) {
+         for (Schlangenteil s: snakePositions) {
+            if (s.getX() == maxx || s.getY() == maxy || s.getX() == 0 || s.getY() == 0) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }
