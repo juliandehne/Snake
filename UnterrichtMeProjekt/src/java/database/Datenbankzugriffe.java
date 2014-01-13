@@ -3,7 +3,7 @@ package database;
 import gamelogic.Facing;
 import gamelogic.Item;
 import gamelogic.PlayingGround;
-import gamelogic.Position;
+import gamelogic.Schlangenteil;
 import gamelogic.Snake;
 import gamelogic.Spieler;
 import java.util.ArrayList;
@@ -86,28 +86,29 @@ public class Datenbankzugriffe implements IDatenbankZugriff {
 
     public int getId() {
         /// datenbankgruppe organisiert die id dies testspielers                                
-        return 0;
+        return 1;
     }
 
     //TODO: In interface packen
-    public Queue<Position> getPositions(int id) {
+    public LinkedList<Schlangenteil> getPositions(int id) {
         instance.connect();
         instance.otherStatements("use snake");
-        VereinfachtesResultSet result = instance.issueSelectStatement("select x, y from positionschlange where id=? order by indexPos DESC;", id);
-        Queue<Position> queue = new LinkedList<Position>();
+        VereinfachtesResultSet result = instance.issueSelectStatement("select x, y, indexPos from positionschlange where id=? order by indexPos;", id);
+        LinkedList<Schlangenteil> queue = new LinkedList<Schlangenteil>();
+        // erste schlange initialisieren      
         while (result.next()) {
-            queue.add(new Position(result.getInt("x"), result.getInt("y")));
+            queue.add(new Schlangenteil(result.getInt("x"), result.getInt("y"), result.getInt("indexPos")));
         }
         instance.close();
         return queue;
     }
 
-    public void setPositions(int id, Queue<Position> queue) {
+    public void setPositions(int id, Queue<Schlangenteil> queue) {
         instance.connect();
+        instance.otherStatements("use snake");
         instance.issueInsertOrDeleteStatement("delete from positionschlange where id=?;", id);
-        Position[] posArr = queue.toArray(new Position[0]);
-        for (int i = 0; i < posArr.length; i++) {
-            instance.issueInsertOrDeleteStatement("insert into positionschlange (x,y,id,indexPos) values (?,?,?,?)", posArr[i].getX(), posArr[i].getY(), id, i);
+        for (Schlangenteil schlangenteil : queue) {
+            instance.issueInsertOrDeleteStatement("insert into positionschlange (x,y,id,indexPos) values (?,?,?,?)", schlangenteil.getX(), schlangenteil.getY(), id, schlangenteil.index);
         }
         instance.close();
     }
@@ -131,24 +132,22 @@ public class Datenbankzugriffe implements IDatenbankZugriff {
         String direction = "";
         while (result.next()) {
             direction = result.getString("direktion");
+            //log(direction);
         }
         instance.close();
-        if (direction == "links") {
+        if (direction.equals("links")) {
             return Facing.LEFT;
         }
-        if (direction == "rechts") {
+        if (direction.equals("rechts")) {
             return Facing.RIGHT;
         }
-        if (direction == "oben") {
+        if (direction.equals("oben")) {
             return Facing.UP;
         }
-        if (direction == "unten") {
+        if (direction.equals("unten")) {
             return Facing.DOWN;
         }
         return Facing.RIGHT;
-    }
-
-    public void setDirection(int id) {
     }
 
     public PlayingGround getPlayingGround() {
@@ -200,5 +199,20 @@ public class Datenbankzugriffe implements IDatenbankZugriff {
         instance.otherStatements("use snake");
         instance.issueUpdateStatement("update richtungschlangenbewegung set direktion = ? where id = 1", richtung);
         instance.close();
+    }
+
+    public void initGame(int spielerid) {
+        instance.connect();
+        instance.otherStatements("use snake");
+        instance.issueInsertOrDeleteStatement("delete from positionschlange where id = ?", spielerid);
+        instance.close();
+
+        LinkedList<Schlangenteil> linkedList = new LinkedList<Schlangenteil>();
+        linkedList.add(new Schlangenteil(20, 20, 1));
+        linkedList.add(new Schlangenteil(21, 20, 2));
+        linkedList.add(new Schlangenteil(22, 20, 3));
+        linkedList.add(new Schlangenteil(23, 20, 4));
+        setPositions(spielerid, linkedList);
+
     }
 }

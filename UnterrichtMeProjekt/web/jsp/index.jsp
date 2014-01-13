@@ -1,4 +1,5 @@
 
+<%@page import="database.Datenbankzugriffe"%>
 <%@page import="database.MysqlConnect"%>
 <%--
     Document : snake
@@ -18,19 +19,29 @@
 
 <%
 
+    //Konfiguration für PictureLoad
+    String picturePath = "/image/spiel.png";
+    // Hier müsst ihr den Pfad des ROOT Verzeichnis auf euerem Server angeben
+    // bei euch zu 99% /var/lib/tomcat6/webapps/ROOT/
+    String tomcatRootPath = "/var/lib/tomcat6/webapps/ROOT/";
+    File deployStream = new File(tomcatRootPath + picturePath);
+    request.setAttribute("Pfad für die Erstellung von Bildern", deployStream.getPath());
     // Hier müsst ihr eure IP eintragen
+//    String ip = "http://10.25.25.135:8080";
     String ip = "http://localhost:8080";
-    String pictureRootAddress = "/image/*";
+    String pictureRootAddress = picturePath;
     String pictureAddress = ip + pictureRootAddress;
+    request.setAttribute("Pfad für die Addressierung von Bildern per URl", pictureAddress);
     request.setAttribute("pictureAddress", pictureAddress); //fürs einsetzen in HTML
 
     // Die Addresse dieser Seite
-    String thisSiteRootAddress = "/git/UnterrichtMe/UnterrichtMeProjekt/build/web/";
+    String thisSiteRootAddress = "/git/UnterrichtMe/UnterrichtMeProjekt/web/";
     String thisSiteAddress = ip + thisSiteRootAddress;
-    request.setAttribute("thisSiteAddress", thisSiteRootAddress);
+    request.setAttribute("thisSiteAddress", thisSiteRootAddress);    
 
     //Bilder laden im Hintergrund aktivieren
-    //request.getSession().setAttribute("task", new Task());
+    request.getSession().setAttribute("task", new Task());
+
 
 %>
 
@@ -57,6 +68,7 @@
                href="${thisSiteAddress}jsp/highscore.jsp">
                 <img src="${thisSiteAddress}jsp/highscore.png" name="Wechselbild2"></a>
         </div>
+        <a href="${thisSiteAddress}">RESTART</a>
         <div class="wrapper" style="background-image: url('${thisSiteAddress}jsp/stars.png'); left: 300px;">
             <table style="overflow:hidden;width:900px;height:400px;margin-left:auto;margin-right:auto;">
                 <tr>
@@ -84,7 +96,7 @@
     <footer>
         <div class="footer"><img src="${thisSiteAddress}/jsp/logo1.png" style="height: 120px"></div>
         <!--Dieses Div gibt einige Daten und kann bei Ende des Projektes gelöscht werden-->
-        <%-- <div id="helperdiv" style="width:900px;margin-left:auto;margin-right:auto;visibility:hidden;">
+        <div id="helperdiv" style="width:900px;margin-left:auto;margin-right:auto;visibility:hidden;">
                    <h2>Hilfestellung</h2>
                    <p>
                        <br>Die aufgerufene JSP Seite hat folgenden Pfad (von Root):</br>
@@ -105,17 +117,24 @@
                        %>
                        </br>
                    </p>
-               </div> --%>
+               </div> 
     </footer>
 </html>
 
-<%// direction nimmt die Werte "links", "rechts", "oben" oder "unten an"
-    if (request.getSession().getAttribute("direction") != null) {
-        String direction = request.getSession().getAttribute("direction").toString();
-        out.print("direction");
+<%    
+    
+
+// Verarbeitung von Datenbankaufgaben        
+    Datenbankzugriffe d = new Datenbankzugriffe();    
+    if (request.getParameter("direction") != null) {                
+        out.print("direction == ### " + request.getParameter("direction")+ " ####");
+        String direction = request.getParameter("direction").toString();        
+        d.updateRichtung(direction);
+    } else {        
+        d.initGame(1);
     }
 
-    //Hier könnt ihr die Spiellogik anhängen, je nach dem in welche Richtung die Schlange bewegt werden soll
+
 %>
 
 

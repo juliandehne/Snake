@@ -4,10 +4,11 @@ import static controller.ImageServlet.random;
 import database.Datenbankzugriffe;
 import gamelogic.Facing;
 import gamelogic.PlayingGround;
-import gamelogic.Position;
+import gamelogic.Schlangenteil;
 import gamelogic.PositionType;
 import gamelogic.Snake;
 import itemlogic.ItemController;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.Queue;
 import org.apache.log4j.Logger;
@@ -26,9 +27,12 @@ public class Einstiegspunkte {
      * @param spielerid
      * @return 
      */
-    public PositionType[][] teamschlange(Integer spielerid) {               
+    public PositionType[][] teamschlange(Integer spielerid) {           
+        
          Datenbankzugriffe dbz = new Datenbankzugriffe();
-         Queue<Position> queue = dbz.getPositions(spielerid.intValue());        
+         Date now = new Date();
+         //dbz.log(now.toString());
+         LinkedList<Schlangenteil> queue = dbz.getPositions(spielerid.intValue());        
          Snake snake = new Snake(dbz.getDirection(spielerid), queue); //TODO
          PlayingGround playingGround = new PlayingGround(100, 100, snake);
          snake.move(false); //TODO

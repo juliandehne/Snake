@@ -28,14 +28,13 @@ public class StartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Logger logger = LoggerHelper.initLogger();
-        logger.info("Opening Start servlet class");
+//        Logger logger = LoggerHelper.initLogger();
+//        logger.info("Opening Start servlet class");
         
         //some magic        
         //Bilder laden im Hintergrund aktivieren
 //        request.getSession().setAttribute("task", new Task());
-        request.getRequestDispatcher("/git/UnterrichtMe/UnterrichtMeProjekt/build/web/jsp/index.jsp").forward(request, response);
-        
+        request.getRequestDispatcher("/git/UnterrichtMe/UnterrichtMeProjekt/web/jsp/index.jsp").forward(request, response);        
     }
 
 //    Hier können HTML POST Nachrichten verarbeitet werden

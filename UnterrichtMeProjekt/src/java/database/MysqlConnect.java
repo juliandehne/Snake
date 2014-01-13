@@ -32,6 +32,7 @@ public class MysqlConnect {
                     Logger.getLogger(MysqlConnect.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 conn = DriverManager.getConnection("jdbc:mysql://10.25.25.155:3306/mydb?user=schueler&password=schueler");
+                this.otherStatements("use snake;");
             } catch (SQLException ex) {
                 System.out.println("SQLException: " + ex.getMessage());
                 System.out.println("SQLState: " + ex.getSQLState());
@@ -53,6 +54,7 @@ public class MysqlConnect {
 
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?user=root&password=voyager");
+            this.otherStatements("use snake;");
         } catch (SQLException ex) {
             System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());

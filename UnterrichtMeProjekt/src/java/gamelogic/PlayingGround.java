@@ -10,8 +10,8 @@ public class PlayingGround {
 
     public final Snake snake;
     public final PositionType[][] playingGround;
-    private Queue<Position> positions;
-    private Position firstPosition;
+    private Queue<Schlangenteil> positions;
+    private Schlangenteil firstPosition;
 
     public PlayingGround(int sizeX, int sizeY, Snake snake) {
         this.playingGround = new PositionType[sizeX][sizeY];
@@ -25,7 +25,6 @@ public class PlayingGround {
      * @return returns whether the game still running (->Game Over)
      */
     public boolean update() {
-
         for (int x = 0; x < this.playingGround.length; x++) {
             for (int y = 0; y < this.playingGround[x].length; y++) {
                 if (x == snake.getPos().getX() && y == snake.getPos().getY() && 
@@ -39,9 +38,6 @@ public class PlayingGround {
                 //weitere logik behandlung (items usw...)...
             }
         }
-        
-        
-        
         return true;
         
     }
@@ -69,7 +65,7 @@ public class PlayingGround {
         
         boolean ishead = true;
         
-        for (Position p : snake.getSnakePositions()) {            
+        for (Schlangenteil p : snake.getSnakePositions()) {            
             if (ishead && p.getX() == x && p.getY() == y) {                
                 ishead = false;
                 return PositionType.SNAKEHEAD;

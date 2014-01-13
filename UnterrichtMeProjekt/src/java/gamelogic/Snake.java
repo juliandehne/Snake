@@ -11,49 +11,40 @@ import java.util.Queue;
 public class Snake {
 
     private Facing facing;
-    private Queue<Position> snakePositions;
+    private LinkedList<Schlangenteil> snakePositions;
 
-    public Snake(Facing facing, Queue<Position> snakePositions) {
+    public Snake(Facing facing, LinkedList<Schlangenteil> snakePositions) {
         this.facing = facing;
         this.snakePositions = snakePositions;
-        /*
-        this.snakePositions = new ArrayList<Position>();
-        for (int i = 0; i < length; i++) {
-            this.snakePositions.add(new Position(this.pos.getX(), this.pos.getY() + i));
-        }
-        */
     }
-    
-    
-    
 
     public void move(boolean shouldAddLength) {
         if (!shouldAddLength) {
-            LinkedList<Position> positins = new LinkedList<Position>(this.snakePositions);
-            positins.removeLast();
-            this.snakePositions = positins;
+            this.snakePositions.removeLast();
         }
         switch (this.facing) {
             case UP:
-                this.snakePositions.add(new Position(this.snakePositions.element().getX(),this.snakePositions.element().getY()+1));
+                this.snakePositions.addFirst(new Schlangenteil(this.snakePositions.element().getX(), this.snakePositions.element().getY() + 1, 0));
                 break;
             case DOWN:
-                this.snakePositions.add(new Position(this.snakePositions.element().getX(),this.snakePositions.element().getY()-1));
+                this.snakePositions.addFirst(new Schlangenteil(this.snakePositions.element().getX(), this.snakePositions.element().getY() - 1, 0));
                 break;
             case RIGHT:
-                this.snakePositions.add(new Position(this.snakePositions.element().getX()+1,this.snakePositions.element().getY()));               
+                this.snakePositions.addFirst(new Schlangenteil(this.snakePositions.element().getX() + 1, this.snakePositions.element().getY(), 0));
                 break;
             case LEFT:
-                this.snakePositions.add(new Position(this.snakePositions.element().getX()-1,this.snakePositions.element().getY()));               
+                this.snakePositions.addFirst(new Schlangenteil(this.snakePositions.element().getX() - 1, this.snakePositions.element().getY(), 0));
                 break;
+        }
+        for (Schlangenteil schlangenteil : snakePositions) {
+            schlangenteil.index += 1;
         }
     }
 
     //getter and setter
-    public Position getPos() {
+    public Schlangenteil getPos() {
         return this.snakePositions.element();
     }
-
 
     public Facing getFacing() {
         return facing;
@@ -63,11 +54,11 @@ public class Snake {
         this.facing = facing;
     }
 
-    public Queue<Position> getSnakePositions() {
+    public LinkedList<Schlangenteil> getSnakePositions() {
         return snakePositions;
     }
 
-    public void setSnakePositions(Queue<Position> snakePositions) {
+    public void setSnakePositions(LinkedList<Schlangenteil> snakePositions) {
         this.snakePositions = snakePositions;
     }
 

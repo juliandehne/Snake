@@ -4,18 +4,20 @@ package gamelogic;
  *
  * @author lenni
  */
-public class Position {
+public class Schlangenteil {
     private int x;
     private int y;
+    public int index;
 
     /**
      *
      * @param x x-Value
      * @param y y-Value
      */
-    public Position(int x,int y){
+    public Schlangenteil(int x,int y, int index){
         this.x = x;
         this.y = y;
+        this.index = index;
     }
     
     
