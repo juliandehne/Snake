@@ -136,16 +136,16 @@ public class Datenbankzugriffe implements IDatenbankZugriff {
         }
         instance.close();
         if (direction.equals("links")) {
-            return Facing.LEFT;
+            return Facing.DOWN;
         }
         if (direction.equals("rechts")) {
-            return Facing.RIGHT;
-        }
-        if (direction.equals("oben")) {
             return Facing.UP;
         }
+        if (direction.equals("oben")) {
+            return Facing.LEFT;
+        }
         if (direction.equals("unten")) {
-            return Facing.DOWN;
+            return Facing.RIGHT;
         }
         return Facing.RIGHT;
     }
