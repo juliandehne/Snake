@@ -1,6 +1,7 @@
 package gamelogic;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -78,6 +79,10 @@ public class Snake {
             }
         }
         return false;
+    }
+
+    public Boolean hitsSelf() {
+        return this.snakePositions.size() != new HashSet<Schlangenteil>(this.snakePositions).size();
     }
 
 }

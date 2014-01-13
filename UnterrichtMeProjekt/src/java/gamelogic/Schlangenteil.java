@@ -62,8 +62,15 @@ public class Schlangenteil {
     @Override
     public boolean equals(Object o) {
         Schlangenteil q = (Schlangenteil) o;
-        return (q.x == this.x && q.y == this.x) ;      
+        return (q.x == this.x && q.y == this.y) ;      
     }
+
+    @Override
+    public int hashCode() {
+        return this.x * 1000 + this.y; 
+    }
+    
+    
     
     
 

@@ -37,13 +37,18 @@ public class Einstiegspunkte {
         Snake snake = new Snake(dbz.getDirection(spielerid), queue); //TODO
 
         PlayingGround playingGround = new PlayingGround(maxx, maxy, snake);
-        snake.move(false); //TODO
+        snake.move(true); 
+        
+        // highscore updaten
+        int highScore = dbz.getHigscoreForPlayerID(spielerid);
+        highScore = highScore + 1;
+        dbz.setHigscoreForPlayerID(1, highScore);
 
         // update 
         playingGround.update();
 
         // hits border?
-        if (snake.hitsBorder(maxx, maxy)) {
+        if (snake.hitsBorder(maxx, maxy) || snake.hitsSelf()) {
             dbz.initGame(spielerid);
         } else {
             //akutelle Position in datenbank schreiben            

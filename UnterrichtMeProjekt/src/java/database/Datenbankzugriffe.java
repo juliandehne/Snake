@@ -181,15 +181,23 @@ public class Datenbankzugriffe implements IDatenbankZugriff {
     }
 
     @Override
-    public void setHigscoreForPlayerID(int id, int Highscore) {
-        throw new UnsupportedOperationException("Methode noch nicht implemetiert.");
-
+    public void setHigscoreForPlayerID(int id, int highscore) {
+        instance.connect();
+        instance.issueInsertOrDeleteStatement("delete from score where id =?", id);
+        instance.issueInsertOrDeleteStatement("insert into score (id, punkte) values (?,?)", id, highscore);
+        instance.close();
     }
 
     @Override
     public int getHigscoreForPlayerID(int id) {
-        throw new UnsupportedOperationException("Methode noch nicht implemetiert.");
-
+        instance.connect();
+        VereinfachtesResultSet result = instance.issueSelectStatement("select punkte from score where id = ?;", id);        
+        int results = 0;
+        while (result.next()) {
+            results = result.getInt("punkte");
+        }
+        instance.close();
+        return results;
     }
 
     @Override
@@ -204,6 +212,7 @@ public class Datenbankzugriffe implements IDatenbankZugriff {
     public void initGame(int spielerid) {
         instance.connect();
         instance.otherStatements("use snake");
+        instance.issueInsertOrDeleteStatement("delete from score where id =?", spielerid);
         instance.issueInsertOrDeleteStatement("delete from positionschlange where id = ?", spielerid);
         instance.close();
 

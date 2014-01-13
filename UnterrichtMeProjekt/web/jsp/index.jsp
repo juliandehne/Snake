@@ -130,8 +130,10 @@
         out.print("direction == ### " + request.getParameter("direction")+ " ####");
         String direction = request.getParameter("direction").toString();        
         d.updateRichtung(direction);
-    } else {        
-        d.initGame(1);
+    } else {   
+        if (request.getParameter("scorevisited") == null) {
+            d.initGame(1);
+        }
     }
 
 
